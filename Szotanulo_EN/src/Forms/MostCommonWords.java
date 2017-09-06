@@ -16,9 +16,9 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         answerTextField = new javax.swing.JTextField();
-        checkbutton = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
         nextButton = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        scrollPanel = new javax.swing.JScrollPane();
         definitionBox = new javax.swing.JTextArea();
         definitonLabel = new javax.swing.JLabel();
         usernameLabel = new javax.swing.JLabel();
@@ -36,18 +36,18 @@ public class MostCommonWords extends javax.swing.JFrame {
         accuracyLabel = new javax.swing.JLabel();
         accuracyPercentageLabel = new javax.swing.JLabel();
         wordsLabel = new javax.swing.JLabel();
-        megoldas = new javax.swing.JLabel();
+        solution = new javax.swing.JLabel();
         resetButton = new javax.swing.JButton();
         authorLabel = new javax.swing.JLabel();
         authorLabel2 = new javax.swing.JLabel();
         authorEmailLabel = new javax.swing.JLabel();
         versionLabel = new javax.swing.JLabel();
         muteButton = new javax.swing.JToggleButton();
-        jLabel13 = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        menu = new javax.swing.JMenu();
+        playButton = new javax.swing.JButton();
+        menu = new javax.swing.JMenuBar();
+        toolsMenu = new javax.swing.JMenu();
         backMenuItem = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        editMenu = new javax.swing.JMenu();
         resetMenuItem = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -69,7 +69,7 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         answerTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         answerTextField.setToolTipText("");
-        answerTextField.setNextFocusableComponent(checkbutton);
+        answerTextField.setNextFocusableComponent(checkButton);
         answerTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
             }
@@ -95,17 +95,17 @@ public class MostCommonWords extends javax.swing.JFrame {
             }
         });
 
-        checkbutton.setText("Check");
-        checkbutton.setToolTipText("\"Válasz ellenőrzése!\"");
-        checkbutton.setNextFocusableComponent(nextButton);
-        checkbutton.addActionListener(new java.awt.event.ActionListener() {
+        checkButton.setText("Check");
+        checkButton.setToolTipText("\"Válasz ellenőrzése!\"");
+        checkButton.setNextFocusableComponent(nextButton);
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkbuttonActionPerformed(evt);
+                checkButtonActionPerformed(evt);
             }
         });
-        checkbutton.addKeyListener(new java.awt.event.KeyAdapter() {
+        checkButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                checkbuttonKeyPressed(evt);
+                checkButtonKeyPressed(evt);
             }
         });
 
@@ -130,7 +130,7 @@ public class MostCommonWords extends javax.swing.JFrame {
         definitionBox.setRows(5);
         definitionBox.setText("-Jobb oldalt a \"Words\" nevű legördülő menüben\nválaszd ki a gyakorolni kívánt szó listát!\n-Kezdéshez írd be a felhasználónevet és nyomj entert, \nvagy kattints a start gombra!\n-válasz beírása után nyomj entert, vagy kattints\na Check gombra!\n-Az eredményeid elmenti a program automatikusan, \na következő belépésnél ott folytathatod ahol abbahagytad\na szótanulást!\n");
         definitionBox.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        jScrollPane1.setViewportView(definitionBox);
+        scrollPanel.setViewportView(definitionBox);
 
         definitonLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         definitonLabel.setText("Def:");
@@ -196,9 +196,9 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         wordsLabel.setText("Words:");
 
-        megoldas.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        megoldas.setForeground(new java.awt.Color(255, 0, 51));
-        megoldas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        solution.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        solution.setForeground(new java.awt.Color(255, 0, 51));
+        solution.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         resetButton.setText("Reset");
         resetButton.setToolTipText("\"Mentés törlése\"");
@@ -223,14 +223,9 @@ public class MostCommonWords extends javax.swing.JFrame {
             }
         });
 
-        jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project01/mostcommonwords/play.png"))); // NOI18N
-        jLabel13.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel13MouseClicked(evt);
-            }
-        });
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play.png"))); // NOI18N
 
-        menu.setText("Tools");
+        toolsMenu.setText("Tools");
 
         backMenuItem.setText("Back");
         backMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -238,11 +233,11 @@ public class MostCommonWords extends javax.swing.JFrame {
                 backMenuItemActionPerformed(evt);
             }
         });
-        menu.add(backMenuItem);
+        toolsMenu.add(backMenuItem);
 
-        jMenuBar1.add(menu);
+        menu.add(toolsMenu);
 
-        jMenu2.setText("Edit");
+        editMenu.setText("Edit");
 
         resetMenuItem.setText("Eredmények törlése");
         resetMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -250,11 +245,11 @@ public class MostCommonWords extends javax.swing.JFrame {
                 resetMenuItemActionPerformed(evt);
             }
         });
-        jMenu2.add(resetMenuItem);
+        editMenu.add(resetMenuItem);
 
-        jMenuBar1.add(jMenu2);
+        menu.add(editMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -265,15 +260,17 @@ public class MostCommonWords extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(solution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(answerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(versionLabel)
-                                    .addComponent(authorLabel)
-                                    .addComponent(authorLabel2)
-                                    .addComponent(authorEmailLabel))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(megoldas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(playButton)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(answerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(versionLabel)
+                                        .addComponent(authorLabel)
+                                        .addComponent(authorLabel2)
+                                        .addComponent(authorEmailLabel)))
+                                .addGap(0, 71, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
@@ -296,7 +293,7 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(definitonLabel)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(wordsLabel)
@@ -307,12 +304,9 @@ public class MostCommonWords extends javax.swing.JFrame {
                             .addComponent(muteButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(218, 218, 218)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(checkbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(nextButton)))))
+                                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(nextButton)))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -336,21 +330,17 @@ public class MostCommonWords extends javax.swing.JFrame {
                                 .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(startButton))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(answerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(checkbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)))
+                                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(playButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 24, Short.MAX_VALUE)
-                                .addComponent(megoldas, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(solution, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -396,9 +386,9 @@ public class MostCommonWords extends javax.swing.JFrame {
     
 
      
-    private void checkbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkbuttonActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
            
-    }//GEN-LAST:event_checkbuttonActionPerformed
+    }//GEN-LAST:event_checkButtonActionPerformed
 
     private void wordListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wordListActionPerformed
 
@@ -420,9 +410,9 @@ public class MostCommonWords extends javax.swing.JFrame {
  
     }//GEN-LAST:event_answerTextFieldKeyPressed
 
-    private void checkbuttonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkbuttonKeyPressed
+    private void checkButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkButtonKeyPressed
 
-    }//GEN-LAST:event_checkbuttonKeyPressed
+    }//GEN-LAST:event_checkButtonKeyPressed
 
     private void nextButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextButtonKeyPressed
 
@@ -459,10 +449,6 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void answerTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_answerTextFieldFocusGained
   
     }//GEN-LAST:event_answerTextFieldFocusGained
-
-    private void jLabel13MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel13MouseClicked
-
-    }//GEN-LAST:event_jLabel13MouseClicked
 
 
     public static void main(String args[]) {
@@ -511,25 +497,25 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JMenuItem backMenuItem;
     private javax.swing.JLabel badAnswerCounterLabel;
     private javax.swing.JLabel badAnswerLabel;
-    private javax.swing.JButton checkbutton;
+    private javax.swing.JButton checkButton;
     private javax.swing.JLabel correctAnswerCounterLabel;
     private javax.swing.JLabel correctAnswerLabel;
     private javax.swing.JTextArea definitionBox;
     private javax.swing.JLabel definitonLabel;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu editMenu;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel megoldas;
-    private javax.swing.JMenu menu;
+    private javax.swing.JMenuBar menu;
     private javax.swing.JToggleButton muteButton;
     private javax.swing.JButton nextButton;
+    private javax.swing.JButton playButton;
     private javax.swing.JLabel remainingWordsCounterLabel;
     private javax.swing.JLabel remainingWordsLabel;
     private javax.swing.JButton resetButton;
     private javax.swing.JMenuItem resetMenuItem;
+    private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JLabel solution;
     private javax.swing.JButton startButton;
+    private javax.swing.JMenu toolsMenu;
     private javax.swing.JLabel usernameLabel;
     public javax.swing.JTextField usernameTextField;
     private javax.swing.JLabel versionLabel;

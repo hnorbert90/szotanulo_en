@@ -11,6 +11,9 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
     <Property name="title" type="java.lang.String" value="Login"/>
+    <Property name="iconImages" type="java.util.List" editor="org.netbeans.modules.form.ComponentChooserEditor">
+      <ComponentRef name="null"/>
+    </Property>
     <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
@@ -37,53 +40,42 @@
               <Component id="serverOfflineAlertLabel" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="usernameTextField" pref="81" max="32767" attributes="0"/>
-                                  <Component id="passwordTextField" max="32767" attributes="0"/>
-                              </Group>
+          <Group type="103" alignment="1" groupAlignment="1" attributes="0">
+              <Group type="102" alignment="1" attributes="0">
+                  <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="passwordLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="registrationButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="usernameTextField" pref="81" max="32767" attributes="0"/>
+                              <Component id="passwordTextField" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="AlertLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="registrationButton" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
-                              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-                              <Component id="forgotPasswordLabel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Component id="offlineModeButton" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jLabel5" min="-2" pref="104" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="AlertLabel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+              <Group type="102" alignment="1" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="112" max="-2" attributes="0"/>
+                          <Component id="loginButton" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <Component id="forgotPasswordLabel" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="32767" attributes="0"/>
+                  <Component id="offlineModeButton" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -92,39 +84,24 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
               <Component id="serverOfflineAlertLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="usernameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="usernameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="AlertLabel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jLabel5" alignment="0" min="-2" pref="130" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="passwordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <Component id="registrationButton" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="forgotPasswordLabel" min="-2" max="-2" attributes="0"/>
-                  </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="passwordLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="passwordTextField" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Component id="registrationButton" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="forgotPasswordLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
               <Component id="offlineModeButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
@@ -168,24 +145,12 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value=""/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-    </Component>
     <Component class="javax.swing.JLabel" name="forgotPasswordLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Elfelejtetted a jelsz&#xf3;t?"/>
       </Properties>
       <Events>
         <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="forgotPasswordLabelMouseClicked"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel5">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/project01/main/troll.jpg"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel5MouseClicked"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="serverOfflineAlertLabel">
@@ -203,16 +168,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Must be filled!"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/project01/main/rsz_refresh.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel9MouseClicked"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="registrationButton">
       <Properties>

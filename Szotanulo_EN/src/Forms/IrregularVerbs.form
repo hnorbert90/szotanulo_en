@@ -101,7 +101,6 @@
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                  <Component id="jLabel16" alignment="0" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -114,21 +113,21 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="infinitiveLabel" min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="megoldas1" min="-2" pref="60" max="-2" attributes="0"/>
+                                      <Component id="infinitiveCorrectAnswerLabel" min="-2" pref="60" max="-2" attributes="0"/>
                                       <Component id="infinitiveTextField" min="-2" pref="60" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="simplePastLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="megoldas2" alignment="1" pref="60" max="32767" attributes="0"/>
+                                  <Component id="simplePerfectCorrectAnswerLabel" alignment="1" pref="60" max="32767" attributes="0"/>
                                   <Component id="simplePastTextField" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="pastPerfectLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="pastPerfectTextField" alignment="0" pref="60" max="32767" attributes="0"/>
-                                  <Component id="megoldas3" max="32767" attributes="0"/>
+                                  <Component id="pastPerfectCorrectAnswerLabel" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="checkButton" min="-2" max="-2" attributes="0"/>
@@ -136,7 +135,6 @@
                               <Component id="nextButton" min="-2" pref="57" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -171,10 +169,10 @@
                           <Component id="accuracyPercentageLabel" alignment="0" max="32767" attributes="0"/>
                           <Component id="alreadyLearnedWordsCounterLabel" min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -222,15 +220,13 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="megoldas1" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
+                          <Component id="infinitiveCorrectAnswerLabel" alignment="1" min="-2" pref="15" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="megoldas2" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
-                              <Component id="megoldas3" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="simplePerfectCorrectAnswerLabel" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
+                              <Component id="pastPerfectCorrectAnswerLabel" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       <Component id="authorLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="authorEmailLabel" min="-2" max="-2" attributes="0"/>
@@ -394,7 +390,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="startButtonKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="megoldas1">
+    <Component class="javax.swing.JLabel" name="infinitiveCorrectAnswerLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
@@ -404,7 +400,7 @@
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="megoldas2">
+    <Component class="javax.swing.JLabel" name="simplePerfectCorrectAnswerLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
@@ -429,7 +425,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nextButtonKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="megoldas3">
+    <Component class="javax.swing.JLabel" name="pastPerfectCorrectAnswerLabel">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="11" style="0"/>
@@ -522,17 +518,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="K&#xe9;sz&#xed;tette:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel16">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/project01/irregularverbs/play.png"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel16MouseClicked"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JToggleButton" name="muteButton">
       <Properties>

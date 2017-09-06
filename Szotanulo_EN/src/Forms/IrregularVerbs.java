@@ -5,7 +5,6 @@
  */
 package Forms;
 
-import java.awt.Toolkit;
 import java.io.IOException;
 
 
@@ -48,10 +47,10 @@ public class IrregularVerbs extends javax.swing.JFrame {
         meansLabel = new javax.swing.JLabel();
         definitonLabel = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
-        megoldas1 = new javax.swing.JLabel();
-        megoldas2 = new javax.swing.JLabel();
+        infinitiveCorrectAnswerLabel = new javax.swing.JLabel();
+        simplePerfectCorrectAnswerLabel = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
-        megoldas3 = new javax.swing.JLabel();
+        pastPerfectCorrectAnswerLabel = new javax.swing.JLabel();
         correctAnswersLabel = new javax.swing.JLabel();
         correctAnswersCounterLabel = new javax.swing.JLabel();
         remainingWordsCounterLabel = new javax.swing.JLabel();
@@ -66,7 +65,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
         authorEmailLabel = new javax.swing.JLabel();
         authorNameLabel = new javax.swing.JLabel();
         authorLabel = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
         muteButton = new javax.swing.JToggleButton();
         menu = new javax.swing.JMenuBar();
         toolsMenu = new javax.swing.JMenu();
@@ -202,11 +200,11 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
-        megoldas1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        megoldas1.setForeground(new java.awt.Color(180, 0, 0));
+        infinitiveCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        infinitiveCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
 
-        megoldas2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        megoldas2.setForeground(new java.awt.Color(180, 0, 0));
+        simplePerfectCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        simplePerfectCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
 
         nextButton.setText("Next");
         nextButton.setNextFocusableComponent(infinitiveTextField);
@@ -222,8 +220,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
-        megoldas3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        megoldas3.setForeground(new java.awt.Color(180, 0, 0));
+        pastPerfectCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
+        pastPerfectCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
 
         correctAnswersLabel.setText("Correct answers:");
 
@@ -267,14 +265,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
         authorNameLabel.setText("Hollay Norbert");
 
         authorLabel.setText("Készítette:");
-
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project01/irregularverbs/play.png"))); // NOI18N
-        jLabel16.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel16MouseClicked(evt);
-            }
-        });
 
         muteButton.setText("Sound OFF");
         muteButton.addActionListener(new java.awt.event.ActionListener() {
@@ -329,7 +319,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
                 .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -341,23 +330,22 @@ public class IrregularVerbs extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(infinitiveLabel)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(megoldas1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(infinitiveCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(infinitiveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(simplePastLabel)
-                                    .addComponent(megoldas2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                    .addComponent(simplePerfectCorrectAnswerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                                     .addComponent(simplePastTextField))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(pastPerfectLabel)
                                     .addComponent(pastPerfectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(megoldas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(pastPerfectCorrectAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(17, 17, 17))
+                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,8 +372,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
                             .addComponent(badAnswersCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(accuracyPercentageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(alreadyLearnedWordsCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(32, 32, 32)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(15, 15, 15)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -423,13 +411,11 @@ public class IrregularVerbs extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(megoldas1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(infinitiveCorrectAnswerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(megoldas2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(megoldas3, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16)
-                        .addGap(49, 49, 49)
+                                .addComponent(simplePerfectCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pastPerfectCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(55, 55, 55)
                         .addComponent(authorLabel)
                         .addGap(5, 5, 5)
                         .addComponent(authorEmailLabel)
@@ -522,10 +508,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
 
     }//GEN-LAST:event_backMenuItemActionPerformed
 
-    private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
- 
-    }//GEN-LAST:event_jLabel16MouseClicked
-
     private void infinitiveTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infinitiveTextFieldFocusGained
 
     }//GEN-LAST:event_infinitiveTextFieldFocusGained
@@ -604,17 +586,15 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JLabel definitonLabel;
     private javax.swing.JMenu editMenu;
     private javax.swing.JLabel formNameLabel;
+    private javax.swing.JLabel infinitiveCorrectAnswerLabel;
     private javax.swing.JLabel infinitiveLabel;
     private javax.swing.JTextField infinitiveTextField;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel meansLabel;
-    private javax.swing.JLabel megoldas1;
-    private javax.swing.JLabel megoldas2;
-    private javax.swing.JLabel megoldas3;
     private javax.swing.JMenuBar menu;
     private javax.swing.JToggleButton muteButton;
     private javax.swing.JButton nextButton;
+    private javax.swing.JLabel pastPerfectCorrectAnswerLabel;
     private javax.swing.JLabel pastPerfectLabel;
     private javax.swing.JTextField pastPerfectTextField;
     private javax.swing.JLabel remainingWordsCounterLabel;
@@ -622,6 +602,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JMenuItem resetMenuItem;
     private javax.swing.JLabel simplePastLabel;
     private javax.swing.JTextField simplePastTextField;
+    private javax.swing.JLabel simplePerfectCorrectAnswerLabel;
     private javax.swing.JButton startButton;
     private javax.swing.JMenu toolsMenu;
     private javax.swing.JLabel usernameLabel;

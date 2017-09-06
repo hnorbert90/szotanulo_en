@@ -17,9 +17,9 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
+    <Menu class="javax.swing.JMenuBar" name="menu">
       <SubComponents>
-        <Menu class="javax.swing.JMenu" name="menu">
+        <Menu class="javax.swing.JMenu" name="toolsMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Tools"/>
           </Properties>
@@ -34,7 +34,7 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu2">
+        <Menu class="javax.swing.JMenu" name="editMenu">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit"/>
           </Properties>
@@ -67,7 +67,7 @@
     <Property name="AccessibleContext.accessibleDescription" type="java.lang.String" value=""/>
   </AccessibilityProperties>
   <SyntheticProperties>
-    <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar1"/>
+    <SyntheticProperty name="menuBar" type="java.lang.String" value="menu"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
     <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
   </SyntheticProperties>
@@ -91,17 +91,20 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="answerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
-                                  <Component id="versionLabel" min="-2" max="-2" attributes="0"/>
-                                  <Component id="authorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="authorLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="authorEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="solution" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="playButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="answerTextField" alignment="0" min="-2" pref="207" max="-2" attributes="0"/>
+                                      <Component id="versionLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="authorLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="authorLabel2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="authorEmailLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <EmptySpace min="0" pref="71" max="32767" attributes="0"/>
                           </Group>
-                          <Component id="megoldas" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -130,7 +133,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="definitonLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jScrollPane1" min="-2" pref="347" max="-2" attributes="0"/>
+                              <Component id="scrollPanel" min="-2" pref="347" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="wordsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -143,14 +146,9 @@
                           <Component id="muteButton" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="218" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Component id="checkbutton" min="-2" pref="73" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="nextButton" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="checkButton" min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="nextButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
@@ -181,27 +179,20 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="startButton" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" min="-2" pref="164" max="-2" attributes="0"/>
+                          <Component id="scrollPanel" min="-2" pref="164" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="answerTextField" min="-2" max="-2" attributes="0"/>
                           <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                              <Component id="checkbutton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="nextButton" alignment="3" pref="37" max="32767" attributes="0"/>
+                              <Component id="checkButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                              <Component id="nextButton" alignment="3" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="playButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="0" pref="24" max="32767" attributes="0"/>
-                              <Component id="megoldas" min="-2" pref="33" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="jLabel13" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                      </Group>
+                      <Component id="solution" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -258,7 +249,7 @@
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="checkbutton"/>
+          <ComponentRef name="checkButton"/>
         </Property>
       </Properties>
       <Events>
@@ -268,7 +259,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="answerTextFieldKeyPressed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="checkbutton">
+    <Component class="javax.swing.JButton" name="checkButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Check"/>
         <Property name="toolTipText" type="java.lang.String" value="&quot;V&#xe1;lasz ellen&#x151;rz&#xe9;se!&quot;"/>
@@ -277,8 +268,8 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkbuttonActionPerformed"/>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="checkbuttonKeyPressed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="checkButtonActionPerformed"/>
+        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="checkButtonKeyPressed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="nextButton">
@@ -294,7 +285,7 @@
         <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="nextButtonKeyPressed"/>
       </Events>
     </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+    <Container class="javax.swing.JScrollPane" name="scrollPanel">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
       </AuxValues>
@@ -439,7 +430,7 @@
         <Property name="text" type="java.lang.String" value="Words:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="megoldas">
+    <Component class="javax.swing.JLabel" name="solution">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
@@ -487,15 +478,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="muteButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel13">
+    <Component class="javax.swing.JButton" name="playButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/project01/mostcommonwords/play.png"/>
+          <Image iconType="3" name="/Resources/images/play.png"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jLabel13MouseClicked"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>
