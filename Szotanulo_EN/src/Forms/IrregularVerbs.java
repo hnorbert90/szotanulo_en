@@ -35,46 +35,44 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private void initComponents() {
 
         jFrame1 = new javax.swing.JFrame();
-        ellenoriz = new javax.swing.JButton();
-        ige = new javax.swing.JTextField();
-        mult1 = new javax.swing.JTextField();
-        mult2 = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        correct = new javax.swing.JLabel();
-        bad = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        kiir = new javax.swing.JLabel();
-        start = new javax.swing.JButton();
+        checkButton = new javax.swing.JButton();
+        infinitiveTextField = new javax.swing.JTextField();
+        simplePastTextField = new javax.swing.JTextField();
+        pastPerfectTextField = new javax.swing.JTextField();
+        infinitiveLabel = new javax.swing.JLabel();
+        simplePastLabel = new javax.swing.JLabel();
+        pastPerfectLabel = new javax.swing.JLabel();
+        alreadyLearnedWordsLabel = new javax.swing.JLabel();
+        remainingWordsLabel = new javax.swing.JLabel();
+        formNameLabel = new javax.swing.JLabel();
+        meansLabel = new javax.swing.JLabel();
+        definitonLabel = new javax.swing.JLabel();
+        startButton = new javax.swing.JButton();
         megoldas1 = new javax.swing.JLabel();
         megoldas2 = new javax.swing.JLabel();
-        next = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         megoldas3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        pont = new javax.swing.JLabel();
-        pont2 = new javax.swing.JLabel();
-        pont3 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        pont4 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        pont5 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        user1 = new javax.swing.JTextField();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
+        correctAnswersLabel = new javax.swing.JLabel();
+        correctAnswersCounterLabel = new javax.swing.JLabel();
+        remainingWordsCounterLabel = new javax.swing.JLabel();
+        alreadyLearnedWordsCounterLabel = new javax.swing.JLabel();
+        badAnswersLabel = new javax.swing.JLabel();
+        badAnswersCounterLabel = new javax.swing.JLabel();
+        accuracyLabel = new javax.swing.JLabel();
+        accuracyPercentageLabel = new javax.swing.JLabel();
+        usernameLabel = new javax.swing.JLabel();
+        usernameTextField = new javax.swing.JTextField();
+        versionLabel = new javax.swing.JLabel();
+        authorEmailLabel = new javax.swing.JLabel();
+        authorNameLabel = new javax.swing.JLabel();
+        authorLabel = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
-        jToggleButton1 = new javax.swing.JToggleButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        muteButton = new javax.swing.JToggleButton();
+        menu = new javax.swing.JMenuBar();
+        toolsMenu = new javax.swing.JMenu();
+        backMenuItem = new javax.swing.JMenuItem();
+        resetMenuItem = new javax.swing.JMenuItem();
+        editMenu = new javax.swing.JMenu();
 
         jFrame1.setResizable(false);
 
@@ -92,121 +90,115 @@ public class IrregularVerbs extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
-        ellenoriz.setText("Check");
-        ellenoriz.setNextFocusableComponent(next);
-        ellenoriz.setPreferredSize(new java.awt.Dimension(65, 25));
-        ellenoriz.addActionListener(new java.awt.event.ActionListener() {
+        checkButton.setText("Check");
+        checkButton.setNextFocusableComponent(nextButton);
+        checkButton.setPreferredSize(new java.awt.Dimension(65, 25));
+        checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ellenorizActionPerformed(evt);
+                checkButtonActionPerformed(evt);
             }
         });
-        ellenoriz.addKeyListener(new java.awt.event.KeyAdapter() {
+        checkButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                ellenorizKeyPressed(evt);
+                checkButtonKeyPressed(evt);
             }
         });
 
-        ige.setNextFocusableComponent(mult1);
-        ige.addFocusListener(new java.awt.event.FocusAdapter() {
+        infinitiveTextField.setNextFocusableComponent(simplePastTextField);
+        infinitiveTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                igeFocusGained(evt);
+                infinitiveTextFieldFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                igeFocusLost(evt);
+                infinitiveTextFieldFocusLost(evt);
             }
         });
-        ige.addActionListener(new java.awt.event.ActionListener() {
+        infinitiveTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                igeActionPerformed(evt);
+                infinitiveTextFieldActionPerformed(evt);
             }
         });
-        ige.addKeyListener(new java.awt.event.KeyAdapter() {
+        infinitiveTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                igeKeyPressed(evt);
+                infinitiveTextFieldKeyPressed(evt);
             }
         });
 
-        mult1.setNextFocusableComponent(mult2);
-        mult1.addActionListener(new java.awt.event.ActionListener() {
+        simplePastTextField.setNextFocusableComponent(pastPerfectTextField);
+        simplePastTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mult1ActionPerformed(evt);
+                simplePastTextFieldActionPerformed(evt);
             }
         });
-        mult1.addKeyListener(new java.awt.event.KeyAdapter() {
+        simplePastTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                mult1KeyPressed(evt);
+                simplePastTextFieldKeyPressed(evt);
             }
         });
 
-        mult2.setNextFocusableComponent(ellenoriz);
-        mult2.addActionListener(new java.awt.event.ActionListener() {
+        pastPerfectTextField.setNextFocusableComponent(checkButton);
+        pastPerfectTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mult2ActionPerformed(evt);
+                pastPerfectTextFieldActionPerformed(evt);
             }
         });
-        mult2.addKeyListener(new java.awt.event.KeyAdapter() {
+        pastPerfectTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                mult2KeyPressed(evt);
+                pastPerfectTextFieldKeyPressed(evt);
             }
         });
 
-        jLabel2.setText(" Infinitive");
+        infinitiveLabel.setText(" Infinitive");
 
-        jLabel3.setText("Simple Past");
+        simplePastLabel.setText("Simple Past");
 
-        jLabel4.setText("Past Perfect");
+        pastPerfectLabel.setText("Past Perfect");
 
-        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel5.setText("Already learned words:");
+        alreadyLearnedWordsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        alreadyLearnedWordsLabel.setText("Already learned words:");
 
-        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel7.setText("Remaining words:");
+        remainingWordsLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        remainingWordsLabel.setText("Remaining words:");
 
-        jLabel9.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText("Irregular verbs");
-        jLabel9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        formNameLabel.setFont(new java.awt.Font("Arial Black", 0, 18)); // NOI18N
+        formNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        formNameLabel.setText("Irregular verbs");
+        formNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        correct.setForeground(new java.awt.Color(0, 150, 0));
-        correct.setText("Correct!");
+        meansLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        meansLabel.setText("Means:");
 
-        bad.setForeground(new java.awt.Color(150, 0, 0));
-        bad.setText("Bad!");
-
-        jLabel12.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        jLabel12.setText("Means:");
-
-        kiir.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        kiir.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        kiir.setText("To start please click on start button!");
-        kiir.addInputMethodListener(new java.awt.event.InputMethodListener() {
+        definitonLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        definitonLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        definitonLabel.setText("To start please click on start button!");
+        definitonLabel.addInputMethodListener(new java.awt.event.InputMethodListener() {
             public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                kiirInputMethodTextChanged(evt);
+                definitonLabelInputMethodTextChanged(evt);
             }
         });
-        kiir.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+        definitonLabel.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
             public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                kiirPropertyChange(evt);
+                definitonLabelPropertyChange(evt);
             }
         });
 
-        start.setText("Start");
-        start.setNextFocusableComponent(ige);
-        start.addMouseListener(new java.awt.event.MouseAdapter() {
+        startButton.setText("Start");
+        startButton.setNextFocusableComponent(infinitiveTextField);
+        startButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                startMouseClicked(evt);
+                startButtonMouseClicked(evt);
             }
         });
-        start.addActionListener(new java.awt.event.ActionListener() {
+        startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                startActionPerformed(evt);
+                startButtonActionPerformed(evt);
             }
         });
-        start.addKeyListener(new java.awt.event.KeyAdapter() {
+        startButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                startKeyPressed(evt);
+                startButtonKeyPressed(evt);
             }
         });
 
@@ -216,65 +208,65 @@ public class IrregularVerbs extends javax.swing.JFrame {
         megoldas2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         megoldas2.setForeground(new java.awt.Color(180, 0, 0));
 
-        next.setText("Next");
-        next.setNextFocusableComponent(ige);
-        next.setPreferredSize(new java.awt.Dimension(65, 25));
-        next.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setText("Next");
+        nextButton.setNextFocusableComponent(infinitiveTextField);
+        nextButton.setPreferredSize(new java.awt.Dimension(65, 25));
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nextActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
-        next.addKeyListener(new java.awt.event.KeyAdapter() {
+        nextButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                nextKeyPressed(evt);
+                nextButtonKeyPressed(evt);
             }
         });
 
         megoldas3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         megoldas3.setForeground(new java.awt.Color(180, 0, 0));
 
-        jLabel1.setText("Correct answers:");
+        correctAnswersLabel.setText("Correct answers:");
 
-        pont.setText("0");
-        pont.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        correctAnswersCounterLabel.setText("0");
+        correctAnswersCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        pont2.setText("127");
-        pont2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        remainingWordsCounterLabel.setText("127");
+        remainingWordsCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        pont3.setText("0");
-        pont3.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        alreadyLearnedWordsCounterLabel.setText("0");
+        alreadyLearnedWordsCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel6.setText("Bad answers:");
+        badAnswersLabel.setText("Bad answers:");
 
-        pont4.setText("0");
-        pont4.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        badAnswersCounterLabel.setText("0");
+        badAnswersCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel8.setText("Accuracy:");
+        accuracyLabel.setText("Accuracy:");
 
-        pont5.setText("0");
-        pont5.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        accuracyPercentageLabel.setText("0");
+        accuracyPercentageLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
-        jLabel10.setText("User:");
+        usernameLabel.setText("User:");
 
-        user1.setNextFocusableComponent(ige);
-        user1.addActionListener(new java.awt.event.ActionListener() {
+        usernameTextField.setNextFocusableComponent(infinitiveTextField);
+        usernameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                user1ActionPerformed(evt);
+                usernameTextFieldActionPerformed(evt);
             }
         });
-        user1.addKeyListener(new java.awt.event.KeyAdapter() {
+        usernameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                user1KeyPressed(evt);
+                usernameTextFieldKeyPressed(evt);
             }
         });
 
-        jLabel11.setText("v1.1");
+        versionLabel.setText("v1.1");
 
-        jLabel13.setText("hnorbert90@gmail.com");
+        authorEmailLabel.setText("hnorbert90@gmail.com");
 
-        jLabel14.setText("Hollay Norbert");
+        authorNameLabel.setText("Hollay Norbert");
 
-        jLabel15.setText("Készítette:");
+        authorLabel.setText("Készítette:");
 
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/project01/irregularverbs/play.png"))); // NOI18N
@@ -284,37 +276,37 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
-        jToggleButton1.setText("Sound OFF");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        muteButton.setText("Sound OFF");
+        muteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                muteButtonActionPerformed(evt);
             }
         });
 
-        jMenu1.setText("Tools");
+        toolsMenu.setText("Tools");
 
-        jMenuItem1.setText("Back");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        backMenuItem.setText("Back");
+        backMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                backMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        toolsMenu.add(backMenuItem);
 
-        jMenuItem2.setText("Reset");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        resetMenuItem.setText("Reset");
+        resetMenuItem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                resetMenuItemActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
+        toolsMenu.add(resetMenuItem);
 
-        jMenuBar1.add(jMenu1);
+        menu.add(toolsMenu);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        editMenu.setText("Edit");
+        menu.add(editMenu);
 
-        setJMenuBar(jMenuBar1);
+        setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -322,18 +314,18 @@ public class IrregularVerbs extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jToggleButton1)
+                .addComponent(muteButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(usernameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel9)
+                        .addComponent(formNameLabel)
                         .addGap(50, 50, 50)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(user1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(start, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startButton, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addGap(50, 50, 50))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -342,59 +334,56 @@ public class IrregularVerbs extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel12)
+                                .addComponent(meansLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(kiir, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(definitonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel2)
+                                    .addComponent(infinitiveLabel)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                         .addComponent(megoldas1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(ige, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(infinitiveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel3)
+                                    .addComponent(simplePastLabel)
                                     .addComponent(megoldas2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(mult1))
+                                    .addComponent(simplePastTextField))
                                 .addGap(10, 10, 10)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel4)
-                                    .addComponent(mult2, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                    .addComponent(pastPerfectLabel)
+                                    .addComponent(pastPerfectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
                                     .addComponent(megoldas3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(ellenoriz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(correct)
-                                .addGap(5, 5, 5)
-                                .addComponent(bad))))
+                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel13)
-                                    .addComponent(jLabel15))
+                                    .addComponent(authorEmailLabel)
+                                    .addComponent(authorLabel))
                                 .addGap(133, 133, 133))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)))
+                                    .addComponent(versionLabel)
+                                    .addComponent(authorNameLabel))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel5))
+                            .addComponent(accuracyLabel)
+                            .addComponent(badAnswersLabel)
+                            .addComponent(remainingWordsLabel)
+                            .addComponent(correctAnswersLabel)
+                            .addComponent(alreadyLearnedWordsLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(pont2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pont, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pont4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pont5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(pont3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(remainingWordsCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(correctAnswersCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(badAnswersCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(accuracyPercentageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(alreadyLearnedWordsCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(32, 32, 32)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -405,33 +394,31 @@ public class IrregularVerbs extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(user1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(usernameLabel)
+                            .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(2, 2, 2)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(start)))
+                            .addComponent(formNameLabel)
+                            .addComponent(startButton)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jToggleButton1)))
+                        .addComponent(muteButton)))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(kiir, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(definitonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(meansLabel))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
+                    .addComponent(infinitiveLabel)
+                    .addComponent(simplePastLabel)
+                    .addComponent(pastPerfectLabel))
                 .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ellenoriz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ige, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mult1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mult2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(correct)
-                    .addComponent(bad)
-                    .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(infinitiveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(simplePastTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pastPerfectTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -443,134 +430,134 @@ public class IrregularVerbs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel16)
                         .addGap(49, 49, 49)
-                        .addComponent(jLabel15)
+                        .addComponent(authorLabel)
                         .addGap(5, 5, 5)
-                        .addComponent(jLabel13)
+                        .addComponent(authorEmailLabel)
                         .addGap(10, 10, 10)
-                        .addComponent(jLabel14)
+                        .addComponent(authorNameLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel11))
+                        .addComponent(versionLabel))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(pont3))
+                            .addComponent(alreadyLearnedWordsLabel)
+                            .addComponent(alreadyLearnedWordsCounterLabel))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(pont2))
+                            .addComponent(remainingWordsLabel)
+                            .addComponent(remainingWordsCounterLabel))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1)
-                            .addComponent(pont))
+                            .addComponent(correctAnswersLabel)
+                            .addComponent(correctAnswersCounterLabel))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(pont4))
+                            .addComponent(badAnswersLabel)
+                            .addComponent(badAnswersCounterLabel))
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(pont5))))
+                            .addComponent(accuracyLabel)
+                            .addComponent(accuracyPercentageLabel))))
                 .addContainerGap(33, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ellenorizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ellenorizActionPerformed
+    private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
 
-    }//GEN-LAST:event_ellenorizActionPerformed
+    }//GEN-LAST:event_checkButtonActionPerformed
 
-    private void igeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_igeActionPerformed
+    private void infinitiveTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infinitiveTextFieldActionPerformed
  
-    }//GEN-LAST:event_igeActionPerformed
+    }//GEN-LAST:event_infinitiveTextFieldActionPerformed
 
-    private void startActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startActionPerformed
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
 
-    }//GEN-LAST:event_startActionPerformed
+    }//GEN-LAST:event_startButtonActionPerformed
 
-    private void mult1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mult1ActionPerformed
+    private void simplePastTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simplePastTextFieldActionPerformed
 
-    }//GEN-LAST:event_mult1ActionPerformed
+    }//GEN-LAST:event_simplePastTextFieldActionPerformed
 
-    private void mult2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mult2ActionPerformed
+    private void pastPerfectTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastPerfectTextFieldActionPerformed
   
-    }//GEN-LAST:event_mult2ActionPerformed
+    }//GEN-LAST:event_pastPerfectTextFieldActionPerformed
 
-    private void nextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
       
-    }//GEN-LAST:event_nextActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void igeKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_igeKeyPressed
+    private void infinitiveTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_infinitiveTextFieldKeyPressed
 
      
-    }//GEN-LAST:event_igeKeyPressed
+    }//GEN-LAST:event_infinitiveTextFieldKeyPressed
 
-    private void ellenorizKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_ellenorizKeyPressed
+    private void checkButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkButtonKeyPressed
      
-    }//GEN-LAST:event_ellenorizKeyPressed
+    }//GEN-LAST:event_checkButtonKeyPressed
 
-    private void nextKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextKeyPressed
+    private void nextButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextButtonKeyPressed
     
-    }//GEN-LAST:event_nextKeyPressed
+    }//GEN-LAST:event_nextButtonKeyPressed
 
-    private void startKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startKeyPressed
+    private void startButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startButtonKeyPressed
      
-    }//GEN-LAST:event_startKeyPressed
+    }//GEN-LAST:event_startButtonKeyPressed
 
-    private void mult2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mult2KeyPressed
+    private void pastPerfectTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pastPerfectTextFieldKeyPressed
      
 
-    }//GEN-LAST:event_mult2KeyPressed
+    }//GEN-LAST:event_pastPerfectTextFieldKeyPressed
 
-    private void user1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_user1ActionPerformed
+    private void usernameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextFieldActionPerformed
 
      
-    }//GEN-LAST:event_user1ActionPerformed
+    }//GEN-LAST:event_usernameTextFieldActionPerformed
 
-    private void user1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_user1KeyPressed
+    private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
   
-    }//GEN-LAST:event_user1KeyPressed
+    }//GEN-LAST:event_usernameTextFieldKeyPressed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    private void backMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuItemActionPerformed
 
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    }//GEN-LAST:event_backMenuItemActionPerformed
 
     private void jLabel16MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel16MouseClicked
  
     }//GEN-LAST:event_jLabel16MouseClicked
 
-    private void igeFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_igeFocusGained
+    private void infinitiveTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infinitiveTextFieldFocusGained
 
-    }//GEN-LAST:event_igeFocusGained
+    }//GEN-LAST:event_infinitiveTextFieldFocusGained
 
-    private void igeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_igeFocusLost
+    private void infinitiveTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infinitiveTextFieldFocusLost
    
-    }//GEN-LAST:event_igeFocusLost
+    }//GEN-LAST:event_infinitiveTextFieldFocusLost
 
-    private void kiirPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_kiirPropertyChange
+    private void definitonLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_definitonLabelPropertyChange
  
-    }//GEN-LAST:event_kiirPropertyChange
+    }//GEN-LAST:event_definitonLabelPropertyChange
 
-    private void kiirInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_kiirInputMethodTextChanged
+    private void definitonLabelInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_definitonLabelInputMethodTextChanged
 
-    }//GEN-LAST:event_kiirInputMethodTextChanged
+    }//GEN-LAST:event_definitonLabelInputMethodTextChanged
 
-    private void mult1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mult1KeyPressed
+    private void simplePastTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_simplePastTextFieldKeyPressed
    
     
-    }//GEN-LAST:event_mult1KeyPressed
+    }//GEN-LAST:event_simplePastTextFieldKeyPressed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
      
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_resetMenuItemActionPerformed
 
-    private void startMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startMouseClicked
+    private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
       
-    }//GEN-LAST:event_startMouseClicked
+    }//GEN-LAST:event_startButtonMouseClicked
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+    private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
         
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    }//GEN-LAST:event_muteButtonActionPerformed
 
     
     public static void main(String args[]) throws IOException {
@@ -601,46 +588,44 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel bad;
-    private javax.swing.JLabel correct;
-    private javax.swing.JButton ellenoriz;
-    private javax.swing.JTextField ige;
+    private javax.swing.JLabel accuracyLabel;
+    private javax.swing.JLabel accuracyPercentageLabel;
+    private javax.swing.JLabel alreadyLearnedWordsCounterLabel;
+    private javax.swing.JLabel alreadyLearnedWordsLabel;
+    private javax.swing.JLabel authorEmailLabel;
+    private javax.swing.JLabel authorLabel;
+    private javax.swing.JLabel authorNameLabel;
+    private javax.swing.JMenuItem backMenuItem;
+    private javax.swing.JLabel badAnswersCounterLabel;
+    private javax.swing.JLabel badAnswersLabel;
+    private javax.swing.JButton checkButton;
+    private javax.swing.JLabel correctAnswersCounterLabel;
+    private javax.swing.JLabel correctAnswersLabel;
+    private javax.swing.JLabel definitonLabel;
+    private javax.swing.JMenu editMenu;
+    private javax.swing.JLabel formNameLabel;
+    private javax.swing.JLabel infinitiveLabel;
+    private javax.swing.JTextField infinitiveTextField;
     private javax.swing.JFrame jFrame1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JToggleButton jToggleButton1;
-    private javax.swing.JLabel kiir;
+    private javax.swing.JLabel meansLabel;
     private javax.swing.JLabel megoldas1;
     private javax.swing.JLabel megoldas2;
     private javax.swing.JLabel megoldas3;
-    private javax.swing.JTextField mult1;
-    private javax.swing.JTextField mult2;
-    private javax.swing.JButton next;
-    private javax.swing.JLabel pont;
-    private javax.swing.JLabel pont2;
-    private javax.swing.JLabel pont3;
-    private javax.swing.JLabel pont4;
-    private javax.swing.JLabel pont5;
-    private javax.swing.JButton start;
-    public javax.swing.JTextField user1;
+    private javax.swing.JMenuBar menu;
+    private javax.swing.JToggleButton muteButton;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JLabel pastPerfectLabel;
+    private javax.swing.JTextField pastPerfectTextField;
+    private javax.swing.JLabel remainingWordsCounterLabel;
+    private javax.swing.JLabel remainingWordsLabel;
+    private javax.swing.JMenuItem resetMenuItem;
+    private javax.swing.JLabel simplePastLabel;
+    private javax.swing.JTextField simplePastTextField;
+    private javax.swing.JButton startButton;
+    private javax.swing.JMenu toolsMenu;
+    private javax.swing.JLabel usernameLabel;
+    public javax.swing.JTextField usernameTextField;
+    private javax.swing.JLabel versionLabel;
     // End of variables declaration//GEN-END:variables
 }
