@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Services;
+package Tools;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Norbi
  */
-public class WordGenerateTest {
+public class CheckTest {
     
-    public WordGenerateTest() {
+    public CheckTest() {
     }
     
     @BeforeClass
