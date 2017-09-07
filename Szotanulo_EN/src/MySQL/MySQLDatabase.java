@@ -4,6 +4,7 @@ package MySQL;
 
 
 
+import Tools.BCrypt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -32,6 +33,8 @@ public class MySQLDatabase{
     
     public static void insertUser(String user,String pass, String email) throws Exception {
             connectToDatabase();
+            pass=encryptPassword(pass);
+           
         try {
  
             preparedStatement = connect.prepareStatement("insert into " +DATABASE+ "."+TABLE+" values (?, ?, ?)");
@@ -54,11 +57,15 @@ public class MySQLDatabase{
             settingUpMySQLQuery(_username);
             return executeQuery();
     }
+    
+    public static boolean checkPassword(String _password,String _username) throws ClassNotFoundException, SQLException{
+      return BCrypt.checkpw(_password, MySQLDatabase.selectUsernameFromDatabase(_username)[1]);
+    }
+    
     private static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
             Class.forName("com.mysql.jdbc.Driver");
             connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-           // statement = connect.createStatement();
-           // resultSet = statement.executeQuery("select * from " +DATABASE+"."+TABLE);
+           
     }
     
      private static void settingUpMySQLQuery(String _username) throws SQLException {
@@ -75,6 +82,11 @@ public class MySQLDatabase{
           resultSet.getString("email")
         };
     }
+     
+      private static String encryptPassword(String pass) {
+       return BCrypt.hashpw(pass,BCrypt.gensalt());
+    }
+      
     private static void close() {
         try {
             if (resultSet != null)  resultSet.close();
@@ -84,6 +96,8 @@ public class MySQLDatabase{
         } catch (SQLException e) {
         }
     }
+
+   
 
     
 
