@@ -49,14 +49,10 @@ public class MySQLDatabase{
        // SELECT * FROM `userdata` WHERE `username`=bela;
     
     }
-    public static String[] selectFromDatabase(String _username) throws ClassNotFoundException, SQLException{
+    public static String[] selectUsernameFromDatabase(String _username) throws ClassNotFoundException, SQLException{
             connectToDatabase();
-            preparedStatement = connect.prepareStatement("SELECT * FROM `gamedevs_szotanulo_en`.`userdata` WHERE `username`=?;");
-            preparedStatement.setString(1, _username);
-            resultSet = preparedStatement.executeQuery();
-             resultSet.next();
-             
-            return new String[]{resultSet.getString("username"),resultSet.getString("password"),resultSet.getString("email")};
+            settingUpMySQLQuery(_username);
+            return executeQuery();
     }
     private static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
             Class.forName("com.mysql.jdbc.Driver");
@@ -65,6 +61,20 @@ public class MySQLDatabase{
            // resultSet = statement.executeQuery("select * from " +DATABASE+"."+TABLE);
     }
     
+     private static void settingUpMySQLQuery(String _username) throws SQLException {
+        preparedStatement = connect.prepareStatement("SELECT * FROM `gamedevs_szotanulo_en`.`userdata` WHERE `username`=?;");
+        preparedStatement.setString(1, _username);
+    }
+     
+     private static String[] executeQuery() throws SQLException {
+      resultSet = preparedStatement.executeQuery();
+      resultSet.next();
+      return new String[]{
+          resultSet.getString("username"),
+          resultSet.getString("password"),
+          resultSet.getString("email")
+        };
+    }
     private static void close() {
         try {
             if (resultSet != null)  resultSet.close();
@@ -74,5 +84,11 @@ public class MySQLDatabase{
         } catch (SQLException e) {
         }
     }
+
+    
+
+    
+
+   
 
 }
