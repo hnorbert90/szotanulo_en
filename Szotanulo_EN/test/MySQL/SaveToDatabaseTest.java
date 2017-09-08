@@ -5,6 +5,7 @@
  */
 package MySQL;
 
+import static MySQL.SaveToDatabase.saveStatisticToDatabase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -27,6 +28,12 @@ public class SaveToDatabaseTest {
         GameProgression.learnedWordNumbersInIrregularVerbs.add(323);
         GameProgression.learnedWordNumbersInTheMostCommonWords.add(1235);
         GameProgression.learnedWordNumbersInTheMostCommonWords.add(3163);
+        GameProgression.alreadyLearnedWordsInIrregularVerbs=10;
+        GameProgression.alreadyLearnedWordsInTheMostCommonWords=20;
+        GameProgression.correctAnswersInIrregularVerbs=8;
+        GameProgression.correctAnswersWordsInTheMostCommonWords=18;
+        GameProgression.badAnswersInIrregularVerbs=2;
+        GameProgression.badAnswersWordsInTheMostCommonWords=2;
     }
     
     @AfterClass
@@ -47,9 +54,30 @@ public class SaveToDatabaseTest {
     @Test
     public void testSaveLearnedWordsToDatabase() throws Exception {
         System.out.println("saveLearnedWordsToDatabase");
-        String user = "Gyla3";
+        String user = "Gyla2";
         SaveToDatabase.saveLearnedWordsToDatabase(user);
         
+    }
+    
+    @Test
+    public void testSaveStatisticToDatabase() throws Exception{
+        String user = "Gyla2";
+        SaveToDatabase.saveStatisticToDatabase(user);
+    }
+    @Test
+    public void testGetStatisticFromDatabase() throws Exception{
+        String user = "Gyla2";
+        saveStatisticToDatabase(user);
+        System.out.println(
+            GameProgression.alreadyLearnedWordsInIrregularVerbs+" "+
+            GameProgression.correctAnswersInIrregularVerbs+" "+
+            GameProgression.badAnswersInIrregularVerbs+" "+
+            GameProgression.accuracyInIrregularVerbs+" "+
+            GameProgression.alreadyLearnedWordsInTheMostCommonWords+" "+
+            GameProgression.correctAnswersWordsInTheMostCommonWords+" "+
+            GameProgression.badAnswersWordsInTheMostCommonWords+" "+
+            GameProgression.accuracyInTheMostCommonWords
+        );
     }
     
 }

@@ -24,7 +24,7 @@ public class MySQLDatabase{
     static final String DATABASE="gamedevs_szotanulo_en";
     static final String USERDATA_TABLE="userdata";
     static final String USERPROGRESSION_TABLE="userprogression";
-    
+    static final String USERSTATISTIC_TABLE="userstatistic";
     
     private static Statement statement = null;
     static PreparedStatement preparedStatement = null;
@@ -48,13 +48,5 @@ public class MySQLDatabase{
             
         }
     }
-
-   
-
-    
-
-    
-
-   
 
 }

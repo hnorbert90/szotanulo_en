@@ -6,6 +6,7 @@
 package MySQL;
 
 import static MySQL.MySQLDatabase.preparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
@@ -15,7 +16,9 @@ import java.sql.SQLException;
 public class LoadFromDatabase extends MySQLDatabase {
     private static String learnedWordsInIrregularVerbs;
     private static String learnedWordsInTheMostCommonWords;
-
+    final private static String USERPROGRESSION_QUERY = "SELECT * FROM `gamedevs_szotanulo_en`.`userprogression` WHERE `username`=?;";
+    final private static String USERSTATISTIC_QUERY = "SELECT * FROM `gamedevs_szotanulo_en`.`userstatistic` WHERE `username`=?;";
+    
     public static void unPackSaveIntoList(String _username) throws ClassNotFoundException, SQLException{
        loadSaveIntoVariables(_username);
        String cache="";
@@ -51,12 +54,12 @@ public class LoadFromDatabase extends MySQLDatabase {
     
     private static String loadLearnedWordsFromDatabase(String _username, String _saveGame) throws ClassNotFoundException, SQLException{
         connectToDatabase();
-        settingUpMySQLQuery(_username);
+        settingUpMySQLQuery(_username,USERPROGRESSION_QUERY);
         
         return getResult(_saveGame);
     }
-    private static void settingUpMySQLQuery(String _username) throws SQLException {
-        preparedStatement = connect.prepareStatement("SELECT * FROM `gamedevs_szotanulo_en`.`userprogression` WHERE `username`=?;");
+    private static void settingUpMySQLQuery(String _username,String _query) throws SQLException {
+        preparedStatement = connect.prepareStatement(_query);
         preparedStatement.setString(1, _username);
     }
     
@@ -66,5 +69,28 @@ public class LoadFromDatabase extends MySQLDatabase {
         String _result=resultSet.getString(_saveGame);
         close();
         return _result;
+    }
+    
+    
+    public static void getStatisticFromDatabase(String _username) throws ClassNotFoundException, SQLException{
+        connectToDatabase();
+        settingUpMySQLQuery(_username,USERSTATISTIC_QUERY);
+        
+    GameProgression.alreadyLearnedWordsInIrregularVerbs=Integer.parseInt(getResult().getString("alreadyLearnedWordsInIrregularVerbs"));
+    GameProgression.correctAnswersInIrregularVerbs=Integer.parseInt(getResult().getString("correctAnswersInIrregularVerbs"));
+    GameProgression.badAnswersInIrregularVerbs=Integer.parseInt(getResult().getString("badAnswersInIrregularVerbs"));
+    GameProgression.accuracyInIrregularVerbs=Integer.parseInt(getResult().getString("accuracyInIrregularVerbs"));
+        
+    GameProgression.alreadyLearnedWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("alreadyLearnedWordsInTheMostCommonWords"));
+    GameProgression.correctAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("correctAnswersInTheMostCommonWords"));
+    GameProgression.badAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("badAnswersInTheMostCommonWords"));
+    GameProgression.accuracyInTheMostCommonWords=Integer.parseInt(getResult().getString("accuracyInTheMostCommonWords"));   
+        close();
+    }
+    
+    private static ResultSet getResult() throws SQLException{
+        resultSet = preparedStatement.executeQuery();
+        resultSet.next();
+        return resultSet;
     }
 }

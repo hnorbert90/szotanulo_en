@@ -29,8 +29,7 @@ public class Registration extends MySQLDatabase {
         }
 
     }
- 
-     
+    
     private static String encryptPassword(String pass) {
         return BCrypt.hashpw(pass,BCrypt.gensalt());
         }
