@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Norbi
+ * @author admin
  */
 public class AuthenticationTest {
     
@@ -37,10 +37,18 @@ public class AuthenticationTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of checkPassword method, of class Login.
+     */
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCheckPassword() throws Exception {
+        System.out.println("checkPassword");
+        String _password = "jelszo2";
+        String _username = "Gyla2";
+        boolean expResult = true;
+        boolean result = Login.checkPassword(_password, _username);
+        assertEquals(expResult, result);
+        
     }
     
 }

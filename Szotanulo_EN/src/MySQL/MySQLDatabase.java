@@ -4,7 +4,6 @@ package MySQL;
 
 
 
-import Tools.BCrypt;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,78 +21,29 @@ public class MySQLDatabase{
     private static final String USERNAME="gamedevs_norbi";
     private static final String PASSWORD="adminjelszo";
     
-    private static final String DATABASE="gamedevs_szotanulo_en";
-    private static final String TABLE="userdata";
+    static final String DATABASE="gamedevs_szotanulo_en";
+    static final String TABLE="userdata";
     
     private static Statement statement = null;
-    private static PreparedStatement preparedStatement = null;
-    private static ResultSet resultSet = null;
-    private static Connection connect = null;
-   
-    
-    public static void insertUser(String user,String pass, String email) throws Exception {
-            connectToDatabase();
-            pass=encryptPassword(pass);
-           
-        try {
- 
-            preparedStatement = connect.prepareStatement("insert into " +DATABASE+ "."+TABLE+" values (?, ?, ?)");
-            preparedStatement.setString(1, user);
-            preparedStatement.setString(2, pass);
-            preparedStatement.setString(3, email);
-            preparedStatement.executeUpdate();
-            
+    static PreparedStatement preparedStatement = null;
+    static ResultSet resultSet = null;
+    static Connection connect = null;
 
-        } catch (SQLException e) {
-            throw e;
-        } finally {
-            close();
-        }
-       // SELECT * FROM `userdata` WHERE `username`=bela;
     
-    }
-    public static String[] selectUsernameFromDatabase(String _username) throws ClassNotFoundException, SQLException{
-            connectToDatabase();
-            settingUpMySQLQuery(_username);
-            return executeQuery();
-    }
-    
-    public static boolean checkPassword(String _password,String _username) throws ClassNotFoundException, SQLException{
-      return BCrypt.checkpw(_password, MySQLDatabase.selectUsernameFromDatabase(_username)[1]);
-    }
-    
-    private static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
-            Class.forName("com.mysql.jdbc.Driver");
-            connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+    public static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
+        Class.forName("com.mysql.jdbc.Driver");
+        connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);
            
     }
-    
-     private static void settingUpMySQLQuery(String _username) throws SQLException {
-        preparedStatement = connect.prepareStatement("SELECT * FROM `gamedevs_szotanulo_en`.`userdata` WHERE `username`=?;");
-        preparedStatement.setString(1, _username);
-    }
-     
-     private static String[] executeQuery() throws SQLException {
-      resultSet = preparedStatement.executeQuery();
-      resultSet.next();
-      return new String[]{
-          resultSet.getString("username"),
-          resultSet.getString("password"),
-          resultSet.getString("email")
-        };
-    }
-     
-      private static String encryptPassword(String pass) {
-       return BCrypt.hashpw(pass,BCrypt.gensalt());
-    }
-      
-    private static void close() {
+ 
+    public static void close() {
         try {
             if (resultSet != null)  resultSet.close();
             if (statement != null)  statement.close();
             if (connect != null)    connect.close();
            
         } catch (SQLException e) {
+            
         }
     }
 
