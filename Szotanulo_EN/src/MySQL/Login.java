@@ -7,12 +7,12 @@ import java.sql.SQLException;
 
 public class Login extends MySQLDatabase {
     
+    
     public static boolean login(String _username, String _password) throws ClassNotFoundException, SQLException{
-        
-        return checkPassword(_password,selectUsernameFromDatabase(_username));
+        return checkPassword(_username,_password);
     }
     
-    private static boolean checkPassword(String _password,String _username) throws ClassNotFoundException, SQLException{
+    private static boolean checkPassword(String _username, String _password) throws ClassNotFoundException, SQLException{
         return BCrypt.checkpw(_password, selectUsernameFromDatabase(_username));
     }
       
@@ -30,7 +30,9 @@ public class Login extends MySQLDatabase {
     private static String executeQuery() throws SQLException {
         resultSet = preparedStatement.executeQuery();
         resultSet.next();
-        return resultSet.getString("password");
+        String _result=resultSet.getString("password");
+        close();
+        return _result;
     }
     
    

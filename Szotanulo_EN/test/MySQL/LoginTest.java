@@ -51,7 +51,7 @@ public class LoginTest {
         String _password = "jelszo2";
         String _username = "Gyla2";
         boolean expResult = true;
-        boolean result = Login.checkPassword(_password, _username);
+        boolean result = Login.login(_username, _password);
         assertEquals(expResult, result);
        
        
