@@ -1,6 +1,12 @@
 
 package MySQL;
 
+/*password regex:
+https://stackoverflow.com/questions/3802192/regexp-java-for-password-validation
+email regex:
+https://stackoverflow.com/questions/8204680/java-regex-email
+*/
+
 
 public class Vaildator {
    private final static String EMAIL_PATTERN 
