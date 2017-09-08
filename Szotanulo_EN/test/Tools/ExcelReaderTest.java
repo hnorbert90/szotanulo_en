@@ -5,6 +5,7 @@
  */
 package Tools;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,9 +39,12 @@ public class ExcelReaderTest {
     }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSomeMethod() throws IOException {
+    for(Object word : ExcelReader.getWordByNumber(15, "irregularverbs.xlsx")){
+      System.out.println(word);  
+    }
+    
+    
     }
     
 }

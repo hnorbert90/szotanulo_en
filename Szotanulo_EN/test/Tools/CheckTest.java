@@ -5,6 +5,8 @@
  */
 package Tools;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,9 +40,16 @@ public class CheckTest {
     }
 
     @Test
-    public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSomeMethod() throws IOException {
+    Check.filename="irregularverbs.xlsx";
+    Check.number=15;
+    ArrayList _answer = new ArrayList();
+    
+    _answer.add("burst");
+    _answer.add("burst");
+    _answer.add("burst");
+    _answer.add("kitör");
+        System.out.println(Check.checkAnswer(_answer));
     }
     
 }

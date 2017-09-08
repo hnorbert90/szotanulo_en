@@ -16,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Norbi
  */
-public class VaildatorTest {
+public class ValidatorTest {
     
-    public VaildatorTest() {
+    public ValidatorTest() {
     }
     
     @BeforeClass
@@ -43,20 +43,20 @@ public class VaildatorTest {
     }
 
     /**
-     * Test of isEmail method, of class Vaildator.
+     * Test of isEmail method, of class Validator.
      */
     @Test
     public void testIsEmail() {
         System.out.println("isEmail");
         String _email = "hhsdsd23e@hehe.hu";
         boolean expResult = true;
-        boolean result = Vaildator.isEmail(_email);
+        boolean result = Validator.isEmail(_email);
         assertEquals(expResult, result);
         
     }
 
     /**
-     * Test of isPasswordsEquals method, of class Vaildator.
+     * Test of isPasswordsEquals method, of class Validator.
      */
     @Test
     public void testIsPasswordsEquals() {
@@ -64,26 +64,26 @@ public class VaildatorTest {
         String _password1 = "password1";
         String _password2 = "password1";
         boolean expResult = true;
-        boolean result = Vaildator.isPasswordsEquals(_password1, _password2);
+        boolean result = Validator.isPasswordsEquals(_password1, _password2);
         assertEquals(expResult, result);
        
     }
 
     /**
-     * Test of isPasswordValid method, of class Vaildator.
+     * Test of isPasswordValid method, of class Validator.
      */
     @Test
     public void testIsPasswordValid() {
         System.out.println("isPasswordValid");
         String _password = "aS2@qqqq";
         boolean expResult = true;
-        boolean result = Vaildator.isPasswordValid(_password);
+        boolean result = Validator.isPasswordValid(_password);
         assertEquals(expResult, result);
         
     }
 
     /**
-     * Test of isEmailsEquals method, of class Vaildator.
+     * Test of isEmailsEquals method, of class Validator.
      */
     @Test
     public void testIsEmailsEquals() {
@@ -91,20 +91,20 @@ public class VaildatorTest {
         String _email1 = "hnorbert90@gmail.com";
         String _email2 = "hnorbert90@gmail.com";
         boolean expResult = true;
-        boolean result = Vaildator.isEmailsEquals(_email1, _email2);
+        boolean result = Validator.isEmailsEquals(_email1, _email2);
         assertEquals(expResult, result);
        
     }
 
     /**
-     * Test of isUsernameValid method, of class Vaildator.
+     * Test of isUsernameValid method, of class Validator.
      */
     @Test
     public void testIsUsernameValid() {
         System.out.println("isUsernameValid");
         String _username = "hnorbert90";
         boolean expResult = true;
-        boolean result = Vaildator.isUsernameValid(_username);
+        boolean result = Validator.isUsernameValid(_username);
         assertEquals(expResult, result);
        
     }
