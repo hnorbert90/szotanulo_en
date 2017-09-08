@@ -22,7 +22,9 @@ public class MySQLDatabase{
     private static final String PASSWORD="adminjelszo";
     
     static final String DATABASE="gamedevs_szotanulo_en";
-    static final String TABLE="userdata";
+    static final String USERDATA_TABLE="userdata";
+    static final String USERPROGRESSION_TABLE="userprogression";
+    
     
     private static Statement statement = null;
     static PreparedStatement preparedStatement = null;

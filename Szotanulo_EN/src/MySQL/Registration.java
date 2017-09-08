@@ -15,7 +15,7 @@ public class Registration extends MySQLDatabase {
            
         try {
  
-            preparedStatement = connect.prepareStatement("insert into " +DATABASE+ "."+TABLE+" values (?, ?, ?)");
+            preparedStatement = connect.prepareStatement("insert into " +DATABASE+ "."+USERDATA_TABLE+" values (?, ?, ?)");
             preparedStatement.setString(1, user);
             preparedStatement.setString(2, pass);
             preparedStatement.setString(3, email);
