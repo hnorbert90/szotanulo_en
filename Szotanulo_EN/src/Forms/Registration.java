@@ -5,10 +5,15 @@
  */
 package Forms;
 
+import MySQL.Validator;
 import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.control.PasswordField;
+import javax.swing.JPasswordField;
 
 /**
  *
@@ -156,6 +161,11 @@ public class Registration extends javax.swing.JFrame {
                 backButtonActionPerformed(evt);
             }
         });
+        backButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                backButtonKeyPressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -252,38 +262,41 @@ public class Registration extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTextField2MouseClicked
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-        
+    Registration();
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void passwordTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField1KeyPressed
-
-   
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_passwordTextField1KeyPressed
 
     private void passwordTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField2KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
  
     }//GEN-LAST:event_passwordTextField2KeyPressed
 
     private void emailTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField1KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_emailTextField1KeyPressed
 
     private void emailTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField2KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_emailTextField2KeyPressed
 
     private void sendButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sendButtonKeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     }//GEN-LAST:event_sendButtonKeyPressed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-        // TODO add your handling code here:
+    backToLogin();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void backButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backButtonKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) backToLogin();
+    }//GEN-LAST:event_backButtonKeyPressed
 
     /**
      * @param args the command line arguments
@@ -344,6 +357,26 @@ public class Registration extends javax.swing.JFrame {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
     }
+    
+    private void backToLogin() {
+        Login login = new Login();
+        login.setVisible(true);
+        this.setVisible(false); 
+        
+    }
+
+    private void Registration() {
+        try{
+       MySQL.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
+       backToLogin();
+        }catch(Exception ex){
+            alertLabel.setText("The email address or username you have entered is already registered!");
+        }
+    }
+        private void focusNext() {
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.focusNextComponent(); 
+    }
 public class UPDATE extends Tools.ThreadControll{
 
         private void update() {
@@ -356,6 +389,7 @@ public class UPDATE extends Tools.ThreadControll{
             emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
             emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
             sendButton.setEnabled(MySQL.serverStatus.isServerUp);
+            validateRegistrationFields();
             try {
                 Thread.sleep(200);
             } catch (InterruptedException ex) {
@@ -371,8 +405,29 @@ public class UPDATE extends Tools.ThreadControll{
         update();
     }
 
+        private void validateRegistrationFields() {
+            sendButton.setEnabled(isValidFields());
+        }
+
+        private boolean isValidFields() {
+            return 
+            Validator.isEmail(emailTextField1.getText()) &&
+            Validator.isEmailsEquals(emailTextField1.getText(), emailTextField2.getText())&&
+            Validator.isPasswordValid(getPassword(passwordTextField1))&&
+            Validator.isPasswordsEquals(getPassword(passwordTextField1),getPassword(passwordTextField2))&&
+            Validator.isUsernameValid(usernameTextField.getText());
+            
+        }
     
 }
+private String getPassword(JPasswordField _passwordField){
+        String pass="";
+            for(char ch:_passwordField.getPassword())
+            {
+                pass+=ch;
+            }
+            return pass;
+    }
     }
 
 
