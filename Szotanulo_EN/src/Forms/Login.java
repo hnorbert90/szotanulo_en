@@ -1,13 +1,22 @@
 
 package Forms;
 
-import Tools.TextToSpeech;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
    
     public Login() {
         initComponents();
+        setUI();
+        MySQL.serverStatus status=new MySQL.serverStatus();
+        status.start();
+        UPDATE update = new UPDATE();
+        update.start();
     }
        
 
@@ -174,11 +183,11 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTextFieldActionPerformed
 
     private void registrationButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrationButtonActionPerformed
-
+        openRegistration();
     }//GEN-LAST:event_registrationButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-
+        login();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
@@ -186,7 +195,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonKeyPressed
 
     private void offlineModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offlineModeButtonActionPerformed
-
+        openMainMenu();
     }//GEN-LAST:event_offlineModeButtonActionPerformed
 
     private void offlineModeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_offlineModeButtonKeyPressed
@@ -232,4 +241,90 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
+
+    private void login() {
+        
+            if(checkPasswod()) {
+              openMainMenu();
+              Settings.UserSettings.username=usernameTextField.getText();
+            }else{
+                AlertLabel.setText("Hibás felhasználónév, vagy jelszó!");
+                AlertLabel.setVisible(true);
+                AlertLabel.setForeground(java.awt.Color.red);
+            }
+    }
+    
+    private void openMainMenu() {
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.setVisible(false); 
+        welcomeUser();
+    }
+    
+    private boolean checkPasswod() {
+        try {
+            return  MySQL.Login.login(usernameTextField.getText(), getPassword());
+        } catch (ClassNotFoundException | SQLException ex) {
+            return false;
+        }
+    }
+    
+    private String getPassword(){
+        String pass="";
+            for(char ch:passwordTextField.getPassword())
+            {
+                pass+=ch;
+            }
+            return pass;
+    }
+
+    private void welcomeUser() {
+        new Tools.TextToSpeech("Welcome "+Settings.UserSettings.username+" Let's Play! Have fun!").start();
+    }
+
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        AlertLabel.setVisible(false);
+    }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+
+    private void openRegistration() {
+        Registration registration = new Registration();
+        registration.setVisible(true);
+        this.setVisible(false);
+    }
+
+    public class UPDATE extends Tools.ThreadControll{
+
+        private void update() {
+        while(true){
+            serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
+            passwordTextField.setEnabled(MySQL.serverStatus.isServerUp);
+            loginButton.setEnabled(MySQL.serverStatus.isServerUp);
+            registrationButton.setEnabled(MySQL.serverStatus.isServerUp);
+            forgotPasswordLabel.setEnabled(MySQL.serverStatus.isServerUp);
+            
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    @Override
+    public void run(){
+        System.out.println("lofasz");
+        update();
+    }
+
+    
+    }
+    
+    
 }

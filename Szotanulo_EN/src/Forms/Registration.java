@@ -5,6 +5,11 @@
  */
 package Forms;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author diak
@@ -16,7 +21,13 @@ public class Registration extends javax.swing.JFrame {
      */
     public Registration() {
         initComponents();
+        setUI();
+        MySQL.serverStatus status=new MySQL.serverStatus();
+        status.start();
+        UPDATE update = new UPDATE();
+        update.start();
     }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -35,8 +46,8 @@ public class Registration extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         errorMessageBox = new javax.swing.JTextArea();
         serverOfflineAlertLabel = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         sendButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -127,13 +138,6 @@ public class Registration extends javax.swing.JFrame {
         serverOfflineAlertLabel.setForeground(new java.awt.Color(204, 0, 51));
         serverOfflineAlertLabel.setText("Server not response please use the offline mode until the problem will be fixed!");
 
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
-
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +147,13 @@ public class Registration extends javax.swing.JFrame {
         sendButton.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 sendButtonKeyPressed(evt);
+            }
+        });
+
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -214,8 +225,8 @@ public class Registration extends javax.swing.JFrame {
                     .addComponent(emailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(13, 13, 13)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(sendButton))
+                    .addComponent(sendButton)
+                    .addComponent(backButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
                 .addContainerGap())
@@ -240,12 +251,8 @@ public class Registration extends javax.swing.JFrame {
   
     }//GEN-LAST:event_passwordTextField2MouseClicked
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-
-                        this.setVisible(false);    }//GEN-LAST:event_backButtonActionPerformed
-
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-
+        
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
@@ -273,6 +280,10 @@ public class Registration extends javax.swing.JFrame {
     private void sendButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sendButtonKeyPressed
 
     }//GEN-LAST:event_sendButtonKeyPressed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -323,8 +334,47 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+       
     }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+public class UPDATE extends Tools.ThreadControll{
+
+        private void update() {
+
+        while(true){
+            serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
+            usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
+            passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+            passwordTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+            emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+            emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+            sendButton.setEnabled(MySQL.serverStatus.isServerUp);
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+    @Override
+    public void run(){
+        System.out.println("lofasz");
+      
+        update();
+    }
+
+    
+}
+    }
+
 
 
    

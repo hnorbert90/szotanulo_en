@@ -21,7 +21,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
      * Creates new form Ablak2
      */
     public IrregularVerbs() {
-        initComponents();    
+        initComponents();   
+        
     }
 
     /**
