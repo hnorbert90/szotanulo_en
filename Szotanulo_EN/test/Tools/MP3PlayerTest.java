@@ -10,7 +10,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -39,8 +38,19 @@ public class MP3PlayerTest {
 
     @Test
     public void testSomeMethod() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+
+    }
+
+    /**
+     * Test of run method, of class MP3Player.
+     */
+    @Test
+    public void testRun() throws InterruptedException {
+        String filename ="src//Resources//voices//eat_ate_eaten.mp3";
+        
+        MP3Player newPlay = new MP3Player(filename);
+        newPlay.run();
+      
     }
     
 }

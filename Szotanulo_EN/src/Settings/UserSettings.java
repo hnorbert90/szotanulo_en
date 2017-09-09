@@ -3,7 +3,10 @@ package Settings;
 
 
 public class UserSettings {
-    private static boolean voice=false;
+    public static boolean voice=false;
+    public static String voiceName="kevin";
+    public static float voiceSpeed=1f;
+    public static float voiceVolume=1f;
     
     public static void setVoiceEnabled(boolean state){
         UserSettings.voice=state;
