@@ -18,7 +18,7 @@ public class LoadFromDatabase extends MySQLDatabase {
     private static String learnedWordsInTheMostCommonWords;
     final private static String USERPROGRESSION_QUERY = "SELECT * FROM `gamedevs_szotanulo_en`.`userprogression` WHERE `username`=?;";
     final private static String USERSTATISTIC_QUERY = "SELECT * FROM `gamedevs_szotanulo_en`.`userstatistic` WHERE `username`=?;";
-    
+    final private static String USERDATA_QUERY = "SELECT * FROM `gamedevs_szotanulo_en`.`userdata` WHERE `username`=?; ";
     public static void unPackSaveIntoList(String _username) throws ClassNotFoundException, SQLException{
        loadSaveIntoVariables(_username);
        String cache="";
@@ -86,6 +86,12 @@ public class LoadFromDatabase extends MySQLDatabase {
     GameProgression.badAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("badAnswersInTheMostCommonWords"));
     GameProgression.accuracyInTheMostCommonWords=Integer.parseInt(getResult().getString("accuracyInTheMostCommonWords"));   
         close();
+    }
+    
+    public static String getEmail(String _username) throws ClassNotFoundException, SQLException{
+        connectToDatabase();
+        settingUpMySQLQuery(_username,USERDATA_QUERY);
+        return getResult().getString("email");
     }
     
     private static ResultSet getResult() throws SQLException{

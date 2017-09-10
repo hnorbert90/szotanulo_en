@@ -54,6 +54,7 @@ public class LoadFromDatabaseTest {
         learnedWordNumbersInTheMostCommonWordsTest.add(3163);
         assertEquals(learnedWordNumbersInIrregularVerbsTest, GameProgression.learnedWordNumbersInIrregularVerbs);
         assertEquals(learnedWordNumbersInTheMostCommonWordsTest, GameProgression.learnedWordNumbersInTheMostCommonWords);
+        System.out.println(MySQL.LoadFromDatabase.getEmail("hnorbert90"));
     }
     
 }

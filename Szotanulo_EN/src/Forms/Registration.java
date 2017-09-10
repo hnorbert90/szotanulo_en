@@ -47,11 +47,11 @@ public class Registration extends javax.swing.JFrame {
         emailLabel2 = new javax.swing.JLabel();
         formNameLabel = new javax.swing.JLabel();
         alertLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        errorMessageBox = new javax.swing.JTextArea();
         serverOfflineAlertLabel = new javax.swing.JLabel();
         sendButton = new javax.swing.JButton();
         backButton = new javax.swing.JButton();
+        helpUsername = new javax.swing.JLabel();
+        helpPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -124,21 +124,6 @@ public class Registration extends javax.swing.JFrame {
         alertLabel.setForeground(new java.awt.Color(255, 0, 51));
         alertLabel.setText("All field must be fill in! ");
 
-        errorMessageBox.setEditable(false);
-        errorMessageBox.setBackground(new java.awt.Color(240, 240, 240));
-        errorMessageBox.setColumns(20);
-        errorMessageBox.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        errorMessageBox.setForeground(new java.awt.Color(255, 51, 102));
-        errorMessageBox.setRows(6);
-        errorMessageBox.setAutoscrolls(false);
-        errorMessageBox.setBorder(null);
-        errorMessageBox.setCaretColor(new java.awt.Color(240, 240, 240));
-        errorMessageBox.setDisabledTextColor(new java.awt.Color(255, 51, 102));
-        errorMessageBox.setEnabled(false);
-        errorMessageBox.setFocusable(false);
-        errorMessageBox.setOpaque(false);
-        jScrollPane1.setViewportView(errorMessageBox);
-
         serverOfflineAlertLabel.setForeground(new java.awt.Color(204, 0, 51));
         serverOfflineAlertLabel.setText("Server not response please use the offline mode until the problem will be fixed!");
 
@@ -166,60 +151,84 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
+        helpUsername.setFont(new java.awt.Font("Stencil", 1, 14)); // NOI18N
+        helpUsername.setForeground(new java.awt.Color(255, 153, 0));
+        helpUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        helpUsername.setText("?");
+        helpUsername.setToolTipText("Min 6 character, usernames can consist of lowercase and capitals and alphanumeric characters,  underscore and hyphens and spaces!");
+        helpUsername.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                helpUsernameMouseEntered(evt);
+            }
+        });
+
+        helpPassword.setFont(new java.awt.Font("Stencil", 1, 14)); // NOI18N
+        helpPassword.setForeground(new java.awt.Color(255, 153, 0));
+        helpPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        helpPassword.setText("?");
+        helpPassword.setToolTipText("At least 8 chars;Contains at least one digit;Contains at least one lower alpha char and one upper alpha char;Contains at least one char within a set of special chars (@#%$^ etc.) ;Does not contain space, tab, etc.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 154, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(usernameLabel)
-                                    .addComponent(passwordLabel1)
-                                    .addComponent(passwordLabel2)
-                                    .addComponent(emailLabel1)
-                                    .addComponent(emailLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailTextField2)
-                                    .addComponent(passwordTextField2)
-                                    .addComponent(passwordTextField1)
-                                    .addComponent(usernameTextField)
-                                    .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(alertLabel)
-                            .addComponent(formNameLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sendButton)))))
-                .addGap(73, 73, 73))
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(serverOfflineAlertLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(formNameLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(usernameLabel)
+                                            .addComponent(passwordLabel1)
+                                            .addComponent(passwordLabel2)
+                                            .addComponent(emailLabel1)
+                                            .addComponent(emailLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(emailTextField2)
+                                            .addComponent(passwordTextField2)
+                                            .addComponent(passwordTextField1)
+                                            .addComponent(usernameTextField)
+                                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(alertLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(backButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(sendButton)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(helpUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(helpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(serverOfflineAlertLabel))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formNameLabel)
                 .addGap(10, 10, 10)
+                .addComponent(formNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(serverOfflineAlertLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(alertLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
+                    .addComponent(usernameLabel)
+                    .addComponent(helpUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordLabel1)
-                    .addComponent(passwordTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(passwordTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(helpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -232,14 +241,14 @@ public class Registration extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel2)
                     .addComponent(emailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(sendButton)
                     .addComponent(backButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGap(26, 26, 26))
         );
+
+        helpUsername.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -297,6 +306,10 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     if (evt.getKeyCode() == KeyEvent.VK_ENTER) backToLogin();
     }//GEN-LAST:event_backButtonKeyPressed
 
+    private void helpUsernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpUsernameMouseEntered
+
+    }//GEN-LAST:event_helpUsernameMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -334,9 +347,9 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     private javax.swing.JLabel emailLabel2;
     private javax.swing.JTextField emailTextField1;
     private javax.swing.JTextField emailTextField2;
-    private javax.swing.JTextArea errorMessageBox;
     private javax.swing.JLabel formNameLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel helpPassword;
+    private javax.swing.JLabel helpUsername;
     private javax.swing.JLabel passwordLabel1;
     private javax.swing.JLabel passwordLabel2;
     private javax.swing.JPasswordField passwordTextField1;

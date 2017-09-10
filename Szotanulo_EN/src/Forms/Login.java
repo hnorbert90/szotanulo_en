@@ -1,6 +1,8 @@
 
 package Forms;
 
+import Tools.SendPasswordReminderEmail;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -186,7 +188,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldActionPerformed
 
     private void forgotPasswordLabelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseClicked
-
+        sendEmail();
     }//GEN-LAST:event_forgotPasswordLabelMouseClicked
 
     private void passwordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextFieldActionPerformed
@@ -329,6 +331,18 @@ public class Login extends javax.swing.JFrame {
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
+    }
+
+    private void sendEmail() {
+        try {
+            if(usernameTextField.getText()!="" &&forgotPasswordLabel.getText()!=("E-mail has been sent!")){ 
+                Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
+                forgotPasswordLabel.setText("We are sent reminder e-mail to your mailbox!");
+                forgotPasswordLabel.setForeground(Color.RED);
+                
+            }
+        } catch (Exception e) {
+        }
     }
    
     
