@@ -11,16 +11,16 @@ import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
-   
+   MySQL.serverStatus status=new MySQL.serverStatus();
+   UPDATE update = new UPDATE();
     public Login() {
         initComponents();
         setUI();
-        MySQL.serverStatus status=new MySQL.serverStatus();
+        
         status.start();
-        UPDATE update = new UPDATE();
         update.start();
     }
-       
+    
 
    
     @SuppressWarnings("unchecked")
@@ -277,8 +277,12 @@ public class Login extends javax.swing.JFrame {
     private void openMainMenu() {
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
-        this.setVisible(false); 
         welcomeUser();
+        update.closeUpdate();
+        status.closeUpdate();
+        update=null;
+        status=null;
+        this.dispose();
     }
     
     private boolean checkPasswod() {
@@ -316,16 +320,28 @@ public class Login extends javax.swing.JFrame {
     private void openRegistration() {
         Registration registration = new Registration();
         registration.setVisible(true);
-        this.setVisible(false);
+        update.closeUpdate();
+        status.closeUpdate();
+        update=null;
+        status=null;
+        this.dispose();
     }
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
     }
+   
+    
     public class UPDATE extends Tools.ThreadControll{
-
+        private boolean  running = true;
+        
+        public void closeUpdate() {
+        running=false;
+        }
+        
         private void update() {
-        while(true){
+
+        while(running){
             serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
             passwordTextField.setEnabled(MySQL.serverStatus.isServerUp);
             loginButton.setEnabled(MySQL.serverStatus.isServerUp);

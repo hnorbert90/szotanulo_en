@@ -21,16 +21,15 @@ import javax.swing.JPasswordField;
  */
 public class Registration extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registration
-     */
+
+    MySQL.serverStatus status=new MySQL.serverStatus();
+    UPDATE update = new UPDATE();
+    
     public Registration() {
         initComponents();
         setUI();
-        MySQL.serverStatus status=new MySQL.serverStatus();
         status.start();
-        UPDATE update = new UPDATE();
-        update.start();
+        update.start();  
     }
     
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -361,8 +360,11 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     private void backToLogin() {
         Login login = new Login();
         login.setVisible(true);
-        this.setVisible(false); 
-        
+        update.closeUpdate();
+        status.closeUpdate();
+        update=null;
+        status=null;
+        this.dispose();
     }
 
     private void Registration() {
@@ -377,11 +379,18 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
     }
-public class UPDATE extends Tools.ThreadControll{
 
+    
+public class UPDATE extends Tools.ThreadControll{
+        private boolean  running = true;
+        
+        public void closeUpdate() {
+        running=false;
+        }
+        
         private void update() {
 
-        while(true){
+        while(running){
             serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
             usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
             passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
@@ -400,8 +409,6 @@ public class UPDATE extends Tools.ThreadControll{
     
     @Override
     public void run(){
-        System.out.println("lofasz");
-      
         update();
     }
 
