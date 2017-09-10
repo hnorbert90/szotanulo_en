@@ -5,6 +5,8 @@
  */
 package Forms;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.io.IOException;
 
 
@@ -22,7 +24,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
      */
     public IrregularVerbs() {
         initComponents();   
-        
+        setUI();
     }
 
     /**
@@ -53,7 +55,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
         pastPerfectCorrectAnswerLabel = new javax.swing.JLabel();
         correctAnswersLabel = new javax.swing.JLabel();
-        correctAnswersCounterLabel = new javax.swing.JLabel();
+        correctAnswerCounterLabel = new javax.swing.JLabel();
         remainingWordsCounterLabel = new javax.swing.JLabel();
         alreadyLearnedWordsCounterLabel = new javax.swing.JLabel();
         badAnswersLabel = new javax.swing.JLabel();
@@ -123,6 +125,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
+        simplePastTextField.setFocusAccelerator('a');
         simplePastTextField.setNextFocusableComponent(pastPerfectTextField);
         simplePastTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -226,8 +229,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
 
         correctAnswersLabel.setText("Correct answers:");
 
-        correctAnswersCounterLabel.setText("0");
-        correctAnswersCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+        correctAnswerCounterLabel.setText("0");
+        correctAnswerCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
 
         remainingWordsCounterLabel.setText("127");
         remainingWordsCounterLabel.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
@@ -369,7 +372,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(remainingWordsCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(correctAnswersCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(correctAnswerCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(badAnswersCounterLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(accuracyPercentageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(alreadyLearnedWordsCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -435,7 +438,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(correctAnswersLabel)
-                            .addComponent(correctAnswersCounterLabel))
+                            .addComponent(correctAnswerCounterLabel))
                         .addGap(5, 5, 5)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(badAnswersLabel)
@@ -506,7 +509,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void backMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuItemActionPerformed
-
+        backToMainMenu();
     }//GEN-LAST:event_backMenuItemActionPerformed
 
     private void infinitiveTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infinitiveTextFieldFocusGained
@@ -539,7 +542,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonMouseClicked
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
-        
+        Settings.UserSettings.voice=!Settings.UserSettings.voice;
     }//GEN-LAST:event_muteButtonActionPerformed
 
     
@@ -582,7 +585,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JLabel badAnswersCounterLabel;
     private javax.swing.JLabel badAnswersLabel;
     private javax.swing.JButton checkButton;
-    private javax.swing.JLabel correctAnswersCounterLabel;
+    private javax.swing.JLabel correctAnswerCounterLabel;
     private javax.swing.JLabel correctAnswersLabel;
     private javax.swing.JLabel definitonLabel;
     private javax.swing.JMenu editMenu;
@@ -610,4 +613,29 @@ public class IrregularVerbs extends javax.swing.JFrame {
     public javax.swing.JTextField usernameTextField;
     private javax.swing.JLabel versionLabel;
     // End of variables declaration//GEN-END:variables
+private void backToMainMenu(){
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }
+    
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        usernameTextField.setText(Settings.UserSettings.username);
+        muteButton.setSelected(Settings.UserSettings.voice);
+    }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    } 
+    private void loadStats(){
+        alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size());
+        remainingWordsCounterLabel.setText(""+(127-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size()));
+        correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersInIrregularVerbs);
+        badAnswersCounterLabel.setText(""+MySQL.GameProgression.badAnswersInIrregularVerbs);
+        MySQL.GameProgression.updateAccuracy();
+        accuracyPercentageLabel.setText(""+MySQL.GameProgression.accuracyInIrregularVerbs);
+    }
 }

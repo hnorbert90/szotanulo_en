@@ -197,7 +197,7 @@ public class MainMenu extends javax.swing.JFrame {
     }
     
     private void openTheMostCommonWords() {
-        IrregularVerbs theMostCommonWords = new IrregularVerbs();
+        MostCommonWords theMostCommonWords = new MostCommonWords();
         theMostCommonWords.setVisible(true);
         this.dispose();
     }

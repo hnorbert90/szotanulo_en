@@ -1,6 +1,9 @@
 
 package Forms;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 
 public class MostCommonWords extends javax.swing.JFrame {
@@ -10,6 +13,7 @@ public class MostCommonWords extends javax.swing.JFrame {
      */
     public MostCommonWords() {
         initComponents();
+        setUI();
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -64,7 +68,7 @@ public class MostCommonWords extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Leggyakoribb szavak");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setPreferredSize(new java.awt.Dimension(550, 500));
+        setPreferredSize(new java.awt.Dimension(550, 550));
         setResizable(false);
 
         answerTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -319,30 +323,30 @@ public class MostCommonWords extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(wordsLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(wordList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)
-                                .addComponent(usernameLabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(startButton))
-                            .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(wordsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(answerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(wordList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34)
+                        .addComponent(usernameLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(startButton))
+                    .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(answerTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nextButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(playButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(solution, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(64, 64, 64)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(alreadyLearnedWordsLabel)
                             .addComponent(alreadyLearnedWordsCounterLabel))))
@@ -365,8 +369,7 @@ public class MostCommonWords extends javax.swing.JFrame {
                             .addComponent(accuracyLabel)
                             .addComponent(accuracyPercentageLabel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(resetButton)
-                        .addGap(23, 23, 23))
+                        .addComponent(resetButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(authorLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -375,7 +378,8 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addComponent(authorEmailLabel)
                         .addGap(18, 18, 18)
                         .addComponent(versionLabel)
-                        .addGap(41, 41, 41))))
+                        .addGap(18, 18, 18)))
+                .addGap(95, 95, 95))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -435,7 +439,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void backMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuItemActionPerformed
-
+    backToMainMenu();
     }//GEN-LAST:event_backMenuItemActionPerformed
 
     private void answerTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_answerTextFieldAncestorAdded
@@ -443,7 +447,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_answerTextFieldAncestorAdded
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
-
+        Settings.UserSettings.voice=!Settings.UserSettings.voice;
     }//GEN-LAST:event_muteButtonActionPerformed
 
     private void answerTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_answerTextFieldFocusGained
@@ -522,5 +526,33 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> wordList;
     private javax.swing.JLabel wordsLabel;
     // End of variables declaration//GEN-END:variables
-   
+      
+    private void backToMainMenu(){
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }
+    
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        usernameTextField.setText(Settings.UserSettings.username);
+        muteButton.setSelected(Settings.UserSettings.voice);
+        loadStats();
+    }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    } 
+    
+    private void loadStats(){
+        alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size());
+        remainingWordsCounterLabel.setText(""+(150-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
+        correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords);
+        badAnswerCounterLabel.setText(""+MySQL.GameProgression.badAnswersWordsInTheMostCommonWords);
+        MySQL.GameProgression.updateAccuracy();
+        accuracyPercentageLabel.setText(""+MySQL.GameProgression.accuracyInTheMostCommonWords);
+    }
+    
 }
