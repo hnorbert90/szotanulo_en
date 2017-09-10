@@ -12,7 +12,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelReader {
    
 
-    private static ArrayList actualWord=new ArrayList();
+    public static ArrayList actualWord=new ArrayList();
     private static XSSFWorkbook workbook;
     
    
@@ -32,7 +32,7 @@ public class ExcelReader {
     }
 
     private static void openFile(String _fileName) throws FileNotFoundException, IOException {
-        FileInputStream fis = new FileInputStream(new File("src//Resources//xlsx//"+_fileName));
+        FileInputStream fis = new FileInputStream(new File("src//Resources//xlsx//"+_fileName+".xlsx"));
         openWorkbook(fis);
     }
     

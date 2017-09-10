@@ -42,8 +42,7 @@ public class WordGenerateTest {
     MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.add(15);
     MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.add(15);
     
-    System.out.println(WordGenerate.generateRandomIrregularVerb());
-    System.out.println(WordGenerate.generateRandomTheMostCommonWord());
+   
     
     }
     

@@ -1,8 +1,14 @@
 
 package Forms;
 
+import Tools.ExcelReader;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 
@@ -391,7 +397,7 @@ public class MostCommonWords extends javax.swing.JFrame {
 
      
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-           
+        
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void wordListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wordListActionPerformed
@@ -403,7 +409,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-    
+        startGame();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerTextFieldActionPerformed
@@ -554,5 +560,29 @@ public class MostCommonWords extends javax.swing.JFrame {
         MySQL.GameProgression.updateAccuracy();
         accuracyPercentageLabel.setText(""+MySQL.GameProgression.accuracyInTheMostCommonWords);
     }
+    private void startGame(){
+        Tools.Check.filename=wordList.getSelectedItem().toString()+".xlsx";
+        nextWord();
+    }
+    
+    private void nextWord(){
+        Tools.Check.number=Tools.WordGenerate.generatedNumber;
+        Tools.WordGenerate.generateRandomTheMostCommonWord();
+        setDefinitionBox();
+    }
+    
+    private void setDefinitionBox() {
+        try {
+            definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
+        } catch (IOException ex) {
+            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        for(Object a : Tools.ExcelReader.actualWord){
+            System.out.println(a+" ");
+        }
+        
+    }
+
+    
     
 }
