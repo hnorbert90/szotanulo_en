@@ -72,7 +72,10 @@ public class LoadFromDatabase extends MySQLDatabase {
     }
     
     
-    public static void getStatisticFromDatabase(String _username) throws ClassNotFoundException, SQLException{
+    public static void getStatisticFromDatabase(String _username) {
+        
+    
+    try{    
         connectToDatabase();
         settingUpMySQLQuery(_username,USERSTATISTIC_QUERY);
         
@@ -85,7 +88,9 @@ public class LoadFromDatabase extends MySQLDatabase {
     GameProgression.correctAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("correctAnswersInTheMostCommonWords"));
     GameProgression.badAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("badAnswersInTheMostCommonWords"));
     GameProgression.accuracyInTheMostCommonWords=Integer.parseInt(getResult().getString("accuracyInTheMostCommonWords"));   
-        close();
+     close();
+    }catch(Exception ex) {}  
+   
     }
     
     public static String getEmail(String _username) throws ClassNotFoundException, SQLException{

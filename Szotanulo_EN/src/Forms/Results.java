@@ -5,6 +5,9 @@
  */
 package Forms;
 
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 /**
  *
  * @author Norbi
@@ -16,7 +19,7 @@ public class Results extends javax.swing.JFrame {
      */
     public Results() {
         initComponents();
-
+        setUI();
     }
 
    
@@ -40,10 +43,12 @@ public class Results extends javax.swing.JFrame {
         resultsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Already learned words:", null, null},
-                {"Words left:", null, null}
+                {"Words left:", null, null},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "", "Irregular verbs", "Most common words"
+                "", "Irregular verbs", "The Most common words"
             }
         ) {
             Class[] types = new Class [] {
@@ -116,7 +121,7 @@ public class Results extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
- 
+        backToMainMenu();
     }//GEN-LAST:event_backButtonActionPerformed
 
     /**
@@ -159,4 +164,39 @@ public class Results extends javax.swing.JFrame {
     public javax.swing.JLabel playerNameLabel;
     public javax.swing.JTable resultsTable;
     // End of variables declaration//GEN-END:variables
+    
+    private void backToMainMenu(){
+        MainMenu mainMenu = new MainMenu();
+        mainMenu.setVisible(true);
+        this.dispose();
+    }
+    
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        playerNameLabel.setText(Settings.UserSettings.username);
+        loadResultTable();
+    }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+    
+    private void loadResultTable(){
+        
+        resultsTable.setValueAt("Already learned", 0, 0);
+        resultsTable.setValueAt(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
+        resultsTable.setValueAt(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
+        resultsTable.setValueAt("Correct answers", 1, 0);
+        resultsTable.setValueAt(MySQL.GameProgression.correctAnswersInIrregularVerbs, 1, 1);
+        resultsTable.setValueAt(MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);
+        resultsTable.setValueAt("Bad answers", 2, 0);
+        resultsTable.setValueAt(MySQL.GameProgression.badAnswersInIrregularVerbs, 2, 1);
+        resultsTable.setValueAt(MySQL.GameProgression.badAnswersWordsInTheMostCommonWords, 2, 2);
+        resultsTable.setValueAt("Accuracy", 3, 0);
+        resultsTable.setValueAt(MySQL.GameProgression.accuracyInIrregularVerbs, 3, 1);
+        resultsTable.setValueAt(MySQL.GameProgression.accuracyInTheMostCommonWords, 3, 2);
+
+    }
 }
