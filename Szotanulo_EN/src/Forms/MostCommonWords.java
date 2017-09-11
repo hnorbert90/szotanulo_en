@@ -721,11 +721,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }
     
     private void setDefinitionBox() {
-        try {
-            definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
-        } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
         for(Object a : Tools.ExcelReader.actualWord){
             System.out.println(a+" ");
         }
@@ -761,11 +757,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void readAnswer() {
         Tools.Check._answer.clear();
         Tools.Check._answer.add(answerTextField.getText());
-        try {
-            Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
-        } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
     }
 
     private void next() {
@@ -807,11 +799,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }
 
     private void showGoodAnswer() {
-        try {
-            goodAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
-        } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        goodAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
     }
 
     private void setMuteIcon() {
@@ -828,11 +816,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void readWord(){
         if(voiceIsEnabled()){
-        try {
             new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
-        } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-        }
         }
     }
     

@@ -1,6 +1,7 @@
 
 package Forms;
 
+import static MySQL.LoadFromDatabase.unPackSaveIntoList;
 import Tools.SendPasswordReminderEmail;
 import com.mysql.jdbc.MySQLConnection;
 import java.awt.Color;
@@ -77,10 +78,17 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        forgotPasswordLabel.setText("Elfelejtetted a jelszót?");
+        forgotPasswordLabel.setForeground(new java.awt.Color(0, 51, 255));
+        forgotPasswordLabel.setText("Do you forgot  your password?");
         forgotPasswordLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 forgotPasswordLabelMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                forgotPasswordLabelMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                forgotPasswordLabelMouseExited(evt);
             }
         });
 
@@ -125,10 +133,6 @@ public class Login extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(serverOfflineAlertLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -145,16 +149,20 @@ public class Login extends javax.swing.JFrame {
                 .addComponent(AlertLabel)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(112, 112, 112)
-                        .addComponent(loginButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(forgotPasswordLabel)))
+                .addGap(112, 112, 112)
+                .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(offlineModeButton)
                 .addGap(26, 26, 26))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(serverOfflineAlertLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(49, 49, 49)
+                        .addComponent(forgotPasswordLabel)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -224,6 +232,14 @@ public class Login extends javax.swing.JFrame {
     private void passwordTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextFieldKeyPressed
     if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_passwordTextFieldKeyPressed
+
+    private void forgotPasswordLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseEntered
+        forgotPasswordLabel.setForeground(new Color(51,153,255));
+    }//GEN-LAST:event_forgotPasswordLabelMouseEntered
+
+    private void forgotPasswordLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseExited
+        forgotPasswordLabel.setForeground(new Color(0,51,255));
+    }//GEN-LAST:event_forgotPasswordLabelMouseExited
 
    
    
@@ -352,6 +368,11 @@ public class Login extends javax.swing.JFrame {
     private void loadStatistic() {
       
            MySQL.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
+       try {
+           unPackSaveIntoList(usernameTextField.getText());
+       } catch (ClassNotFoundException | SQLException ex) {
+           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+       }
        
     }
    

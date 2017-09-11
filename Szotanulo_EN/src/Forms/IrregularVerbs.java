@@ -5,9 +5,13 @@
  */
 package Forms;
 
+import Tools.ExcelReader;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -74,6 +78,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
         authorNameLabel = new javax.swing.JLabel();
         authorLabel = new javax.swing.JLabel();
         muteButton = new javax.swing.JToggleButton();
+        playButton = new javax.swing.JButton();
         menu = new javax.swing.JMenuBar();
         toolsMenu = new javax.swing.JMenu();
         backMenuItem = new javax.swing.JMenuItem();
@@ -97,6 +102,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
         setResizable(false);
 
         checkButton.setText("Check");
+        checkButton.setEnabled(false);
         checkButton.setNextFocusableComponent(nextButton);
         checkButton.setPreferredSize(new java.awt.Dimension(65, 25));
         checkButton.addActionListener(new java.awt.event.ActionListener() {
@@ -110,6 +116,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
+        infinitiveTextField.setEnabled(false);
         infinitiveTextField.setNextFocusableComponent(simplePastTextField);
         infinitiveTextField.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
@@ -130,6 +137,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
+        simplePastTextField.setEnabled(false);
         simplePastTextField.setFocusAccelerator('a');
         simplePastTextField.setNextFocusableComponent(pastPerfectTextField);
         simplePastTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -143,6 +151,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
+        pastPerfectTextField.setEnabled(false);
         pastPerfectTextField.setNextFocusableComponent(checkButton);
         pastPerfectTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -173,7 +182,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
         formNameLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         meansLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
-        meansLabel.setText("Means:");
+        meansLabel.setText("Meaning:");
 
         definitonLabel.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         definitonLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -210,12 +219,13 @@ public class IrregularVerbs extends javax.swing.JFrame {
         });
 
         infinitiveCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        infinitiveCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
+        infinitiveCorrectAnswerLabel.setForeground(new java.awt.Color(51, 153, 0));
 
         simplePerfectCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        simplePerfectCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
+        simplePerfectCorrectAnswerLabel.setForeground(new java.awt.Color(51, 153, 0));
 
         nextButton.setText("Next");
+        nextButton.setEnabled(false);
         nextButton.setNextFocusableComponent(infinitiveTextField);
         nextButton.setPreferredSize(new java.awt.Dimension(65, 25));
         nextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -230,7 +240,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
         });
 
         pastPerfectCorrectAnswerLabel.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
-        pastPerfectCorrectAnswerLabel.setForeground(new java.awt.Color(180, 0, 0));
+        pastPerfectCorrectAnswerLabel.setForeground(new java.awt.Color(51, 153, 0));
 
         correctAnswersLabel.setText("Correct answers:");
 
@@ -281,6 +291,18 @@ public class IrregularVerbs extends javax.swing.JFrame {
         muteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 muteButtonActionPerformed(evt);
+            }
+        });
+
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play.png"))); // NOI18N
+        playButton.setBorder(null);
+        playButton.setBorderPainted(false);
+        playButton.setContentAreaFilled(false);
+        playButton.setEnabled(false);
+        playButton.setFocusable(false);
+        playButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playButtonActionPerformed(evt);
             }
         });
 
@@ -338,25 +360,28 @@ public class IrregularVerbs extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(definitonLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 346, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(infinitiveLabel)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(infinitiveCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(infinitiveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(simplePastLabel)
-                                    .addComponent(simplePerfectCorrectAnswerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(simplePastTextField))
-                                .addGap(10, 10, 10)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(pastPerfectLabel)
-                                    .addComponent(pastPerfectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                                    .addComponent(pastPerfectCorrectAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(playButton)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(infinitiveLabel)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(infinitiveCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(infinitiveTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(simplePastLabel)
+                                            .addComponent(simplePerfectCorrectAnswerLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                            .addComponent(simplePastTextField))
+                                        .addGap(10, 10, 10)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(pastPerfectLabel)
+                                            .addComponent(pastPerfectTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                                            .addComponent(pastPerfectCorrectAnswerLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10)
-                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -384,7 +409,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
                             .addComponent(accuracyPercentageLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(alreadyLearnedWordsCounterLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15)))
-                .addContainerGap(27, Short.MAX_VALUE))
+                .addContainerGap(17, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,7 +451,9 @@ public class IrregularVerbs extends javax.swing.JFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(simplePerfectCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(pastPerfectCorrectAnswerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(55, 55, 55)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(playButton)
+                        .addGap(18, 18, 18)
                         .addComponent(authorLabel)
                         .addGap(5, 5, 5)
                         .addComponent(authorEmailLabel)
@@ -461,7 +488,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-
+        checkAnswer();
+        focusNext();
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void infinitiveTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infinitiveTextFieldActionPerformed
@@ -469,7 +497,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_infinitiveTextFieldActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-
+        startGame();
+        focusNext();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void simplePastTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_simplePastTextFieldActionPerformed
@@ -481,28 +510,43 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_pastPerfectTextFieldActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-      
+        next();
+        focusNext();
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void infinitiveTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_infinitiveTextFieldKeyPressed
-
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        } 
      
     }//GEN-LAST:event_infinitiveTextFieldKeyPressed
 
     private void checkButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkButtonKeyPressed
-     
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            checkAnswer();
+            focusNext();
+        }
     }//GEN-LAST:event_checkButtonKeyPressed
 
     private void nextButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextButtonKeyPressed
-    
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            next();
+            focusNext();
+        }    
     }//GEN-LAST:event_nextButtonKeyPressed
 
     private void startButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startButtonKeyPressed
-     
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            startGame();
+            focusNext();
+        }     
     }//GEN-LAST:event_startButtonKeyPressed
 
     private void pastPerfectTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pastPerfectTextFieldKeyPressed
-     
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            checkAnswer();
+            focusNext();
+        }      
 
     }//GEN-LAST:event_pastPerfectTextFieldKeyPressed
 
@@ -536,7 +580,9 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_definitonLabelInputMethodTextChanged
 
     private void simplePastTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_simplePastTextFieldKeyPressed
-   
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        } 
     
     }//GEN-LAST:event_simplePastTextFieldKeyPressed
 
@@ -552,6 +598,10 @@ public class IrregularVerbs extends javax.swing.JFrame {
         Settings.UserSettings.voice=!Settings.UserSettings.voice;
         setMuteIcon();
     }//GEN-LAST:event_muteButtonActionPerformed
+
+    private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
+        readWord();
+    }//GEN-LAST:event_playButtonActionPerformed
 
     
     public static void main(String args[]) throws IOException {
@@ -609,6 +659,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JLabel pastPerfectCorrectAnswerLabel;
     private javax.swing.JLabel pastPerfectLabel;
     private javax.swing.JTextField pastPerfectTextField;
+    private javax.swing.JButton playButton;
     private javax.swing.JLabel remainingWordsCounterLabel;
     private javax.swing.JLabel remainingWordsLabel;
     private javax.swing.JMenuItem resetMenuItem;
@@ -633,6 +684,7 @@ private void backToMainMenu(){
         usernameTextField.setText(Settings.UserSettings.username);
         muteButton.setSelected(Settings.UserSettings.voice);
         setMuteIcon();
+        loadStats();
     }
 
     private void setWindowToCenter() {
@@ -645,7 +697,7 @@ private void backToMainMenu(){
         correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersInIrregularVerbs);
         badAnswersCounterLabel.setText(""+MySQL.GameProgression.badAnswersInIrregularVerbs);
         MySQL.GameProgression.updateAccuracy();
-        accuracyPercentageLabel.setText(""+MySQL.GameProgression.accuracyInIrregularVerbs);
+        accuracyPercentageLabel.setText(String.format("%.2f", MySQL.GameProgression.accuracyInIrregularVerbs)+"%");
     }
     
         private void setMuteIcon() {
@@ -659,4 +711,149 @@ private void backToMainMenu(){
             KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
             manager.focusNextComponent(); 
     }
-}
+        
+        private void next() {
+            clearAnswerField();
+            startGame();
+            checkButton.setVisible(true);
+            nextButton.setVisible(false);
+        }
+           
+        private void startGame(){
+            Tools.Check.filename="irregularverbs";
+            setGameFuntionsEnabled();
+            nextWord();
+        }
+        private void setGameFuntionsEnabled() {
+            infinitiveTextField.setEnabled(true);
+            simplePastTextField.setEnabled(true);
+            pastPerfectTextField.setEnabled(true);
+            checkButton.setEnabled(true);
+            nextButton.setEnabled(true);
+            playButton.setEnabled(true);
+    }
+        private void nextWord(){
+            Tools.WordGenerate.generateRandomIrregularVerb();
+            Tools.Check.number=Tools.WordGenerate.generatedNumber;
+            definitonLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
+            readWord();
+        }
+        
+        
+ 
+        private void readWord(){
+            if(voiceIsEnabled()){
+               String currentWord="";
+               currentWord = Tools.ExcelReader.getWordByNumber(
+                       Tools.Check.number, Tools.Check.filename).get(0).toString()+"_"
+                       +Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(1).toString()+"_"
+                       +Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2).toString();
+               
+               String file="src//Resources/voices/"+currentWord+".mp3";
+               File f = new File(file);
+                if(f.exists() && !f.isDirectory()) { 
+                    new Tools.MP3Player(file).start();
+                    }else{
+                    new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(0)
+                            +" "+ (String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2)
+                            +" "+ (String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2))
+                            .start();
+                    }
+            }
+        }     
+        
+            private void checkAnswer(){
+            readAnswer();
+                if(isGoodAnswer()){
+                    updateStatsGoodAnswer();
+                }else {
+                    updateStatsBadAnswer();
+                    showGoodAnswer();
+                }
+            playSoundEffect(isGoodAnswer());
+            saveProgessionToDatabase();
+            loadStats();
+            checkButton.setVisible(false);
+            nextButton.setVisible(true);
+        
+       
+        }
+    
+        private void readAnswer() {
+            Tools.Check._answer.clear();
+           Tools.Check._answer.add(infinitiveTextField.getText());
+           Tools.Check._answer.add(simplePastTextField.getText());
+           Tools.Check._answer.add(pastPerfectTextField.getText());
+           Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
+        }
+            private boolean isGoodAnswer() {
+            try {    
+                return Tools.Check.checkAnswer();
+            } catch (IOException ex) {
+                Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
+                return false;
+            }
+        } 
+        private void playSoundEffect(boolean answer){
+            if(voiceIsEnabled()){
+                if(answer) new Tools.MP3Player("src//Resources/voices/succes.mp3").start();else new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
+            }
+        }
+        private boolean voiceIsEnabled() {
+            return Settings.UserSettings.voice;
+        }
+    
+        private void showGoodAnswer() {
+                infinitiveCorrectAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(0));
+                simplePerfectCorrectAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(1));
+                pastPerfectCorrectAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2));
+        }
+        
+        private void saveProgessionToDatabase() {
+            if(Settings.UserSettings.isUserOnline){
+            try {
+                MySQL.SaveToDatabase.saveLearnedWordsToDatabase(Settings.UserSettings.username);
+                MySQL.SaveToDatabase.saveStatisticToDatabase(Settings.UserSettings.username);
+            } catch (Exception ex) {
+            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            }
+        }
+    
+        private void updateStatsGoodAnswer() {
+                infinitiveTextField.setBackground(Color.green);
+                simplePastTextField.setBackground(Color.green);
+                pastPerfectTextField.setBackground(Color.green);
+                MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.add(Tools.Check.number);
+                MySQL.GameProgression.correctAnswersInIrregularVerbs++;
+                MySQL.GameProgression.updateAccuracy();
+                MySQL.GameProgression.alreadyLearnedWordsInIrregularVerbs=MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size();
+        }
+
+        private void updateStatsBadAnswer() {
+                infinitiveTextField.setBackground(Color.red);
+                simplePastTextField.setBackground(Color.red);
+                pastPerfectTextField.setBackground(Color.red);
+                MySQL.GameProgression.badAnswersInIrregularVerbs++;
+                MySQL.GameProgression.updateAccuracy();
+        }
+        private void clearAnswerField() {
+                infinitiveTextField.setBackground(Color.white);
+                simplePastTextField.setBackground(Color.white);
+                pastPerfectTextField.setBackground(Color.white);
+                infinitiveTextField.setText("");
+                simplePastTextField.setText("");
+                pastPerfectTextField.setText("");
+                
+                infinitiveCorrectAnswerLabel.setText("");
+                simplePerfectCorrectAnswerLabel.setText("");
+                pastPerfectCorrectAnswerLabel.setText("");
+
+                
+        }
+
+
+        
+        
+    }
+

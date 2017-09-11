@@ -110,29 +110,34 @@
                               <Component id="definitonLabel" min="-2" pref="346" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="infinitiveLabel" min="-2" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="infinitiveCorrectAnswerLabel" min="-2" pref="60" max="-2" attributes="0"/>
-                                      <Component id="infinitiveTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="playButton" min="-2" max="-2" attributes="0"/>
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="infinitiveLabel" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="1" attributes="0">
+                                              <Component id="infinitiveCorrectAnswerLabel" min="-2" pref="60" max="-2" attributes="0"/>
+                                              <Component id="infinitiveTextField" min="-2" pref="60" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="simplePastLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="simplePerfectCorrectAnswerLabel" alignment="1" pref="60" max="32767" attributes="0"/>
+                                          <Component id="simplePastTextField" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="pastPerfectLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="pastPerfectTextField" alignment="0" pref="60" max="32767" attributes="0"/>
+                                          <Component id="pastPerfectCorrectAnswerLabel" max="32767" attributes="0"/>
+                                      </Group>
                                   </Group>
-                              </Group>
-                              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="simplePastLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="simplePerfectCorrectAnswerLabel" alignment="1" pref="60" max="32767" attributes="0"/>
-                                  <Component id="simplePastTextField" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="pastPerfectLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pastPerfectTextField" alignment="0" pref="60" max="32767" attributes="0"/>
-                                  <Component id="pastPerfectCorrectAnswerLabel" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="checkButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
-                              <Component id="nextButton" min="-2" pref="57" max="-2" attributes="0"/>
+                              <Component id="nextButton" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -172,7 +177,7 @@
                       <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="27" max="32767" attributes="0"/>
+              <EmptySpace pref="17" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -226,7 +231,9 @@
                               <Component id="pastPerfectCorrectAnswerLabel" alignment="3" min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="playButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                       <Component id="authorLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                       <Component id="authorEmailLabel" min="-2" max="-2" attributes="0"/>
@@ -271,6 +278,7 @@
     <Component class="javax.swing.JButton" name="checkButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Check"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="nextButton"/>
         </Property>
@@ -285,6 +293,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="infinitiveTextField">
       <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="simplePastTextField"/>
         </Property>
@@ -298,6 +307,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="simplePastTextField">
       <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="focusAccelerator" type="char" value="a"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="pastPerfectTextField"/>
@@ -310,6 +320,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="pastPerfectTextField">
       <Properties>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="checkButton"/>
         </Property>
@@ -361,7 +372,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Arial" size="12" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Means:"/>
+        <Property name="text" type="java.lang.String" value="Meaning:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="definitonLabel">
@@ -396,7 +407,7 @@
           <Font name="Arial" size="11" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="b4" type="rgb"/>
+          <Color blue="0" green="99" red="33" type="rgb"/>
         </Property>
       </Properties>
     </Component>
@@ -406,13 +417,14 @@
           <Font name="Arial" size="11" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="b4" type="rgb"/>
+          <Color blue="0" green="99" red="33" type="rgb"/>
         </Property>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="infinitiveTextField"/>
         </Property>
@@ -431,7 +443,7 @@
           <Font name="Arial" size="11" style="0"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="0" green="0" red="b4" type="rgb"/>
+          <Color blue="0" green="99" red="33" type="rgb"/>
         </Property>
       </Properties>
     </Component>
@@ -529,6 +541,23 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="muteButtonActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="playButton">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Resources/images/play.png"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="null"/>
+        </Property>
+        <Property name="borderPainted" type="boolean" value="false"/>
+        <Property name="contentAreaFilled" type="boolean" value="false"/>
+        <Property name="enabled" type="boolean" value="false"/>
+        <Property name="focusable" type="boolean" value="false"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="playButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

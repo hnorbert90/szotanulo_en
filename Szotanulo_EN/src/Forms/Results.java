@@ -185,9 +185,9 @@ public class Results extends javax.swing.JFrame {
     
     private void loadResultTable(){
         
-        resultsTable.setValueAt("Already learned", 0, 0);
-        resultsTable.setValueAt(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
-        resultsTable.setValueAt(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
+        resultsTable.setValueAt("Words left", 0, 0);
+        resultsTable.setValueAt(127-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
+        resultsTable.setValueAt(150-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
         resultsTable.setValueAt("Correct answers", 1, 0);
         resultsTable.setValueAt(MySQL.GameProgression.correctAnswersInIrregularVerbs, 1, 1);
         resultsTable.setValueAt(MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);
@@ -195,8 +195,8 @@ public class Results extends javax.swing.JFrame {
         resultsTable.setValueAt(MySQL.GameProgression.badAnswersInIrregularVerbs, 2, 1);
         resultsTable.setValueAt(MySQL.GameProgression.badAnswersWordsInTheMostCommonWords, 2, 2);
         resultsTable.setValueAt("Accuracy", 3, 0);
-        resultsTable.setValueAt(MySQL.GameProgression.accuracyInIrregularVerbs, 3, 1);
-        resultsTable.setValueAt(MySQL.GameProgression.accuracyInTheMostCommonWords, 3, 2);
+        resultsTable.setValueAt(String.format("%.2f", MySQL.GameProgression.accuracyInIrregularVerbs)+"%", 3, 1);
+        resultsTable.setValueAt(String.format("%.2f", MySQL.GameProgression.accuracyInTheMostCommonWords)+"%", 3, 2);
 
     }
 }

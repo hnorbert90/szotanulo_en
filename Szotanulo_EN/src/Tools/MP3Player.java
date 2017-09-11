@@ -37,6 +37,7 @@ public class MP3Player extends ThreadControll  {
             Thread.sleep(50);
         } catch (JavaLayerException|IOException | InterruptedException ex) {
             Logger.getLogger(MP3Player.class.getName()).log(Level.SEVERE, null, ex);
+            
         }
        
             
