@@ -210,6 +210,7 @@ public class MainMenu extends javax.swing.JFrame {
     
     private void logout(){
         Login login = new Login();
+        Settings.UserSettings.isUserOnline=false;
         login.setVisible(true);
         this.dispose();
     }

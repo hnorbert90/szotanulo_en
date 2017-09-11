@@ -269,6 +269,7 @@ public class Login extends javax.swing.JFrame {
         
             if(checkPasswod()) {
               Settings.UserSettings.username=usernameTextField.getText();
+              Settings.UserSettings.isUserOnline=true;
               loadStatistic();
               openMainMenu();
             }else{

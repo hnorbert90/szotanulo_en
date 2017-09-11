@@ -6,8 +6,13 @@
 package Forms;
 
 import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 
 
@@ -270,7 +275,9 @@ public class IrregularVerbs extends javax.swing.JFrame {
 
         authorLabel.setText("Készítette:");
 
-        muteButton.setText("Sound OFF");
+        muteButton.setBorder(null);
+        muteButton.setBorderPainted(false);
+        muteButton.setContentAreaFilled(false);
         muteButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 muteButtonActionPerformed(evt);
@@ -543,6 +550,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
         Settings.UserSettings.voice=!Settings.UserSettings.voice;
+        setMuteIcon();
     }//GEN-LAST:event_muteButtonActionPerformed
 
     
@@ -624,6 +632,7 @@ private void backToMainMenu(){
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
         usernameTextField.setText(Settings.UserSettings.username);
         muteButton.setSelected(Settings.UserSettings.voice);
+        setMuteIcon();
     }
 
     private void setWindowToCenter() {
@@ -637,5 +646,17 @@ private void backToMainMenu(){
         badAnswersCounterLabel.setText(""+MySQL.GameProgression.badAnswersInIrregularVerbs);
         MySQL.GameProgression.updateAccuracy();
         accuracyPercentageLabel.setText(""+MySQL.GameProgression.accuracyInIrregularVerbs);
+    }
+    
+        private void setMuteIcon() {
+       try {
+            muteButton.setIcon(Settings.UserSettings.voice ? new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png"))) : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
+        } catch (IOException ex) {
+            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+        private void focusNext() {
+            KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+            manager.focusNextComponent(); 
     }
 }
