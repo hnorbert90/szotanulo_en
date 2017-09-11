@@ -51,7 +51,6 @@ public class MostCommonWords extends javax.swing.JFrame {
         accuracyLabel = new javax.swing.JLabel();
         accuracyPercentageLabel = new javax.swing.JLabel();
         wordsLabel = new javax.swing.JLabel();
-        solution = new javax.swing.JLabel();
         resetButton = new javax.swing.JButton();
         authorLabel = new javax.swing.JLabel();
         authorLabel2 = new javax.swing.JLabel();
@@ -61,6 +60,11 @@ public class MostCommonWords extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         goodAnswerLabel = new javax.swing.JLabel();
         playButton = new javax.swing.JButton();
+        volumeSlider = new javax.swing.JSlider();
+        voiceSpeedSlider = new javax.swing.JSlider();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        maxLabel = new javax.swing.JLabel();
         menu = new javax.swing.JMenuBar();
         toolsMenu = new javax.swing.JMenu();
         backMenuItem = new javax.swing.JMenuItem();
@@ -216,10 +220,6 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         wordsLabel.setText("Words:");
 
-        solution.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        solution.setForeground(new java.awt.Color(255, 0, 51));
-        solution.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         resetButton.setText("Reset");
         resetButton.setToolTipText("\"Mentés törlése\"");
         resetButton.addActionListener(new java.awt.event.ActionListener() {
@@ -237,7 +237,6 @@ public class MostCommonWords extends javax.swing.JFrame {
         versionLabel.setText("v1.1");
 
         muteButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/soundON.png"))); // NOI18N
-        muteButton.setActionCommand("");
         muteButton.setBorder(null);
         muteButton.setBorderPainted(false);
         muteButton.setContentAreaFilled(false);
@@ -289,6 +288,33 @@ public class MostCommonWords extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        volumeSlider.setMinorTickSpacing(10);
+        volumeSlider.setPaintLabels(true);
+        volumeSlider.setPaintTicks(true);
+        volumeSlider.setFocusable(false);
+        volumeSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                volumeSliderStateChanged(evt);
+            }
+        });
+
+        voiceSpeedSlider.setMaximum(200);
+        voiceSpeedSlider.setMinimum(100);
+        voiceSpeedSlider.setMinorTickSpacing(15);
+        voiceSpeedSlider.setPaintTicks(true);
+        voiceSpeedSlider.setFocusable(false);
+        voiceSpeedSlider.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                voiceSpeedSliderStateChanged(evt);
+            }
+        });
+
+        jLabel1.setText("Volume:");
+
+        jLabel2.setText("Voice speed:");
+
+        maxLabel.setText("Max");
+
         toolsMenu.setText("Tools");
 
         backMenuItem.setText("Back");
@@ -323,20 +349,14 @@ public class MostCommonWords extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(104, 104, 104)
-                                .addComponent(solution, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(answerTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
-                                    .addComponent(versionLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(authorLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(authorLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(authorEmailLabel, javax.swing.GroupLayout.Alignment.LEADING))
-                                .addGap(0, 71, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(answerTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
+                            .addComponent(versionLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(authorLabel, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(authorLabel2, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(authorEmailLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -356,32 +376,64 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addGap(104, 104, 104))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(definitonLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(wordsLabel)
-                                    .addComponent(usernameTextField)
-                                    .addComponent(wordList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(usernameLabel)))
-                            .addComponent(muteButton)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(218, 218, 218)
                                 .addComponent(checkButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(definitonLabel)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addGap(22, 22, 22)
+                                                .addComponent(muteButton)))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(voiceSpeedSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel1)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(volumeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(wordsLabel)
+                                        .addComponent(usernameTextField)
+                                        .addComponent(wordList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(usernameLabel))
+                                    .addComponent(maxLabel))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(muteButton)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(definitonLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(muteButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(definitonLabel))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(volumeSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel1))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(voiceSpeedSlider, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(maxLabel)
+                        .addGap(38, 38, 38)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(wordsLabel)
@@ -406,13 +458,9 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(solution, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(alreadyLearnedWordsLabel)
-                            .addComponent(alreadyLearnedWordsCounterLabel))))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(alreadyLearnedWordsLabel)
+                    .addComponent(alreadyLearnedWordsCounterLabel))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -442,7 +490,7 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(versionLabel)
                         .addGap(18, 18, 18)))
-                .addGap(126, 126, 126))
+                .addGap(172, 172, 172))
         );
 
         getAccessibleContext().setAccessibleDescription("");
@@ -528,6 +576,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
         Settings.UserSettings.voice=!Settings.UserSettings.voice;
         setMuteIcon();
+        setSlidersDisabled();
         
     }//GEN-LAST:event_muteButtonActionPerformed
 
@@ -536,8 +585,16 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_answerTextFieldFocusGained
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-    readWord();
+        readWord();
     }//GEN-LAST:event_playButtonActionPerformed
+
+    private void volumeSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volumeSliderStateChanged
+        setVolume();
+    }//GEN-LAST:event_volumeSliderStateChanged
+
+    private void voiceSpeedSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_voiceSpeedSliderStateChanged
+        setVoiceSpeed();
+    }//GEN-LAST:event_voiceSpeedSliderStateChanged
 
 
     public static void main(String args[]) {
@@ -593,8 +650,11 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JLabel definitonLabel;
     private javax.swing.JMenu editMenu;
     private javax.swing.JLabel goodAnswerLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel maxLabel;
     private javax.swing.JMenuBar menu;
     private javax.swing.JToggleButton muteButton;
     private javax.swing.JButton nextButton;
@@ -604,12 +664,13 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JButton resetButton;
     private javax.swing.JMenuItem resetMenuItem;
     private javax.swing.JScrollPane scrollPanel;
-    private javax.swing.JLabel solution;
     private javax.swing.JButton startButton;
     private javax.swing.JMenu toolsMenu;
     private javax.swing.JLabel usernameLabel;
     public javax.swing.JTextField usernameTextField;
     private javax.swing.JLabel versionLabel;
+    private javax.swing.JSlider voiceSpeedSlider;
+    private javax.swing.JSlider volumeSlider;
     private javax.swing.JComboBox<String> wordList;
     private javax.swing.JLabel wordsLabel;
     // End of variables declaration//GEN-END:variables
@@ -629,6 +690,9 @@ public class MostCommonWords extends javax.swing.JFrame {
         nextButton.setVisible(false);
         loadStats();
         setMuteIcon();
+        setSlidersDisabled();
+        setSliders();
+        
     }
 
     private void setWindowToCenter() {
@@ -779,6 +843,24 @@ public class MostCommonWords extends javax.swing.JFrame {
     }
     private boolean voiceIsEnabled() {
         return Settings.UserSettings.voice;
+    }
+
+    private void setVolume() {
+        Settings.UserSettings.voiceVolume=((float)volumeSlider.getValue()/100);
+    }
+
+    private void setVoiceSpeed() {
+        Settings.UserSettings.voiceSpeed=((float)(voiceSpeedSlider.getMaximum()+voiceSpeedSlider.getMinimum()-voiceSpeedSlider.getValue())/100);
+    }
+
+    private void setSlidersDisabled() {
+        voiceSpeedSlider.setEnabled(Settings.UserSettings.voice);
+        volumeSlider.setEnabled(Settings.UserSettings.voice);
+    }
+
+    private void setSliders() {
+        volumeSlider.setValue((int)Settings.UserSettings.voiceVolume*100);
+        voiceSpeedSlider.setValue((int)Settings.UserSettings.voiceSpeed*100);
     }
 
     

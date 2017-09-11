@@ -49,7 +49,7 @@ public class CheckTest {
     _answer.add("burst");
     _answer.add("burst");
     _answer.add("kitör");
-        System.out.println(Check.checkAnswer(_answer));
+       
     }
     
 }
