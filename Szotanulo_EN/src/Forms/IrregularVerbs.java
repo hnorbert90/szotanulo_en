@@ -811,12 +811,7 @@ private void backToMainMenu(){
         
         private void saveProgessionToDatabase() {
             if(Settings.UserSettings.isUserOnline){
-            try {
-                MySQL.SaveToDatabase.saveLearnedWordsToDatabase(Settings.UserSettings.username);
-                MySQL.SaveToDatabase.saveStatisticToDatabase(Settings.UserSettings.username);
-            } catch (Exception ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-            }
+               new MySQL.saveGameProgressionToDatabase().start();
             }
         }
     
