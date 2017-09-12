@@ -738,7 +738,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void readAnswer() {
         Tools.Check._answer.clear();
-        Tools.Check._answer.add(answerTextField.getText());
+        Tools.Check._answer.add(answerTextField.getText().toLowerCase().trim());
         Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
     }
 

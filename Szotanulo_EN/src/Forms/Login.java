@@ -346,7 +346,7 @@ public class Login extends javax.swing.JFrame {
     private boolean checkPasswod() {
         if(validateLoginParameters()){
             try {
-                return  MySQL.Login.login(usernameTextField.getText(), getPassword());
+                return  MySQL.Login.login(usernameTextField.getText().toLowerCase().trim(), getPassword());
             } catch (ClassNotFoundException | SQLException ex) {
                 return false;
             }

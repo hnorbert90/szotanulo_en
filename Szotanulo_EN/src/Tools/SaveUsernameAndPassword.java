@@ -11,7 +11,7 @@ public class SaveUsernameAndPassword {
 
     BufferedWriter output = null;
         try {
-           output = new BufferedWriter(new FileWriter("user.txt"));
+           output = new BufferedWriter(new FileWriter("user.dat"));
            output.write(_username);
            output.newLine();
            output.write(_password);

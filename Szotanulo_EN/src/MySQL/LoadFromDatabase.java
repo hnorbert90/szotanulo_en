@@ -16,6 +16,8 @@ public class LoadFromDatabase extends MySQLDatabase {
     public static void unPackSaveIntoList(String _username) throws ClassNotFoundException, SQLException{
         loadSaveIntoVariables(_username);
         String cache="";
+        GameProgression.learnedWordNumbersInIrregularVerbs.clear();
+        GameProgression.learnedWordNumbersInTheMostCommonWords.clear();
         for(char ch : learnedWordsInIrregularVerbs.toCharArray()){
            if(Character.isDigit(ch)){
                     cache+=ch;
@@ -69,14 +71,14 @@ public class LoadFromDatabase extends MySQLDatabase {
             GameProgression.alreadyLearnedWordsInIrregularVerbs=Integer.parseInt(getResult().getString("alreadyLearnedWordsInIrregularVerbs"));
             GameProgression.correctAnswersInIrregularVerbs=Integer.parseInt(getResult().getString("correctAnswersInIrregularVerbs"));
             GameProgression.badAnswersInIrregularVerbs=Integer.parseInt(getResult().getString("badAnswersInIrregularVerbs"));
-            GameProgression.accuracyInIrregularVerbs=Integer.parseInt(getResult().getString("accuracyInIrregularVerbs"));
-
+            
             GameProgression.alreadyLearnedWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("alreadyLearnedWordsInTheMostCommonWords"));
             GameProgression.correctAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("correctAnswersInTheMostCommonWords"));
             GameProgression.badAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("badAnswersInTheMostCommonWords"));
-            GameProgression.accuracyInTheMostCommonWords=Integer.parseInt(getResult().getString("accuracyInTheMostCommonWords"));   
-             close();
+
+            close();
         }catch(Exception ex) {
+            System.out.println(ex);
             }  
     }
     

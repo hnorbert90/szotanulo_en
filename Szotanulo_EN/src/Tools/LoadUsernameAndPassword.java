@@ -14,7 +14,7 @@ public class LoadUsernameAndPassword {
     public LoadUsernameAndPassword() {
         BufferedReader input = null;
         try {
-            input = new BufferedReader(new FileReader("user.txt"));
+            input = new BufferedReader(new FileReader("user.dat"));
             username=input.readLine();
             password=input.readLine();
         } catch (FileNotFoundException ex) {
@@ -22,7 +22,9 @@ public class LoadUsernameAndPassword {
         } finally {
             try {
                 input.close();
-            } catch (IOException ex) {
+            } catch (IOException | NullPointerException ex) {
+                new SaveUsernameAndPassword("","");
+              
                 }
             } 
     }    

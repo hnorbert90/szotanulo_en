@@ -743,13 +743,14 @@ public class IrregularVerbs extends javax.swing.JFrame {
         saveProgessionToDatabase();
         loadStats();
         checkButton.setVisible(false);
+        nextButton.setVisible(true);
     }
     
     private void readAnswer() {
         Tools.Check._answer.clear();
-        Tools.Check._answer.add(infinitiveTextField.getText());
-        Tools.Check._answer.add(simplePastTextField.getText());
-        Tools.Check._answer.add(pastPerfectTextField.getText());
+        Tools.Check._answer.add(infinitiveTextField.getText().toLowerCase().trim());
+        Tools.Check._answer.add(simplePastTextField.getText().toLowerCase().trim());
+        Tools.Check._answer.add(pastPerfectTextField.getText().toLowerCase().trim());
         Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
     }
     
