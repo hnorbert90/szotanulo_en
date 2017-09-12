@@ -41,7 +41,7 @@ public class CheckTest {
 
     @Test
     public void testSomeMethod() throws IOException {
-    Check.filename="irregularverbs.xlsx";
+    Check.filename="irregularverbs";
     Check.number=15;
     ArrayList _answer = new ArrayList();
     
@@ -49,6 +49,13 @@ public class CheckTest {
     _answer.add("burst");
     _answer.add("burst");
     _answer.add("kitör");
+    
+    System.out.println(Check.checkAnswer());
+    for(Object result : Tools.Check.results){
+        
+        System.out.println(result+ " ");
+        
+    }
        
     }
     

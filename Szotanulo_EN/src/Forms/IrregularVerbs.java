@@ -5,6 +5,7 @@
  */
 package Forms;
 
+import Tools.Check;
 import Tools.ExcelReader;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -826,9 +827,9 @@ private void backToMainMenu(){
         }
 
         private void updateStatsBadAnswer() {
-                infinitiveTextField.setBackground(Color.red);
-                simplePastTextField.setBackground(Color.red);
-                pastPerfectTextField.setBackground(Color.red);
+                if((boolean)Check.results.get(0)) infinitiveTextField.setBackground(Color.green);else infinitiveTextField.setBackground(Color.red);
+                if((boolean)Check.results.get(1)) simplePastTextField.setBackground(Color.green);else simplePastTextField.setBackground(Color.red);
+                if((boolean)Check.results.get(2)) pastPerfectTextField.setBackground(Color.green);else pastPerfectTextField.setBackground(Color.red);
                 MySQL.GameProgression.badAnswersInIrregularVerbs++;
                 MySQL.GameProgression.updateAccuracy();
         }

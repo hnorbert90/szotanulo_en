@@ -27,10 +27,9 @@ public class ExcelReader {
             openFile(_filename);
             actualWord.clear();
             
-            for(int i=0;i<4;i++){
-                if(workbook.getSheetAt(0).getRow(_number).getCell(i)!=null)
-                    actualWord.add(workbook.getSheetAt(0).getRow(_number).getCell(i).toString());
-            }
+            for(int i=0;workbook.getSheetAt(0).getRow(_number).getCell(i)!=null;i++)
+                actualWord.add(workbook.getSheetAt(0).getRow(_number).getCell(i).toString());
+            
             
         } catch (IOException ex) {
             Logger.getLogger(ExcelReader.class.getName()).log(Level.SEVERE, null, ex);
