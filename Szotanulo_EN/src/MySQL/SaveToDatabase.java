@@ -11,8 +11,8 @@ public class SaveToDatabase extends MySQLDatabase {
     private static String learnedWordsInTheMostCommonWords;
     
     public static void saveLearnedWordsToDatabase(String user) throws Exception {
-            connectToDatabase();
-            getLearnedWords(); 
+        connectToDatabase();
+        getLearnedWords(); 
         try {
             try {
                 preparedStatement = connect.prepareStatement("insert into " +DATABASE+ "."+USERPROGRESSION_TABLE+" values (?, ?, ?)");
@@ -32,7 +32,6 @@ public class SaveToDatabase extends MySQLDatabase {
         } finally {
             close();
         }
-
     }
     
     private static void getLearnedWords(){
@@ -49,8 +48,8 @@ public class SaveToDatabase extends MySQLDatabase {
         });
     }
     
-        public static void saveStatisticToDatabase(String user) throws Exception {
-            connectToDatabase();
+    public static void saveStatisticToDatabase(String user) throws Exception {
+        connectToDatabase();
            
         try {
             try {
@@ -65,13 +64,7 @@ public class SaveToDatabase extends MySQLDatabase {
                 preparedStatement.setString(7, ""+GameProgression.badAnswersWordsInTheMostCommonWords);
                 preparedStatement.setString(8, ""+GameProgression.alreadyLearnedWordsInIrregularVerbs);
                 preparedStatement.setString(9, ""+GameProgression.alreadyLearnedWordsInTheMostCommonWords);
-                
-                
-                
-                
-                 
                 preparedStatement.executeUpdate();
-                
             } catch (Exception e) {
                 preparedStatement = connect.prepareStatement("UPDATE " +DATABASE+ "."+"`userstatistic` SET `correctanswersinirregularverbs` = ?, `correctanswersinthemostcommonwords`= ?, `accuracyinirregularverbs`= ?, `accuracyinthemostcommonwords`= ?, `badanswersinirregularverbs`= ? , `badanswersinthemostcommonwords`= ?, `alreadylearnedwordsinirregularverbs`= ?, `alreadylearnedwordsinthemostcommonwords` = ? WHERE `userstatistic`.`username` = ?;");
                 preparedStatement.setString(1, ""+GameProgression.correctAnswersInIrregularVerbs); 
@@ -91,7 +84,5 @@ public class SaveToDatabase extends MySQLDatabase {
         } finally {
             close();
         }
-
-    }
-        
+    }  
 }

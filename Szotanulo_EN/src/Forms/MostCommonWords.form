@@ -159,10 +159,8 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                       <Component id="wordsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="usernameTextField" max="32767" attributes="0"/>
                                       <Component id="wordList" alignment="0" max="32767" attributes="0"/>
                                       <Component id="startButton" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
-                                      <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="maxLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
@@ -210,11 +208,7 @@
                       <Component id="wordsLabel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="wordList" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="usernameLabel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="usernameTextField" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="startButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="scrollPanel" min="-2" pref="164" max="-2" attributes="0"/>
@@ -285,6 +279,7 @@
       <Properties>
         <Property name="horizontalAlignment" type="int" value="0"/>
         <Property name="toolTipText" type="java.lang.String" value=""/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="checkButton"/>
         </Property>
@@ -300,6 +295,7 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Check"/>
         <Property name="toolTipText" type="java.lang.String" value="&quot;V&#xe1;lasz ellen&#x151;rz&#xe9;se!&quot;"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
           <ComponentRef name="nextButton"/>
         </Property>
@@ -313,6 +309,7 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Next"/>
         <Property name="toolTipText" type="java.lang.String" value="&quot;K&#xf6;vetkez&#x151; sz&#xf3;!&quot;"/>
+        <Property name="enabled" type="boolean" value="false"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[63, 23]"/>
         </Property>
@@ -351,6 +348,7 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Text Cursor"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
@@ -362,25 +360,6 @@
         </Property>
         <Property name="text" type="java.lang.String" value="Def:"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="usernameLabel">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="User:"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="usernameTextField">
-      <Properties>
-        <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="nextFocusableComponent" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-          <ComponentRef name="answerTextField"/>
-        </Property>
-      </Properties>
-      <Events>
-        <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usernameTextFieldKeyPressed"/>
-      </Events>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
     </Component>
     <Component class="javax.swing.JButton" name="startButton">
       <Properties>
@@ -579,6 +558,7 @@
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
           </Properties>
           <Events>

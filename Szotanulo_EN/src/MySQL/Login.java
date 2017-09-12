@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 public class Login extends MySQLDatabase {
     
-    
+ 
     public static boolean login(String _username, String _password) throws ClassNotFoundException, SQLException{
         return checkPassword(_username,_password);
     }
@@ -33,9 +33,6 @@ public class Login extends MySQLDatabase {
         String _result=resultSet.getString("password");
         close();
         return _result;
-    }
-    
-   
-    
-    }
+    }  
+}
 

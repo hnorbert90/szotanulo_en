@@ -2,16 +2,14 @@
 package Forms;
 
 import static MySQL.LoadFromDatabase.unPackSaveIntoList;
-import Tools.SendPasswordReminderEmail;
-import com.mysql.jdbc.MySQLConnection;
+import Tools.LoadUsernameAndPassword;
+import Tools.SaveUsernameAndPassword;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
 
@@ -42,8 +40,7 @@ public class Login extends javax.swing.JFrame {
         registrationButton = new javax.swing.JButton();
         loginButton = new javax.swing.JButton();
         offlineModeButton = new javax.swing.JButton();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        rememberCheckBox = new javax.swing.JCheckBox();
 
         jLabel6.setText("jLabel6");
 
@@ -131,10 +128,15 @@ public class Login extends javax.swing.JFrame {
             }
         });
 
-        jCheckBox2.setText("Remember");
-        jCheckBox2.addActionListener(new java.awt.event.ActionListener() {
+        rememberCheckBox.setText("Remember");
+        rememberCheckBox.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rememberCheckBoxStateChanged(evt);
+            }
+        });
+        rememberCheckBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox2ActionPerformed(evt);
+                rememberCheckBoxActionPerformed(evt);
             }
         });
 
@@ -177,9 +179,7 @@ public class Login extends javax.swing.JFrame {
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox1)
-                            .addComponent(jCheckBox2))
+                        .addComponent(rememberCheckBox)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
@@ -192,13 +192,12 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameLabel)
-                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox1))
+                    .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordLabel)
                     .addComponent(passwordTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jCheckBox2))
+                    .addComponent(rememberCheckBox))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -262,9 +261,13 @@ public class Login extends javax.swing.JFrame {
         forgotPasswordLabel.setForeground(new Color(0,51,255));
     }//GEN-LAST:event_forgotPasswordLabelMouseExited
 
-    private void jCheckBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox2ActionPerformed
+    private void rememberCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rememberCheckBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox2ActionPerformed
+    }//GEN-LAST:event_rememberCheckBoxActionPerformed
+
+    private void rememberCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rememberCheckBoxStateChanged
+        saveUsername();
+    }//GEN-LAST:event_rememberCheckBoxStateChanged
 
    
    
@@ -295,31 +298,82 @@ public class Login extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AlertLabel;
     private javax.swing.JLabel forgotPasswordLabel;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JButton loginButton;
     private javax.swing.JButton offlineModeButton;
     private javax.swing.JLabel passwordLabel;
     private javax.swing.JPasswordField passwordTextField;
     private javax.swing.JButton registrationButton;
+    private javax.swing.JCheckBox rememberCheckBox;
     private javax.swing.JLabel serverOfflineAlertLabel;
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-
+    
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        AlertLabel.setVisible(false);
+        loadUsername();
+    }
+    
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+    
+    private void loadUsername(){
+        new LoadUsernameAndPassword();
+        passwordTextField.setText(LoadUsernameAndPassword.password);
+        usernameTextField.setText(LoadUsernameAndPassword.username);
+    }
+    
     private void login() {
         
-            if(checkPasswod()) {
-              Settings.UserSettings.username=usernameTextField.getText();
-              Settings.UserSettings.isUserOnline=true;
-              loadStatistic();
-              openMainMenu();
-            }else{
-                AlertLabel.setText("Hibás felhasználónév, vagy jelszó!");
-                AlertLabel.setVisible(true);
-                AlertLabel.setForeground(java.awt.Color.red);
+        if(checkPasswod()) {
+            Settings.UserSettings.username=usernameTextField.getText();
+            Settings.UserSettings.isUserOnline=true;
+            loadStatistic();
+            openMainMenu();
+            if(rememberCheckBox.isSelected()) saveUsername();
+        }else{
+            AlertLabel.setText("Hibás felhasználónév, vagy jelszó!");
+            AlertLabel.setVisible(true);
+            AlertLabel.setForeground(java.awt.Color.red);
+        }
+    }
+    
+    private boolean checkPasswod() {
+        if(validateLoginParameters()){
+            try {
+                return  MySQL.Login.login(usernameTextField.getText(), getPassword());
+            } catch (ClassNotFoundException | SQLException ex) {
+                return false;
             }
+        }else return false;
+    }
+    
+    private boolean validateLoginParameters() {
+        return MySQL.Validator.isPasswordValid(getPassword())&&MySQL.Validator.isUsernameValid(usernameTextField.getText());
+    }
+    
+    private String getPassword(){
+        String pass="";
+            for(char ch:passwordTextField.getPassword())
+            {
+                pass+=ch;
+            }
+            return pass;
+    }
+    
+    private void loadStatistic() {
+      
+        MySQL.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
+        try {
+           unPackSaveIntoList(usernameTextField.getText());
+        } catch (ClassNotFoundException | SQLException ex) {
+            }
+       
     }
     
     private void openMainMenu() {
@@ -333,38 +387,10 @@ public class Login extends javax.swing.JFrame {
         this.dispose();
     }
     
-    private boolean checkPasswod() {
-        try {
-            return  MySQL.Login.login(usernameTextField.getText(), getPassword());
-        } catch (ClassNotFoundException | SQLException ex) {
-            return false;
-        }
-    }
-    
-    private String getPassword(){
-        String pass="";
-            for(char ch:passwordTextField.getPassword())
-            {
-                pass+=ch;
-            }
-            return pass;
-    }
-
     private void welcomeUser() {
         new Tools.TextToSpeech("Welcome "+Settings.UserSettings.username+" Let's Play! Have fun!").start();
     }
-
-    private void setUI() {
-        setWindowToCenter();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
-        AlertLabel.setVisible(false);
-    }
-
-    private void setWindowToCenter() {
-        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-    }
-
+    
     private void openRegistration() {
         Registration registration = new Registration();
         registration.setVisible(true);
@@ -374,10 +400,6 @@ public class Login extends javax.swing.JFrame {
         status=null;
         this.dispose();
     }
-    private void focusNext() {
-        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.focusNextComponent(); 
-    }
 
     private void sendEmail() {
         String text="We are sent reminder e-mail to your mailbox!";
@@ -386,24 +408,21 @@ public class Login extends javax.swing.JFrame {
                 Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
                 forgotPasswordLabel.setText(text);
                 forgotPasswordLabel.setForeground(Color.RED);
-                
+
             }
         } catch (Exception e) {
         }
     }
-
-    private void loadStatistic() {
-      
-           MySQL.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
-       try {
-           unPackSaveIntoList(usernameTextField.getText());
-       } catch (ClassNotFoundException | SQLException ex) {
-           Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
-       }
-       
-    }
-   
     
+    private void saveUsername() {
+        new SaveUsernameAndPassword(usernameTextField.getText(),getPassword());
+    }
+    
+    private void focusNext() {
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.focusNextComponent(); 
+    }
+
     public class UPDATE extends Tools.ThreadControll{
         private boolean  running = true;
         
@@ -412,29 +431,23 @@ public class Login extends javax.swing.JFrame {
         }
         
         private void update() {
+            while(running){
+                serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
+                passwordTextField.setEnabled(MySQL.serverStatus.isServerUp);
+                loginButton.setEnabled(MySQL.serverStatus.isServerUp);
+                registrationButton.setEnabled(MySQL.serverStatus.isServerUp);
+                forgotPasswordLabel.setEnabled(MySQL.serverStatus.isServerUp);
 
-        while(running){
-            serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
-            passwordTextField.setEnabled(MySQL.serverStatus.isServerUp);
-            loginButton.setEnabled(MySQL.serverStatus.isServerUp);
-            registrationButton.setEnabled(MySQL.serverStatus.isServerUp);
-            forgotPasswordLabel.setEnabled(MySQL.serverStatus.isServerUp);
-            
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ex) {
+                }
             }
         }
+        
+        @Override
+        public void run(){
+            update();
+        }
     }
-    
-    @Override
-    public void run(){
-        update();
-    }
-
-    
-    }
-    
-    
 }

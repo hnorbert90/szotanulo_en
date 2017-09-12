@@ -9,14 +9,14 @@ https://stackoverflow.com/questions/8204680/java-regex-email
 
 
 public class Validator {
-   private final static String EMAIL_PATTERN 
+    private final static String EMAIL_PATTERN 
            ="^([\\w-\\.]+){1,64}@([\\w&&[^_]]+){2,255}.[a-z]{2,}$";
-   private final static String PASSWORD_PATTERN
+    private final static String PASSWORD_PATTERN
            = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}$";
-   private final static String USERNAME_PATTERN
+    private final static String USERNAME_PATTERN
            = "^[a-zA-Z0-9._-]{6,}$";
    
-   public static boolean isEmail(String _email){
+    public static boolean isEmail(String _email){
         return _email.matches(EMAIL_PATTERN);
     }
    
@@ -35,5 +35,4 @@ public class Validator {
     public static boolean isUsernameValid(String _username){
         return _username.matches(USERNAME_PATTERN);
     }
-    
 }

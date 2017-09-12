@@ -142,7 +142,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_irregularVerbsButtonActionPerformed
 
     private void resultsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultsMenuItemActionPerformed
-    openResults();
+        openResults();
     }//GEN-LAST:event_resultsMenuItemActionPerformed
 
     public static void main(String args[]) {

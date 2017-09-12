@@ -10,14 +10,12 @@ public class WordGenerate {
     public static void generateRandomIrregularVerb(){
         do{
             generatedNumber=(int) ((Math.random()*IRREGULAR_VERBS_NUMBER)+1);
-        }while(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.contains(generatedNumber));
-       
+        }while(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.contains(generatedNumber));  
     }
     
     public static void generateRandomTheMostCommonWord(){
         do{
             generatedNumber=(int) ((Math.random()*THE_MOST_COMMON_WORDS_NUMBER)+1);
-        }while(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.contains(generatedNumber));
-        
+        }while(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.contains(generatedNumber));     
     }
 }

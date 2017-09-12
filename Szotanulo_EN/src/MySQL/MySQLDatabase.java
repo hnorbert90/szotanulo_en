@@ -1,9 +1,6 @@
 
 package MySQL;
 
-
-
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -34,18 +31,15 @@ public class MySQLDatabase{
     
     public static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
         Class.forName("com.mysql.jdbc.Driver");
-        connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-           
+        connect = DriverManager.getConnection(URL, USERNAME, PASSWORD);      
     }
  
     public static void close() {
         try {
             if (resultSet != null)  resultSet.close();
             if (statement != null)  statement.close();
-            if (connect != null)    connect.close();
-           
-        } catch (SQLException e) {
-            
+            if (connect != null)    connect.close(); 
+        } catch (SQLException e) { 
         }
     }
 

@@ -8,11 +8,7 @@ import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
 
@@ -36,8 +32,6 @@ public class MostCommonWords extends javax.swing.JFrame {
         scrollPanel = new javax.swing.JScrollPane();
         definitionBox = new javax.swing.JTextArea();
         definitonLabel = new javax.swing.JLabel();
-        usernameLabel = new javax.swing.JLabel();
-        usernameTextField = new javax.swing.JTextField();
         startButton = new javax.swing.JButton();
         wordList = new javax.swing.JComboBox<>();
         alreadyLearnedWordsLabel = new javax.swing.JLabel();
@@ -90,6 +84,7 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         answerTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         answerTextField.setToolTipText("");
+        answerTextField.setEnabled(false);
         answerTextField.setNextFocusableComponent(checkButton);
         answerTextField.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
@@ -118,6 +113,7 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         checkButton.setText("Check");
         checkButton.setToolTipText("\"Válasz ellenőrzése!\"");
+        checkButton.setEnabled(false);
         checkButton.setNextFocusableComponent(nextButton);
         checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,6 +128,7 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         nextButton.setText("Next");
         nextButton.setToolTipText("\"Következő szó!\"");
+        nextButton.setEnabled(false);
         nextButton.setMaximumSize(new java.awt.Dimension(63, 23));
         nextButton.setMinimumSize(new java.awt.Dimension(63, 23));
         nextButton.setNextFocusableComponent(answerTextField);
@@ -154,20 +151,11 @@ public class MostCommonWords extends javax.swing.JFrame {
         definitionBox.setRows(5);
         definitionBox.setText("-Jobb oldalt a \"Words\" nevű legördülő menüben\nválaszd ki a gyakorolni kívánt szó listát!\n-Kezdéshez írd be a felhasználónevet és nyomj entert, \nvagy kattints a start gombra!\n-válasz beírása után nyomj entert, vagy kattints\na Check gombra!\n-Az eredményeid elmenti a program automatikusan, \na következő belépésnél ott folytathatod ahol abbahagytad\na szótanulást!\n");
         definitionBox.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        definitionBox.setEnabled(false);
         scrollPanel.setViewportView(definitionBox);
 
         definitonLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         definitonLabel.setText("Def:");
-
-        usernameLabel.setText("User:");
-
-        usernameTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        usernameTextField.setNextFocusableComponent(answerTextField);
-        usernameTextField.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                usernameTextFieldKeyPressed(evt);
-            }
-        });
 
         startButton.setText("Start");
         startButton.setToolTipText("");
@@ -258,6 +246,7 @@ public class MostCommonWords extends javax.swing.JFrame {
         playButton.setBorder(null);
         playButton.setBorderPainted(false);
         playButton.setContentAreaFilled(false);
+        playButton.setEnabled(false);
         playButton.setFocusable(false);
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -404,10 +393,8 @@ public class MostCommonWords extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(wordsLabel)
-                                        .addComponent(usernameTextField)
                                         .addComponent(wordList, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(usernameLabel))
+                                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(maxLabel))))
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -439,11 +426,7 @@ public class MostCommonWords extends javax.swing.JFrame {
                         .addComponent(wordsLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(wordList, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(34, 34, 34)
-                        .addComponent(usernameLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(startButton))
                     .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -516,8 +499,8 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-         startGame();
-         focusNext();
+        startGame();
+        focusNext();
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerTextFieldActionPerformed
@@ -547,15 +530,11 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonKeyPressed
 
     private void startButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startButtonKeyPressed
-    if (evt.getKeyCode() == KeyEvent.VK_ENTER){
-        startGame();
-        focusNext();
-    }
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+            startGame();
+            focusNext();
+        }
     }//GEN-LAST:event_startButtonKeyPressed
-
-    private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
-
-    }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
  
@@ -566,7 +545,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void backMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuItemActionPerformed
-    backToMainMenu();
+        backToMainMenu();
     }//GEN-LAST:event_backMenuItemActionPerformed
 
     private void answerTextFieldAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_answerTextFieldAncestorAdded
@@ -613,19 +592,8 @@ public class MostCommonWords extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MostCommonWords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    //</editor-fold>
-    
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
+        
+          /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new MostCommonWords().setVisible(true);
         });
@@ -666,8 +634,6 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JButton startButton;
     private javax.swing.JMenu toolsMenu;
-    private javax.swing.JLabel usernameLabel;
-    public javax.swing.JTextField usernameTextField;
     private javax.swing.JLabel versionLabel;
     private javax.swing.JSlider voiceSpeedSlider;
     private javax.swing.JSlider volumeSlider;
@@ -684,7 +650,6 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void setUI() {
         setWindowToCenter();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
-        usernameTextField.setText(Settings.UserSettings.username);
         muteButton.setSelected(Settings.UserSettings.voice);
         checkButton.setVisible(true);
         nextButton.setVisible(false);
@@ -692,9 +657,9 @@ public class MostCommonWords extends javax.swing.JFrame {
         setMuteIcon();
         setSlidersDisabled();
         setSliders();
-        
+        setGameFuntionsEnabled();
     }
-
+    
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
@@ -708,6 +673,32 @@ public class MostCommonWords extends javax.swing.JFrame {
         MySQL.GameProgression.updateAccuracy();
         accuracyPercentageLabel.setText(String.format("%.2f", MySQL.GameProgression.accuracyInTheMostCommonWords)+"%");
     }
+    
+    private void setMuteIcon() {
+       try {
+            muteButton.setIcon(Settings.UserSettings.voice ? new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png"))) : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
+        } catch (IOException ex) {
+            }
+    }
+    
+    private void setSlidersDisabled() {
+        voiceSpeedSlider.setEnabled(Settings.UserSettings.voice);
+        volumeSlider.setEnabled(Settings.UserSettings.voice);
+    }
+
+    private void setSliders() {
+        volumeSlider.setValue((int)Settings.UserSettings.voiceVolume*100);
+        voiceSpeedSlider.setValue((int)Settings.UserSettings.voiceSpeed*100);
+    }
+    
+    private void setGameFuntionsEnabled() {
+        definitionBox.setEnabled(true);
+        answerTextField.setEnabled(true);
+        checkButton.setEnabled(true);
+        nextButton.setEnabled(true);
+        playButton.setEnabled(true);
+    }
+
     private void startGame(){
         Tools.Check.filename=wordList.getSelectedItem().toString();
         nextWord();
@@ -722,10 +713,12 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void setDefinitionBox() {
         definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
-        for(Object a : Tools.ExcelReader.actualWord){
-            System.out.println(a+" ");
+    }
+    
+    private void readWord(){
+        if(voiceIsEnabled()){
+            new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
         }
-        
     }
     
     private void checkAnswer(){
@@ -740,24 +733,58 @@ public class MostCommonWords extends javax.swing.JFrame {
         saveProgessionToDatabase();
         loadStats();
         checkButton.setVisible(false);
-        nextButton.setVisible(true);
-        
-       
+        nextButton.setVisible(true); 
+    }
+    
+    private void readAnswer() {
+        Tools.Check._answer.clear();
+        Tools.Check._answer.add(answerTextField.getText());
+        Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
+    }
+
+    private void saveProgessionToDatabase() {
+        if(Settings.UserSettings.isUserOnline){
+           new MySQL.saveGameProgressionToDatabase().start();
+        }
+    }
+    
+    private void updateStatsGoodAnswer() {
+        answerTextField.setBackground(Color.green);
+        MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.add(Tools.Check.number);
+        MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords++;
+        MySQL.GameProgression.updateAccuracy();
+        MySQL.GameProgression.alreadyLearnedWordsInTheMostCommonWords=MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size();
+    }
+
+    private void updateStatsBadAnswer() {
+        answerTextField.setBackground(Color.red);
+        MySQL.GameProgression.badAnswersWordsInTheMostCommonWords++;
+        MySQL.GameProgression.updateAccuracy();
+    }
+    
+    private void showGoodAnswer() {
+        goodAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
+    }
+    
+    private void playSoundEffect(boolean answer){
+        if(voiceIsEnabled()){
+            if(answer)
+                new Tools.MP3Player("src//Resources/voices/succes.mp3").start();
+            else 
+                new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
+        }
+    }
+    
+    private boolean voiceIsEnabled() {
+        return Settings.UserSettings.voice;
     }
     
     private boolean isGoodAnswer() {
         try {    
             return Tools.Check.checkAnswer();
         } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
             return false;
-        }
-        }
-    
-    private void readAnswer() {
-        Tools.Check._answer.clear();
-        Tools.Check._answer.add(answerTextField.getText());
-        Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
+            }
     }
 
     private void next() {
@@ -772,56 +799,10 @@ public class MostCommonWords extends javax.swing.JFrame {
         answerTextField.setBackground(Color.white);
         goodAnswerLabel.setText(" ");
     }
-
-    private void updateStatsGoodAnswer() {
-                answerTextField.setBackground(Color.green);
-                MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.add(Tools.Check.number);
-                MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords++;
-                MySQL.GameProgression.updateAccuracy();
-                MySQL.GameProgression.alreadyLearnedWordsInTheMostCommonWords=MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size();
-    }
-
-    private void updateStatsBadAnswer() {
-                answerTextField.setBackground(Color.red);
-                MySQL.GameProgression.badAnswersWordsInTheMostCommonWords++;
-                MySQL.GameProgression.updateAccuracy();
-    }
-
-    private void saveProgessionToDatabase() {
-        if(Settings.UserSettings.isUserOnline){
-               new MySQL.saveGameProgressionToDatabase().start();
-            }
-    }
-
-    private void showGoodAnswer() {
-        goodAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
-    }
-
-    private void setMuteIcon() {
-       try {
-            muteButton.setIcon(Settings.UserSettings.voice ? new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png"))) : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
-        } catch (IOException ex) {
-            Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+    
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
-    }
-    
-    private void readWord(){
-        if(voiceIsEnabled()){
-            new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
-        }
-    }
-    
-    private void playSoundEffect(boolean answer){
-        if(voiceIsEnabled()){
-            if(answer) new Tools.MP3Player("src//Resources/voices/succes.mp3").start();else new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
-        }
-    }
-    private boolean voiceIsEnabled() {
-        return Settings.UserSettings.voice;
     }
 
     private void setVolume() {
@@ -831,21 +812,4 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void setVoiceSpeed() {
         Settings.UserSettings.voiceSpeed=((float)(voiceSpeedSlider.getMaximum()+voiceSpeedSlider.getMinimum()-voiceSpeedSlider.getValue())/100);
     }
-
-    private void setSlidersDisabled() {
-        voiceSpeedSlider.setEnabled(Settings.UserSettings.voice);
-        volumeSlider.setEnabled(Settings.UserSettings.voice);
-    }
-
-    private void setSliders() {
-        volumeSlider.setValue((int)Settings.UserSettings.voiceVolume*100);
-        voiceSpeedSlider.setValue((int)Settings.UserSettings.voiceSpeed*100);
-    }
-
-    
-
-    
-
-    
-    
 }

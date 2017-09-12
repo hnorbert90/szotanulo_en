@@ -13,10 +13,9 @@ public class Check extends ExcelReader {
     
     
    public static boolean checkAnswer() throws IOException{
-       for(int i=0;i<_answer.size();i++) results.add(_answer.get(i).equals(ExcelReader.getWordByNumber(number, filename).get(i)));
-        
+       for(int i=0;i<_answer.size();i++)
+           results.add(_answer.get(i).equals(ExcelReader.getWordByNumber(number, filename).get(i)));
        return _answer.equals(ExcelReader.getWordByNumber(number, filename)); 
    }
-  
-   
+
 }

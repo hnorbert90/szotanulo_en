@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
 import MySQL.Validator;
@@ -10,15 +6,9 @@ import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javafx.scene.control.PasswordField;
 import javax.swing.JPasswordField;
 
-/**
- *
- * @author diak
- */
+
 public class Registration extends javax.swing.JFrame {
 
 
@@ -359,10 +349,10 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
+   
     private void setUI() {
         setWindowToCenter();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
-       
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png"))); 
     }
 
     private void setWindowToCenter() {
@@ -382,48 +372,47 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
 
     private void Registration() {
         try{
-       MySQL.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
-       backToLogin();
+            MySQL.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
+            backToLogin();
         }catch(Exception ex){
             alertLabel.setText("The email address or username you have entered is already registered!");
         }
     }
-        private void focusNext() {
+    
+    private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
     }
-
     
-public class UPDATE extends Tools.ThreadControll{
+    public class UPDATE extends Tools.ThreadControll{
         private boolean  running = true;
-        
+
         public void closeUpdate() {
         running=false;
         }
-        
+
         private void update() {
 
-        while(running){
-            serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
-            usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
-            passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
-            passwordTextField2.setEnabled(MySQL.serverStatus.isServerUp);
-            emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
-            emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
-            sendButton.setEnabled(MySQL.serverStatus.isServerUp);
-            validateRegistrationFields();
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
+            while(running){
+                serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
+                usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
+                passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+                passwordTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+                emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+                emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+                sendButton.setEnabled(MySQL.serverStatus.isServerUp);
+                validateRegistrationFields();
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ex) {
+                    }
             }
         }
-    }
-    
-    @Override
-    public void run(){
-        update();
-    }
+
+        @Override
+        public void run(){
+            update();
+        }
 
         private void validateRegistrationFields() {
             sendButton.setEnabled(isValidFields());
@@ -436,11 +425,12 @@ public class UPDATE extends Tools.ThreadControll{
             Validator.isPasswordValid(getPassword(passwordTextField1))&&
             Validator.isPasswordsEquals(getPassword(passwordTextField1),getPassword(passwordTextField2))&&
             Validator.isUsernameValid(usernameTextField.getText());
-            
+
         }
-    
-}
-private String getPassword(JPasswordField _passwordField){
+
+        }
+
+    private String getPassword(JPasswordField _passwordField){
         String pass="";
             for(char ch:_passwordField.getPassword())
             {
@@ -448,7 +438,7 @@ private String getPassword(JPasswordField _passwordField){
             }
             return pass;
     }
-    }
+}
 
 
 

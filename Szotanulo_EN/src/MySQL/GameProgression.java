@@ -3,10 +3,7 @@ package MySQL;
 
 import java.util.ArrayList;
 
-/**
- *
- * @author Norbi
- */
+
 public class GameProgression {
     public static int alreadyLearnedWordsInIrregularVerbs=0;
     public static int correctAnswersInIrregularVerbs=0;
