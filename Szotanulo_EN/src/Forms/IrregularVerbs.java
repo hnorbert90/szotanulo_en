@@ -694,7 +694,7 @@ private void backToMainMenu(){
     } 
     private void loadStats(){
         alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size());
-        remainingWordsCounterLabel.setText(""+(127-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size()));
+        remainingWordsCounterLabel.setText(""+(Tools.WordGenerate.IRREGULAR_VERBS_NUMBER-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size()));
         correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersInIrregularVerbs);
         badAnswersCounterLabel.setText(""+MySQL.GameProgression.badAnswersInIrregularVerbs);
         MySQL.GameProgression.updateAccuracy();

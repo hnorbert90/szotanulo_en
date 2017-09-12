@@ -1,18 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package MySQL;
 
 import static MySQL.MySQLDatabase.connectToDatabase;
 import static MySQL.MySQLDatabase.preparedStatement;
 import java.sql.SQLException;
 
-/**
- *
- * @author Norbi
- */
+
 public class SaveToDatabase extends MySQLDatabase {
     private static String learnedWordsInIrregularVerbs;
     private static String learnedWordsInTheMostCommonWords;

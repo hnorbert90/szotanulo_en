@@ -186,8 +186,8 @@ public class Results extends javax.swing.JFrame {
     private void loadResultTable(){
         
         resultsTable.setValueAt("Words left", 0, 0);
-        resultsTable.setValueAt(127-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
-        resultsTable.setValueAt(150-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
+        resultsTable.setValueAt(Tools.WordGenerate.IRREGULAR_VERBS_NUMBER-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
+        resultsTable.setValueAt(Tools.WordGenerate.THE_MOST_COMMON_WORDS_NUMBER-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
         resultsTable.setValueAt("Correct answers", 1, 0);
         resultsTable.setValueAt(MySQL.GameProgression.correctAnswersInIrregularVerbs, 1, 1);
         resultsTable.setValueAt(MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);

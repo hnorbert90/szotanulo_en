@@ -702,7 +702,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void loadStats(){
         alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size());
-        remainingWordsCounterLabel.setText(""+(150-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
+        remainingWordsCounterLabel.setText(""+(Tools.WordGenerate.THE_MOST_COMMON_WORDS_NUMBER-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
         correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords);
         badAnswerCounterLabel.setText(""+MySQL.GameProgression.badAnswersWordsInTheMostCommonWords);
         MySQL.GameProgression.updateAccuracy();
