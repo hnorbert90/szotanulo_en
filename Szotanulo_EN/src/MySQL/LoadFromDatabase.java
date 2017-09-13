@@ -75,7 +75,6 @@ public class LoadFromDatabase extends MySQLDatabase {
             GameProgression.alreadyLearnedWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("alreadyLearnedWordsInTheMostCommonWords"));
             GameProgression.correctAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("correctAnswersInTheMostCommonWords"));
             GameProgression.badAnswersWordsInTheMostCommonWords=Integer.parseInt(getResult().getString("badAnswersInTheMostCommonWords"));
-
             close();
         }catch(Exception ex) {
             System.out.println(ex);

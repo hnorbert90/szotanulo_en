@@ -5,8 +5,10 @@
  */
 package Forms;
 
+import MySQL.GameProgression;
 import Tools.Check;
 import Tools.ExcelReader;
+import Tools.WordGenerate;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
@@ -661,12 +663,12 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }
     
     private void loadStats(){
-        alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size());
-        remainingWordsCounterLabel.setText(""+(Tools.WordGenerate.IRREGULAR_VERBS_NUMBER-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size()));
-        correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersInIrregularVerbs);
-        badAnswersCounterLabel.setText(""+MySQL.GameProgression.badAnswersInIrregularVerbs);
-        MySQL.GameProgression.updateAccuracy();
-        accuracyPercentageLabel.setText(String.format("%.2f", MySQL.GameProgression.accuracyInIrregularVerbs)+"%");
+        alreadyLearnedWordsCounterLabel.setText(""+GameProgression.learnedWordNumbersInIrregularVerbs.size());
+        remainingWordsCounterLabel.setText(""+(GameProgression.IRREGULAR_VERBS_NUMBER-GameProgression.learnedWordNumbersInIrregularVerbs.size()));
+        correctAnswerCounterLabel.setText(""+GameProgression.correctAnswersInIrregularVerbs);
+        badAnswersCounterLabel.setText(""+GameProgression.badAnswersInIrregularVerbs);
+        GameProgression.updateAccuracy();
+        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInIrregularVerbs)+"%");
     }
 
     private void backToMainMenu(){
@@ -693,7 +695,11 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private void nextWord(){
         Tools.WordGenerate.generateRandomIrregularVerb();
         Tools.Check.number=Tools.WordGenerate.generatedNumber;
+        try{
         definitonLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
+        }catch(Exception ex){
+            System.out.println(WordGenerate.generatedNumber);
+        }
         readWord();
     }
     
@@ -758,16 +764,16 @@ public class IrregularVerbs extends javax.swing.JFrame {
         infinitiveTextField.setBackground(Color.green);
         simplePastTextField.setBackground(Color.green);
         pastPerfectTextField.setBackground(Color.green);
-        MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.add(Tools.Check.number);
-        MySQL.GameProgression.correctAnswersInIrregularVerbs++;
-        MySQL.GameProgression.updateAccuracy();
-        MySQL.GameProgression.alreadyLearnedWordsInIrregularVerbs=MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size();
+        GameProgression.learnedWordNumbersInIrregularVerbs.add(Tools.Check.number);
+        GameProgression.correctAnswersInIrregularVerbs++;
+        GameProgression.updateAccuracy();
+        GameProgression.alreadyLearnedWordsInIrregularVerbs=GameProgression.learnedWordNumbersInIrregularVerbs.size();
     }
     
     private void updateStatsBadAnswer() {
         showMistakes();
-        MySQL.GameProgression.badAnswersInIrregularVerbs++;
-        MySQL.GameProgression.updateAccuracy();
+        GameProgression.badAnswersInIrregularVerbs++;
+        GameProgression.updateAccuracy();
     }
     
     private void showMistakes() {     

@@ -1,6 +1,7 @@
 
 package Forms;
 
+import MySQL.GameProgression;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -211,6 +212,7 @@ public class MainMenu extends javax.swing.JFrame {
     private void logout(){
         Login login = new Login();
         Settings.UserSettings.isUserOnline=false;
+        GameProgression.resetClass();
         login.setVisible(true);
         this.dispose();
     }

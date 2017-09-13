@@ -1,6 +1,7 @@
 
 package Forms;
 
+import MySQL.GameProgression;
 import static MySQL.LoadFromDatabase.unPackSaveIntoList;
 import Tools.LoadUsernameAndPassword;
 import Tools.SaveUsernameAndPassword;
@@ -367,13 +368,14 @@ public class Login extends javax.swing.JFrame {
     }
     
     private void loadStatistic() {
-      
+        GameProgression.resetClass();
         MySQL.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
         try {
            unPackSaveIntoList(usernameTextField.getText());
+           
         } catch (ClassNotFoundException | SQLException ex) {
             }
-       
+       MySQL.GameProgression.updateAccuracy();
     }
     
     private void openMainMenu() {
@@ -404,7 +406,7 @@ public class Login extends javax.swing.JFrame {
     private void sendEmail() {
         String text="We are sent reminder e-mail to your mailbox!";
         try {
-            if(usernameTextField.getText()!="" && forgotPasswordLabel.getText()!=(text)){ 
+            if(!"".equals(usernameTextField.getText()) && (forgotPasswordLabel.getText() == null ? (text) != null : !forgotPasswordLabel.getText().equals(text))){ 
                 Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
                 forgotPasswordLabel.setText(text);
                 forgotPasswordLabel.setForeground(Color.RED);

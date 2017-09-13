@@ -1,7 +1,9 @@
 
 package Forms;
 
+import MySQL.GameProgression;
 import Tools.ExcelReader;
+import Tools.WordGenerate;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
@@ -666,12 +668,12 @@ public class MostCommonWords extends javax.swing.JFrame {
     } 
     
     private void loadStats(){
-        alreadyLearnedWordsCounterLabel.setText(""+MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size());
-        remainingWordsCounterLabel.setText(""+(Tools.WordGenerate.THE_MOST_COMMON_WORDS_NUMBER-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
-        correctAnswerCounterLabel.setText(""+MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords);
-        badAnswerCounterLabel.setText(""+MySQL.GameProgression.badAnswersWordsInTheMostCommonWords);
-        MySQL.GameProgression.updateAccuracy();
-        accuracyPercentageLabel.setText(String.format("%.2f", MySQL.GameProgression.accuracyInTheMostCommonWords)+"%");
+        alreadyLearnedWordsCounterLabel.setText(""+GameProgression.learnedWordNumbersInTheMostCommonWords.size());
+        remainingWordsCounterLabel.setText(""+(GameProgression.THE_MOST_COMMON_WORDS_NUMBER-GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
+        correctAnswerCounterLabel.setText(""+GameProgression.correctAnswersWordsInTheMostCommonWords);
+        badAnswerCounterLabel.setText(""+GameProgression.badAnswersWordsInTheMostCommonWords);
+        GameProgression.updateAccuracy();
+        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords)+"%");
     }
     
     private void setMuteIcon() {
@@ -711,7 +713,7 @@ public class MostCommonWords extends javax.swing.JFrame {
         readWord();
     }
     
-    private void setDefinitionBox() {
+    private void setDefinitionBox() {      
         definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
     }
     
@@ -750,16 +752,16 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void updateStatsGoodAnswer() {
         answerTextField.setBackground(Color.green);
-        MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.add(Tools.Check.number);
-        MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords++;
-        MySQL.GameProgression.updateAccuracy();
-        MySQL.GameProgression.alreadyLearnedWordsInTheMostCommonWords=MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size();
+        GameProgression.learnedWordNumbersInTheMostCommonWords.add(Tools.Check.number);
+        GameProgression.correctAnswersWordsInTheMostCommonWords++;
+        GameProgression.updateAccuracy();
+        GameProgression.alreadyLearnedWordsInTheMostCommonWords=GameProgression.learnedWordNumbersInTheMostCommonWords.size();
     }
 
     private void updateStatsBadAnswer() {
         answerTextField.setBackground(Color.red);
-        MySQL.GameProgression.badAnswersWordsInTheMostCommonWords++;
-        MySQL.GameProgression.updateAccuracy();
+        GameProgression.badAnswersWordsInTheMostCommonWords++;
+        GameProgression.updateAccuracy();
     }
     
     private void showGoodAnswer() {

@@ -1,6 +1,7 @@
 
 package Forms;
 
+import MySQL.GameProgression;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 
@@ -177,19 +178,19 @@ public class Results extends javax.swing.JFrame {
     }
     
     private void loadResultTable(){
-        
         resultsTable.setValueAt("Words left", 0, 0);
-        resultsTable.setValueAt(Tools.WordGenerate.IRREGULAR_VERBS_NUMBER-MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
-        resultsTable.setValueAt(Tools.WordGenerate.THE_MOST_COMMON_WORDS_NUMBER-MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
+        resultsTable.setValueAt(GameProgression.IRREGULAR_VERBS_NUMBER-GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
+        resultsTable.setValueAt(GameProgression.THE_MOST_COMMON_WORDS_NUMBER-GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
         resultsTable.setValueAt("Correct answers", 1, 0);
-        resultsTable.setValueAt(MySQL.GameProgression.correctAnswersInIrregularVerbs, 1, 1);
-        resultsTable.setValueAt(MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);
+        resultsTable.setValueAt(GameProgression.correctAnswersInIrregularVerbs, 1, 1);
+        resultsTable.setValueAt(GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);
         resultsTable.setValueAt("Bad answers", 2, 0);
-        resultsTable.setValueAt(MySQL.GameProgression.badAnswersInIrregularVerbs, 2, 1);
-        resultsTable.setValueAt(MySQL.GameProgression.badAnswersWordsInTheMostCommonWords, 2, 2);
+        resultsTable.setValueAt(GameProgression.badAnswersInIrregularVerbs, 2, 1);
+        resultsTable.setValueAt(GameProgression.badAnswersWordsInTheMostCommonWords, 2, 2);
         resultsTable.setValueAt("Accuracy", 3, 0);
-        resultsTable.setValueAt(String.format("%.2f", MySQL.GameProgression.accuracyInIrregularVerbs)+"%", 3, 1);
-        resultsTable.setValueAt(String.format("%.2f", MySQL.GameProgression.accuracyInTheMostCommonWords)+"%", 3, 2);
-
+        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInIrregularVerbs)+"%", 3, 1);
+        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords)+"%", 3, 2);
+        
+        }
     }
-}
+

@@ -4,18 +4,21 @@ package Tools;
 
 public class WordGenerate {
     public static int generatedNumber;
-    public final static int IRREGULAR_VERBS_NUMBER=127;
-    public final static int THE_MOST_COMMON_WORDS_NUMBER=150;
+
     
     public static void generateRandomIrregularVerb(){
-        do{
+    /*    do{
             generatedNumber=(int) ((Math.random()*IRREGULAR_VERBS_NUMBER)+1);
-        }while(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.contains(generatedNumber));  
+        }while(MySQL.GameProgression.learnedWordNumbersInIrregularVerbs.contains(generatedNumber));  */
+        MySQL.GameProgression.getLeftWordNumbers();
+        generatedNumber=(int) MySQL.GameProgression.remainsWordsInTheIrregularVerbs.get((int)((Math.random()*MySQL.GameProgression.remainsWordsInTheIrregularVerbs.size())));    
     }
     
     public static void generateRandomTheMostCommonWord(){
-        do{
+     /*   do{
             generatedNumber=(int) ((Math.random()*THE_MOST_COMMON_WORDS_NUMBER)+1);
-        }while(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.contains(generatedNumber));     
+        }while(MySQL.GameProgression.learnedWordNumbersInTheMostCommonWords.contains(generatedNumber));*/
+        MySQL.GameProgression.getLeftWordNumbers();
+        generatedNumber=(int) MySQL.GameProgression.remainsWordsInTheMostCommonWords.get((int)((Math.random()*MySQL.GameProgression.remainsWordsInTheMostCommonWords.size())));    
     }
 }
