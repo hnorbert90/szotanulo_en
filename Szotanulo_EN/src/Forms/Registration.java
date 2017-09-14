@@ -1,22 +1,27 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Forms;
 
-/**
- *
- * @author diak
- */
+import MySQL.Validator;
+import java.awt.Dimension;
+import java.awt.KeyboardFocusManager;
+import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
+import javax.swing.JPasswordField;
+
+
 public class Registration extends javax.swing.JFrame {
 
-    /**
-     * Creates new form registration
-     */
+
+    MySQL.serverStatus status=new MySQL.serverStatus();
+    UPDATE update = new UPDATE();
+    
     public Registration() {
         initComponents();
+        setUI();
+        status.start();
+        update.start();  
     }
+    
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -32,11 +37,11 @@ public class Registration extends javax.swing.JFrame {
         emailLabel2 = new javax.swing.JLabel();
         formNameLabel = new javax.swing.JLabel();
         alertLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        errorMessageBox = new javax.swing.JTextArea();
         serverOfflineAlertLabel = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
         sendButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
+        helpUsername = new javax.swing.JLabel();
+        helpPassword = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -109,30 +114,8 @@ public class Registration extends javax.swing.JFrame {
         alertLabel.setForeground(new java.awt.Color(255, 0, 51));
         alertLabel.setText("All field must be fill in! ");
 
-        errorMessageBox.setEditable(false);
-        errorMessageBox.setBackground(new java.awt.Color(240, 240, 240));
-        errorMessageBox.setColumns(20);
-        errorMessageBox.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
-        errorMessageBox.setForeground(new java.awt.Color(255, 51, 102));
-        errorMessageBox.setRows(6);
-        errorMessageBox.setAutoscrolls(false);
-        errorMessageBox.setBorder(null);
-        errorMessageBox.setCaretColor(new java.awt.Color(240, 240, 240));
-        errorMessageBox.setDisabledTextColor(new java.awt.Color(255, 51, 102));
-        errorMessageBox.setEnabled(false);
-        errorMessageBox.setFocusable(false);
-        errorMessageBox.setOpaque(false);
-        jScrollPane1.setViewportView(errorMessageBox);
-
         serverOfflineAlertLabel.setForeground(new java.awt.Color(204, 0, 51));
         serverOfflineAlertLabel.setText("Server not response please use the offline mode until the problem will be fixed!");
-
-        backButton.setText("Back");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
-            }
-        });
 
         sendButton.setText("Send");
         sendButton.addActionListener(new java.awt.event.ActionListener() {
@@ -146,60 +129,96 @@ public class Registration extends javax.swing.JFrame {
             }
         });
 
+        backButton.setText("Back");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backButtonActionPerformed(evt);
+            }
+        });
+        backButton.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                backButtonKeyPressed(evt);
+            }
+        });
+
+        helpUsername.setFont(new java.awt.Font("Stencil", 1, 14)); // NOI18N
+        helpUsername.setForeground(new java.awt.Color(255, 153, 0));
+        helpUsername.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        helpUsername.setText("?");
+        helpUsername.setToolTipText("Min 6 character, usernames can consist of lowercase and capitals and alphanumeric characters,  underscore and hyphens and spaces!");
+        helpUsername.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                helpUsernameMouseEntered(evt);
+            }
+        });
+
+        helpPassword.setFont(new java.awt.Font("Stencil", 1, 14)); // NOI18N
+        helpPassword.setForeground(new java.awt.Color(255, 153, 0));
+        helpPassword.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        helpPassword.setText("?");
+        helpPassword.setToolTipText("At least 8 chars;Contains at least one digit;Contains at least one lower alpha char and one upper alpha char;Contains at least one char within a set of special chars (@#%$^ etc.) ;Does not contain space, tab, etc.");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 154, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(usernameLabel)
-                                    .addComponent(passwordLabel1)
-                                    .addComponent(passwordLabel2)
-                                    .addComponent(emailLabel1)
-                                    .addComponent(emailLabel2))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(emailTextField2)
-                                    .addComponent(passwordTextField2)
-                                    .addComponent(passwordTextField1)
-                                    .addComponent(usernameTextField)
-                                    .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addComponent(alertLabel)
-                            .addComponent(formNameLabel)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backButton)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sendButton)))))
-                .addGap(73, 73, 73))
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(serverOfflineAlertLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(112, 112, 112)
+                        .addComponent(formNameLabel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(usernameLabel)
+                                            .addComponent(passwordLabel1)
+                                            .addComponent(passwordLabel2)
+                                            .addComponent(emailLabel1)
+                                            .addComponent(emailLabel2))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(emailTextField2)
+                                            .addComponent(passwordTextField2)
+                                            .addComponent(passwordTextField1)
+                                            .addComponent(usernameTextField)
+                                            .addComponent(emailTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(alertLabel)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(backButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(sendButton)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(helpUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(helpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(serverOfflineAlertLabel))))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(formNameLabel)
                 .addGap(10, 10, 10)
+                .addComponent(formNameLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(serverOfflineAlertLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(alertLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLabel))
+                    .addComponent(usernameLabel)
+                    .addComponent(helpUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(passwordLabel1)
-                    .addComponent(passwordTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(passwordTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(helpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(5, 5, 5)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -212,14 +231,14 @@ public class Registration extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(emailLabel2)
                     .addComponent(emailTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(13, 13, 13)
+                .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(sendButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
-                .addContainerGap())
+                    .addComponent(sendButton)
+                    .addComponent(backButton))
+                .addGap(26, 26, 26))
         );
+
+        helpUsername.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -240,39 +259,46 @@ public class Registration extends javax.swing.JFrame {
   
     }//GEN-LAST:event_passwordTextField2MouseClicked
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-
-                        this.setVisible(false);    }//GEN-LAST:event_backButtonActionPerformed
-
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-
+    Registration();
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void passwordTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField1KeyPressed
-
-   
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_passwordTextField1KeyPressed
 
     private void passwordTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField2KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
  
     }//GEN-LAST:event_passwordTextField2KeyPressed
 
     private void emailTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField1KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_emailTextField1KeyPressed
 
     private void emailTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField2KeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
     }//GEN-LAST:event_emailTextField2KeyPressed
 
     private void sendButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sendButtonKeyPressed
-
+if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     }//GEN-LAST:event_sendButtonKeyPressed
+
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    backToLogin();
+    }//GEN-LAST:event_backButtonActionPerformed
+
+    private void backButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backButtonKeyPressed
+    if (evt.getKeyCode() == KeyEvent.VK_ENTER) backToLogin();
+    }//GEN-LAST:event_backButtonKeyPressed
+
+    private void helpUsernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpUsernameMouseEntered
+
+    }//GEN-LAST:event_helpUsernameMouseEntered
 
     /**
      * @param args the command line arguments
@@ -311,9 +337,9 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel emailLabel2;
     private javax.swing.JTextField emailTextField1;
     private javax.swing.JTextField emailTextField2;
-    private javax.swing.JTextArea errorMessageBox;
     private javax.swing.JLabel formNameLabel;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel helpPassword;
+    private javax.swing.JLabel helpUsername;
     private javax.swing.JLabel passwordLabel1;
     private javax.swing.JLabel passwordLabel2;
     private javax.swing.JPasswordField passwordTextField1;
@@ -323,8 +349,97 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-
+   
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png"))); 
     }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
+    
+    private void backToLogin() {
+        Login login = new Login();
+        login.setVisible(true);
+        update.closeUpdate();
+        status.closeUpdate();
+        update=null;
+        status=null;
+        this.dispose();
+    }
+
+    private void Registration() {
+        try{
+            MySQL.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
+            backToLogin();
+        }catch(Exception ex){
+            alertLabel.setText("The email address or username you have entered is already registered!");
+        }
+    }
+    
+    private void focusNext() {
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.focusNextComponent(); 
+    }
+    
+    public class UPDATE extends Tools.ThreadControll{
+        private boolean  running = true;
+
+        public void closeUpdate() {
+        running=false;
+        }
+
+        private void update() {
+
+            while(running){
+                serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
+                usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
+                passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+                passwordTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+                emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
+                emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
+                sendButton.setEnabled(MySQL.serverStatus.isServerUp);
+                validateRegistrationFields();
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException ex) {
+                    }
+            }
+        }
+
+        @Override
+        public void run(){
+            update();
+        }
+
+        private void validateRegistrationFields() {
+            sendButton.setEnabled(isValidFields());
+        }
+
+        private boolean isValidFields() {
+            return 
+            Validator.isEmail(emailTextField1.getText()) &&
+            Validator.isEmailsEquals(emailTextField1.getText(), emailTextField2.getText())&&
+            Validator.isPasswordValid(getPassword(passwordTextField1))&&
+            Validator.isPasswordsEquals(getPassword(passwordTextField1),getPassword(passwordTextField2))&&
+            Validator.isUsernameValid(usernameTextField.getText());
+
+        }
+
+        }
+
+    private String getPassword(JPasswordField _passwordField){
+        String pass="";
+            for(char ch:_passwordField.getPassword())
+            {
+                pass+=ch;
+            }
+            return pass;
+    }
+}
+
 
 
    

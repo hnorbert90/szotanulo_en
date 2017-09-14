@@ -1,13 +1,18 @@
 
 package Forms;
 
+import MySQL.GameProgression;
+import java.awt.Dimension;
+import java.awt.Toolkit;
+
 
 public class MainMenu extends javax.swing.JFrame {
 
   
     public MainMenu() {
         initComponents();
-       
+        setUI();
+        
     }
  
 
@@ -125,20 +130,20 @@ public class MainMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void logoutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutMenuItemActionPerformed
-       
+        logout();
     }//GEN-LAST:event_logoutMenuItemActionPerformed
 
     private void theMostCommonWordsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_theMostCommonWordsButtonActionPerformed
-    
+        openTheMostCommonWords();
     }//GEN-LAST:event_theMostCommonWordsButtonActionPerformed
 
     private void irregularVerbsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_irregularVerbsButtonActionPerformed
- 
+        openIrregularVerbs();        
     
     }//GEN-LAST:event_irregularVerbsButtonActionPerformed
 
     private void resultsMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resultsMenuItemActionPerformed
-        
+        openResults();
     }//GEN-LAST:event_resultsMenuItemActionPerformed
 
     public static void main(String args[]) {
@@ -185,5 +190,42 @@ public class MainMenu extends javax.swing.JFrame {
     private javax.swing.JMenu toolsMenu;
     private javax.swing.JLabel welcomeMessageLabel;
     // End of variables declaration//GEN-END:variables
+
+    private void openIrregularVerbs() {
+        IrregularVerbs irregularVerbs = new IrregularVerbs();
+        irregularVerbs.setVisible(true);
+        this.dispose();
+    }
+    
+    private void openTheMostCommonWords() {
+        MostCommonWords theMostCommonWords = new MostCommonWords();
+        theMostCommonWords.setVisible(true);
+        this.dispose();
+    }
+    
+    private void openResults() {
+        Results results = new Results();
+        results.setVisible(true);
+        this.dispose();
+    }
+    
+    private void logout(){
+        Login login = new Login();
+        Settings.UserSettings.isUserOnline=false;
+        GameProgression.resetClass();
+        login.setVisible(true);
+        this.dispose();
+    }
+    
+    private void setUI() {
+        setWindowToCenter();
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
+        playerNameLabel.setText(Settings.UserSettings.username);
+    }
+
+    private void setWindowToCenter() {
+        Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+    }
 
 }

@@ -5,8 +5,6 @@
  */
 package Tools;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,9 +16,9 @@ import static org.junit.Assert.*;
  *
  * @author Norbi
  */
-public class CheckTest {
+public class SendPasswordRememberEmailTest {
     
-    public CheckTest() {
+    public SendPasswordRememberEmailTest() {
     }
     
     @BeforeClass
@@ -39,24 +37,15 @@ public class CheckTest {
     public void tearDown() {
     }
 
+    /**
+     * Test of main method, of class SendPasswordReminderEmail.
+     */
     @Test
-    public void testSomeMethod() throws IOException {
-    Check.filename="irregularverbs";
-    Check.number=15;
-    ArrayList _answer = new ArrayList();
-    
-    _answer.add("burst");
-    _answer.add("burst");
-    _answer.add("burst");
-    _answer.add("kitör");
-    
-    System.out.println(Check.checkAnswer());
-    for(Object result : Tools.Check.results){
+    public void testMain() {
+        System.out.println("main");
         
-        System.out.println(result+ " ");
+        SendPasswordReminderEmail.sendEmailTo("hnorbert90@gmail.com","Hello","sikeres email");
         
-    }
-       
     }
     
 }

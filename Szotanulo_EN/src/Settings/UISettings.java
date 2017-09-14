@@ -2,6 +2,7 @@
 package Settings;
 
 
-public class GameSettings {
+public class UISettings {
+    
     
 }
