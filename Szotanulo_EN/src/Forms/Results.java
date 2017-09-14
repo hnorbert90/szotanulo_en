@@ -2,8 +2,10 @@
 package Forms;
 
 import MySQL.GameProgression;
+import static MySQL.LoadFromDatabase.unPackSaveIntoList;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.sql.SQLException;
 
 
 public class Results extends javax.swing.JFrame {
@@ -25,6 +27,8 @@ public class Results extends javax.swing.JFrame {
         resultsTable = new javax.swing.JTable();
         backButton = new javax.swing.JButton();
         playerNameLabel = new javax.swing.JLabel();
+        resetTheMostCommonWords = new javax.swing.JButton();
+        resetIrregularVerbs = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Results");
@@ -78,37 +82,61 @@ public class Results extends javax.swing.JFrame {
         playerNameLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         playerNameLabel.setText("Player name");
 
+        resetTheMostCommonWords.setText("Reset");
+        resetTheMostCommonWords.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetTheMostCommonWordsActionPerformed(evt);
+            }
+        });
+
+        resetIrregularVerbs.setText("Reset");
+        resetIrregularVerbs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetIrregularVerbsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(formNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(playerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(backButton)
-                        .addGap(177, 177, 177))))
-            .addComponent(playerNameLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(resetIrregularVerbs)
+                        .addGap(80, 80, 80)
+                        .addComponent(resetTheMostCommonWords)
+                        .addGap(53, 53, 53))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(formNameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 432, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backButton)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(30, 30, 30)
+                .addGap(40, 40, 40)
                 .addComponent(formNameLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(playerNameLabel)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(resetTheMostCommonWords)
+                    .addComponent(resetIrregularVerbs))
+                .addGap(65, 65, 65)
                 .addComponent(backButton)
-                .addGap(45, 45, 45))
+                .addContainerGap())
         );
 
         pack();
@@ -117,6 +145,14 @@ public class Results extends javax.swing.JFrame {
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         backToMainMenu();
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void resetIrregularVerbsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetIrregularVerbsActionPerformed
+        deleteProgessionInIrregularVerbs();   
+    }//GEN-LAST:event_resetIrregularVerbsActionPerformed
+
+    private void resetTheMostCommonWordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetTheMostCommonWordsActionPerformed
+        deleteProgessionInTheMostCommonWords();
+    }//GEN-LAST:event_resetTheMostCommonWordsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -156,6 +192,8 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JLabel formNameLabel;
     private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel playerNameLabel;
+    private javax.swing.JButton resetIrregularVerbs;
+    private javax.swing.JButton resetTheMostCommonWords;
     public javax.swing.JTable resultsTable;
     // End of variables declaration//GEN-END:variables
     
@@ -192,5 +230,24 @@ public class Results extends javax.swing.JFrame {
         resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords)+"%", 3, 2);
         
         }
+    
+     private void deleteProgessionInTheMostCommonWords() {
+        new MySQL.resetProgession("themostcommonwords");
+        MySQL.GameProgression.resetClass();
+        MySQL.GameProgression.accuracyInTheMostCommonWords=0;
+        MySQL.GameProgression.badAnswersWordsInTheMostCommonWords=0;
+        MySQL.GameProgression.remainsWordsInTheMostCommonWords.clear();
+        MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords=0;
+        loadResultTable();
+    }
+     private void deleteProgessionInIrregularVerbs() {
+        new MySQL.resetProgession("IrregularVerbs");
+        MySQL.GameProgression.accuracyInIrregularVerbs=0;
+        MySQL.GameProgression.badAnswersInIrregularVerbs=0;
+        MySQL.GameProgression.remainsWordsInTheIrregularVerbs.clear();
+        MySQL.GameProgression.correctAnswersInIrregularVerbs=0;
+        loadResultTable();
+    }
+        
     }
 

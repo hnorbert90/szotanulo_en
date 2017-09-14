@@ -21,7 +21,7 @@ public class SaveToDatabase extends MySQLDatabase {
                 preparedStatement.setString(3, learnedWordsInTheMostCommonWords); 
                 preparedStatement.executeUpdate();
             } catch (Exception e) {
-                preparedStatement = connect.prepareStatement("UPDATE " +DATABASE+ "."+"`userprogression` SET `learnedwordsinirregularverbs` = ?, `learneadwordsinthemostcommonwords` = ? WHERE `userprogression`.`username` = ?;");
+                preparedStatement = connect.prepareStatement("UPDATE " +DATABASE+ "."+"`userprogression` SET `learnedwordsinirregularverbs` = ?, `learnedwordsinthemostcommonwords` = ? WHERE `userprogression`.`username` = ?;");
                 preparedStatement.setString(1, learnedWordsInIrregularVerbs);
                 preparedStatement.setString(2, learnedWordsInTheMostCommonWords); 
                 preparedStatement.setString(3, user);

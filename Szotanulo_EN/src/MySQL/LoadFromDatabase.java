@@ -42,7 +42,7 @@ public class LoadFromDatabase extends MySQLDatabase {
     
     private static void loadSaveIntoVariables(String _username) throws ClassNotFoundException, SQLException{
         learnedWordsInIrregularVerbs = loadLearnedWordsFromDatabase(_username,"learnedwordsinirregularverbs");
-        learnedWordsInTheMostCommonWords = loadLearnedWordsFromDatabase(_username,"learneadwordsinthemostcommonwords");
+        learnedWordsInTheMostCommonWords = loadLearnedWordsFromDatabase(_username,"learnedwordsinthemostcommonwords");
     }
     
     private static String loadLearnedWordsFromDatabase(String _username, String _saveGame) throws ClassNotFoundException, SQLException{

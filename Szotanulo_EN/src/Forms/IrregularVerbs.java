@@ -555,9 +555,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_simplePastTextFieldKeyPressed
 
     private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
-        new MySQL.resetProgession();
-        MySQL.GameProgression.resetClass();
-        loadStats();
+        deleteProgessionInIrregularVerbs();
     }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
@@ -851,6 +849,12 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
         manager.focusNextComponent(); 
+    }
+
+    private void deleteProgessionInIrregularVerbs() {
+        new MySQL.resetProgession("IrregularVerbs");
+        MySQL.GameProgression.resetClass();
+        loadStats();
     }
  
 }

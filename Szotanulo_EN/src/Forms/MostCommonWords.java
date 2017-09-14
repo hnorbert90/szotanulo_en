@@ -64,8 +64,6 @@ public class MostCommonWords extends javax.swing.JFrame {
         menu = new javax.swing.JMenuBar();
         toolsMenu = new javax.swing.JMenu();
         backMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
-        resetMenuItem = new javax.swing.JMenuItem();
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -318,18 +316,6 @@ public class MostCommonWords extends javax.swing.JFrame {
 
         menu.add(toolsMenu);
 
-        editMenu.setText("Edit");
-
-        resetMenuItem.setText("Eredmények törlése");
-        resetMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                resetMenuItemActionPerformed(evt);
-            }
-        });
-        editMenu.add(resetMenuItem);
-
-        menu.add(editMenu);
-
         setJMenuBar(menu);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -539,12 +525,8 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonKeyPressed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
- 
+        deleteProgessionInTheMostCommonWords();
     }//GEN-LAST:event_resetButtonActionPerformed
-
-    private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
-
-    }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void backMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backMenuItemActionPerformed
         backToMainMenu();
@@ -618,7 +600,6 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JLabel correctAnswerLabel;
     private javax.swing.JTextArea definitionBox;
     private javax.swing.JLabel definitonLabel;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JLabel goodAnswerLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -632,7 +613,6 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JLabel remainingWordsCounterLabel;
     private javax.swing.JLabel remainingWordsLabel;
     private javax.swing.JButton resetButton;
-    private javax.swing.JMenuItem resetMenuItem;
     private javax.swing.JScrollPane scrollPanel;
     private javax.swing.JButton startButton;
     private javax.swing.JMenu toolsMenu;
@@ -659,7 +639,6 @@ public class MostCommonWords extends javax.swing.JFrame {
         setMuteIcon();
         setSlidersDisabled();
         setSliders();
-        setGameFuntionsEnabled();
     }
     
     private void setWindowToCenter() {
@@ -692,18 +671,11 @@ public class MostCommonWords extends javax.swing.JFrame {
         volumeSlider.setValue((int)Settings.UserSettings.voiceVolume*100);
         voiceSpeedSlider.setValue((int)Settings.UserSettings.voiceSpeed*100);
     }
-    
-    private void setGameFuntionsEnabled() {
-        definitionBox.setEnabled(true);
-        answerTextField.setEnabled(true);
-        checkButton.setEnabled(true);
-        nextButton.setEnabled(true);
-        playButton.setEnabled(true);
-    }
 
     private void startGame(){
         Tools.Check.filename=wordList.getSelectedItem().toString();
         nextWord();
+        setGameFuntionsEnabled();
     }
     
     private void nextWord(){
@@ -711,6 +683,14 @@ public class MostCommonWords extends javax.swing.JFrame {
         Tools.Check.number=Tools.WordGenerate.generatedNumber;
         setDefinitionBox();
         readWord();
+    }
+    
+    private void setGameFuntionsEnabled() {
+        definitionBox.setEnabled(true);
+        answerTextField.setEnabled(true);
+        checkButton.setEnabled(true);
+        nextButton.setEnabled(true);
+        playButton.setEnabled(true);
     }
     
     private void setDefinitionBox() {      
@@ -813,5 +793,11 @@ public class MostCommonWords extends javax.swing.JFrame {
 
     private void setVoiceSpeed() {
         Settings.UserSettings.voiceSpeed=((float)(voiceSpeedSlider.getMaximum()+voiceSpeedSlider.getMinimum()-voiceSpeedSlider.getValue())/100);
+    }
+    
+    private void deleteProgessionInTheMostCommonWords() {
+        new MySQL.resetProgession("themostcommonwords");
+        MySQL.GameProgression.resetClass();
+        loadStats();
     }
 }
