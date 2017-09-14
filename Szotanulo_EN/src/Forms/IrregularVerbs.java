@@ -555,7 +555,9 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_simplePastTextFieldKeyPressed
 
     private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
-     
+        new MySQL.resetProgession();
+        MySQL.GameProgression.resetClass();
+        loadStats();
     }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
