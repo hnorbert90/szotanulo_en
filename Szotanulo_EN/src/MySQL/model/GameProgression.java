@@ -1,5 +1,5 @@
 
-package MySQL;
+package MySQL.model;
 
 import Tools.WordGenerate;
 import java.util.ArrayList;

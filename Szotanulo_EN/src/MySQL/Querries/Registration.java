@@ -1,6 +1,7 @@
 
-package MySQL;
+package MySQL.Querries;
 
+import MySQL.MySQLDatabase;
 import Tools.BCrypt;
 import java.sql.SQLException;
 

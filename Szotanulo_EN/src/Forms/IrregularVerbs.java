@@ -5,7 +5,7 @@
  */
 package Forms;
 
-import MySQL.GameProgression;
+import MySQL.model.GameProgression;
 import Tools.Check;
 import Tools.ExcelReader;
 import Tools.WordGenerate;
@@ -852,8 +852,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }
 
     private void deleteProgessionInIrregularVerbs() {
-        new MySQL.resetProgession("IrregularVerbs");
-        MySQL.GameProgression.resetClass();
+        new MySQL.Querries.resetProgession("IrregularVerbs");
+        MySQL.model.GameProgression.resetClass();
         loadStats();
     }
  

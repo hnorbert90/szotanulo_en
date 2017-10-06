@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.net.Socket;
 
 
-public class serverStatus extends Tools.ThreadControll{
+public class serverStatusObserver extends Tools.ThreadControll{
  
     public static boolean isServerUp;
     private boolean running=true;

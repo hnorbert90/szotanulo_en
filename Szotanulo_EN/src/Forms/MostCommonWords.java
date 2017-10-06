@@ -1,7 +1,7 @@
 
 package Forms;
 
-import MySQL.GameProgression;
+import MySQL.model.GameProgression;
 import Tools.ExcelReader;
 import Tools.WordGenerate;
 import java.awt.Color;
@@ -796,8 +796,8 @@ public class MostCommonWords extends javax.swing.JFrame {
     }
     
     private void deleteProgessionInTheMostCommonWords() {
-        new MySQL.resetProgession("themostcommonwords");
-        MySQL.GameProgression.resetClass();
+        new MySQL.Querries.resetProgession("themostcommonwords");
+        MySQL.model.GameProgression.resetClass();
         loadStats();
     }
 }

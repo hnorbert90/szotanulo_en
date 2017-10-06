@@ -43,6 +43,7 @@ public class MP3PlayerTest {
 
     /**
      * Test of run method, of class MP3Player.
+     * @throws java.lang.InterruptedException
      */
     @Test
     public void testRun() throws InterruptedException {

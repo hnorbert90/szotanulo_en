@@ -1,8 +1,8 @@
 
 package Forms;
 
-import MySQL.GameProgression;
-import static MySQL.LoadFromDatabase.unPackSaveIntoList;
+import MySQL.model.GameProgression;
+import static MySQL.Querries.LoadFromDatabase.unPackSaveIntoList;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.sql.SQLException;
@@ -232,20 +232,20 @@ public class Results extends javax.swing.JFrame {
         }
     
      private void deleteProgessionInTheMostCommonWords() {
-        new MySQL.resetProgession("themostcommonwords");
-        MySQL.GameProgression.resetClass();
-        MySQL.GameProgression.accuracyInTheMostCommonWords=0;
-        MySQL.GameProgression.badAnswersWordsInTheMostCommonWords=0;
-        MySQL.GameProgression.remainsWordsInTheMostCommonWords.clear();
-        MySQL.GameProgression.correctAnswersWordsInTheMostCommonWords=0;
+        new MySQL.Querries.resetProgession("themostcommonwords");
+        MySQL.model.GameProgression.resetClass();
+        MySQL.model.GameProgression.accuracyInTheMostCommonWords=0;
+        MySQL.model.GameProgression.badAnswersWordsInTheMostCommonWords=0;
+        MySQL.model.GameProgression.remainsWordsInTheMostCommonWords.clear();
+        MySQL.model.GameProgression.correctAnswersWordsInTheMostCommonWords=0;
         loadResultTable();
     }
      private void deleteProgessionInIrregularVerbs() {
-        new MySQL.resetProgession("IrregularVerbs");
-        MySQL.GameProgression.accuracyInIrregularVerbs=0;
-        MySQL.GameProgression.badAnswersInIrregularVerbs=0;
-        MySQL.GameProgression.remainsWordsInTheIrregularVerbs.clear();
-        MySQL.GameProgression.correctAnswersInIrregularVerbs=0;
+        new MySQL.Querries.resetProgession("IrregularVerbs");
+        MySQL.model.GameProgression.accuracyInIrregularVerbs=0;
+        MySQL.model.GameProgression.badAnswersInIrregularVerbs=0;
+        MySQL.model.GameProgression.remainsWordsInTheIrregularVerbs.clear();
+        MySQL.model.GameProgression.correctAnswersInIrregularVerbs=0;
         loadResultTable();
     }
         

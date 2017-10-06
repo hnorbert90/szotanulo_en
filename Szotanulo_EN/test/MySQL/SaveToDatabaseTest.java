@@ -5,7 +5,9 @@
  */
 package MySQL;
 
-import static MySQL.SaveToDatabase.saveStatisticToDatabase;
+import MySQL.model.GameProgression;
+import MySQL.Querries.SaveToDatabase;
+import static MySQL.Querries.SaveToDatabase.saveStatisticToDatabase;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

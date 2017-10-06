@@ -1,7 +1,7 @@
 
 package Forms;
 
-import MySQL.Validator;
+import MySQL.Tools.Validator;
 import java.awt.Dimension;
 import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
@@ -12,7 +12,7 @@ import javax.swing.JPasswordField;
 public class Registration extends javax.swing.JFrame {
 
 
-    MySQL.serverStatus status=new MySQL.serverStatus();
+    MySQL.serverStatusObserver status=new MySQL.serverStatusObserver();
     UPDATE update = new UPDATE();
     
     public Registration() {
@@ -372,7 +372,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
 
     private void Registration() {
         try{
-            MySQL.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
+            MySQL.Querries.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
             backToLogin();
         }catch(Exception ex){
             alertLabel.setText("The email address or username you have entered is already registered!");
@@ -394,13 +394,13 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
         private void update() {
 
             while(running){
-                serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
-                usernameTextField.setEnabled(MySQL.serverStatus.isServerUp);
-                passwordTextField1.setEnabled(MySQL.serverStatus.isServerUp);
-                passwordTextField2.setEnabled(MySQL.serverStatus.isServerUp);
-                emailTextField1.setEnabled(MySQL.serverStatus.isServerUp);
-                emailTextField2.setEnabled(MySQL.serverStatus.isServerUp);
-                sendButton.setEnabled(MySQL.serverStatus.isServerUp);
+                serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
+                usernameTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                passwordTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                passwordTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                emailTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                emailTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                sendButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
                 validateRegistrationFields();
                 try {
                     Thread.sleep(200);

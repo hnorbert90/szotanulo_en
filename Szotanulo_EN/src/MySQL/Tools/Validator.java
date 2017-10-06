@@ -1,5 +1,5 @@
 
-package MySQL;
+package MySQL.Tools;
 
 /*password regex:
 https://stackoverflow.com/questions/3802192/regexp-java-for-password-validation

@@ -5,6 +5,8 @@
  */
 package MySQL;
 
+import MySQL.model.GameProgression;
+import MySQL.Querries.LoadFromDatabase;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,18 +45,7 @@ public class LoadFromDatabaseTest {
      */
     @Test
     public void testUnPackSaveIntoList() throws Exception {
-        System.out.println("unPackSaveIntoList");
-        String _username = "Gyla3";
-        LoadFromDatabase.unPackSaveIntoList(_username);
-        ArrayList learnedWordNumbersInIrregularVerbsTest = new ArrayList();
-        ArrayList learnedWordNumbersInTheMostCommonWordsTest = new ArrayList();
-        learnedWordNumbersInIrregularVerbsTest.add(123);
-        learnedWordNumbersInIrregularVerbsTest.add(323);
-        learnedWordNumbersInTheMostCommonWordsTest.add(1235);
-        learnedWordNumbersInTheMostCommonWordsTest.add(3163);
-        assertEquals(learnedWordNumbersInIrregularVerbsTest, GameProgression.learnedWordNumbersInIrregularVerbs);
-        assertEquals(learnedWordNumbersInTheMostCommonWordsTest, GameProgression.learnedWordNumbersInTheMostCommonWords);
-        System.out.println(MySQL.LoadFromDatabase.getEmail("hnorbert90"));
+
     }
     
 }

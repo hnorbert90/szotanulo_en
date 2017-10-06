@@ -6,6 +6,7 @@
 package Tools;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -18,33 +19,39 @@ import static org.junit.Assert.*;
  * @author Norbi
  */
 public class ExcelReaderTest {
-    
+
     public ExcelReaderTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
+        ExcelReader.getWordByNumber(15, "irregularverbs");
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
     public void testSomeMethod() throws IOException {
-    for(Object word : ExcelReader.getWordByNumber(15, "irregularverbs.xlsx")){
-      System.out.println(word);  
+
     }
-    
-    
+
+    /**
+     * Test of getWordByNumber method, of class ExcelReader.
+     */
+    @Test
+    public void testGetWordByNumber() {
+        assertEquals(ExcelReader.actualWord.get(1), "burst");
+
     }
-    
+
 }

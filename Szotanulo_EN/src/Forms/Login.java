@@ -1,8 +1,8 @@
 
 package Forms;
 
-import MySQL.GameProgression;
-import static MySQL.LoadFromDatabase.unPackSaveIntoList;
+import MySQL.model.GameProgression;
+import static MySQL.Querries.LoadFromDatabase.unPackSaveIntoList;
 import Tools.LoadUsernameAndPassword;
 import Tools.SaveUsernameAndPassword;
 import java.awt.Color;
@@ -14,7 +14,7 @@ import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
 
-   MySQL.serverStatus status=new MySQL.serverStatus();
+   MySQL.serverStatusObserver status=new MySQL.serverStatusObserver();
    UPDATE update = new UPDATE();
     public Login() {
         initComponents();
@@ -347,7 +347,7 @@ public class Login extends javax.swing.JFrame {
     private boolean checkPasswod() {
         if(validateLoginParameters()){
             try {
-                return  MySQL.Login.login(usernameTextField.getText().toLowerCase().trim(), getPassword());
+                return  MySQL.Querries.Login.login(usernameTextField.getText().toLowerCase().trim(), getPassword());
             } catch (ClassNotFoundException | SQLException ex) {
                 return false;
             }
@@ -355,7 +355,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     private boolean validateLoginParameters() {
-        return MySQL.Validator.isPasswordValid(getPassword())&&MySQL.Validator.isUsernameValid(usernameTextField.getText());
+        return MySQL.Tools.Validator.isPasswordValid(getPassword())&&MySQL.Tools.Validator.isUsernameValid(usernameTextField.getText());
     }
     
     private String getPassword(){
@@ -369,13 +369,13 @@ public class Login extends javax.swing.JFrame {
     
     private void loadStatistic() {
         GameProgression.resetClass();
-        MySQL.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
+        MySQL.Querries.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
         try {
            unPackSaveIntoList(usernameTextField.getText());
            
         } catch (ClassNotFoundException | SQLException ex) {
             }
-       MySQL.GameProgression.updateAccuracy();
+       MySQL.model.GameProgression.updateAccuracy();
     }
     
     private void openMainMenu() {
@@ -407,7 +407,7 @@ public class Login extends javax.swing.JFrame {
         String text="We are sent reminder e-mail to your mailbox!";
         try {
             if(!"".equals(usernameTextField.getText()) && (forgotPasswordLabel.getText() == null ? (text) != null : !forgotPasswordLabel.getText().equals(text))){ 
-                Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
+                Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.Querries.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
                 forgotPasswordLabel.setText(text);
                 forgotPasswordLabel.setForeground(Color.RED);
 
@@ -434,11 +434,11 @@ public class Login extends javax.swing.JFrame {
         
         private void update() {
             while(running){
-                serverOfflineAlertLabel.setVisible(!MySQL.serverStatus.isServerUp);
-                passwordTextField.setEnabled(MySQL.serverStatus.isServerUp);
-                loginButton.setEnabled(MySQL.serverStatus.isServerUp);
-                registrationButton.setEnabled(MySQL.serverStatus.isServerUp);
-                forgotPasswordLabel.setEnabled(MySQL.serverStatus.isServerUp);
+                serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
+                passwordTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                loginButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                registrationButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                forgotPasswordLabel.setEnabled(MySQL.serverStatusObserver.isServerUp);
 
                 try {
                     Thread.sleep(200);

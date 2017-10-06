@@ -19,44 +19,40 @@ import static org.junit.Assert.*;
  * @author Norbi
  */
 public class CheckTest {
-    
+
     public CheckTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
     }
-    
+
     @After
     public void tearDown() {
     }
 
     @Test
     public void testSomeMethod() throws IOException {
-    Check.filename="irregularverbs";
-    Check.number=15;
-    ArrayList _answer = new ArrayList();
-    
-    _answer.add("burst");
-    _answer.add("burst");
-    _answer.add("burst");
-    _answer.add("kitör");
-    
-    System.out.println(Check.checkAnswer());
-    for(Object result : Tools.Check.results){
-        
-        System.out.println(result+ " ");
-        
+        Check.filename = "irregularverbs";
+        Check.number = 15;
+        ArrayList<String> _answer = new ArrayList<String>();
+
+        _answer.add("burst");
+        _answer.add("burst");
+        _answer.add("burst");
+        _answer.add("kitör");
+        Check._answer = _answer;
+
+        assertTrue(Check.checkAnswer());
+
     }
-       
-    }
-    
+
 }

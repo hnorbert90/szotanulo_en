@@ -5,6 +5,7 @@
  */
 package MySQL;
 
+import MySQL.Tools.Validator;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

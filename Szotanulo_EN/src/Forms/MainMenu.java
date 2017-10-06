@@ -1,7 +1,7 @@
 
 package Forms;
 
-import MySQL.GameProgression;
+import MySQL.model.GameProgression;
 import java.awt.Dimension;
 import java.awt.Toolkit;
 

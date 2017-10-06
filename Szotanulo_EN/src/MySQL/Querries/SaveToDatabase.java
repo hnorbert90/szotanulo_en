@@ -1,6 +1,8 @@
 
-package MySQL;
+package MySQL.Querries;
 
+import MySQL.model.GameProgression;
+import MySQL.MySQLDatabase;
 import static MySQL.MySQLDatabase.connectToDatabase;
 import static MySQL.MySQLDatabase.preparedStatement;
 import java.sql.SQLException;

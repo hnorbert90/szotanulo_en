@@ -18,15 +18,15 @@ public class MySQLDatabase{
     private static final String USERNAME="gamedevs_norbi";
     private static final String PASSWORD="adminjelszo";
     
-    static final String DATABASE="gamedevs_szotanulo_en";
-    static final String USERDATA_TABLE="userdata";
-    static final String USERPROGRESSION_TABLE="userprogression";
-    static final String USERSTATISTIC_TABLE="userstatistic";
+    public static final String DATABASE="gamedevs_szotanulo_en";
+    public static final String USERDATA_TABLE="userdata";
+    public static final String USERPROGRESSION_TABLE="userprogression";
+    public static final String USERSTATISTIC_TABLE="userstatistic";
     
-    private static Statement statement = null;
-    static PreparedStatement preparedStatement = null;
-    static ResultSet resultSet = null;
-    static Connection connect = null;
+    public static Statement statement = null;
+    public static PreparedStatement preparedStatement = null;
+    public static ResultSet resultSet = null;
+    public static Connection connect = null;
 
     
     public static void connectToDatabase() throws ClassNotFoundException, SQLException{ 
