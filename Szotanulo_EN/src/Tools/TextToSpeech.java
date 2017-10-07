@@ -2,11 +2,12 @@ package Tools;
 
 import com.sun.speech.freetts.Voice;
 import com.sun.speech.freetts.VoiceManager;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TextToSpeech extends ThreadControll {
 
-    private final String text;
-    private String voiceName;
+    private String text = "error";
     private VoiceManager voiceManager;
     private Voice robotVoice;
 
@@ -21,6 +22,11 @@ public class TextToSpeech extends ThreadControll {
         robotVoice.allocate();
         robotVoice.speak(text);
         robotVoice.deallocate();
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException ex) {
+            Logger.getLogger(TextToSpeech.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     private void setVoiceManager() {
@@ -31,5 +37,6 @@ public class TextToSpeech extends ThreadControll {
         robotVoice = voiceManager.getVoice(Settings.UserSettings.voiceName);
         robotVoice.setDurationStretch(Settings.UserSettings.voiceSpeed);
         robotVoice.setVolume(Settings.UserSettings.voiceVolume);
+
     }
 }

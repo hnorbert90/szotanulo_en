@@ -22,21 +22,18 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
-
-
 /**
- *Irregular verbs application.
+ * Irregular verbs application.
+ *
  * @author Norbi
  */
 public class IrregularVerbs extends javax.swing.JFrame {
-  
- 
-  
+
     /**
      * Creates new form Ablak2
      */
     public IrregularVerbs() {
-        initComponents();   
+        initComponents();
         setUI();
     }
 
@@ -282,12 +279,20 @@ public class IrregularVerbs extends javax.swing.JFrame {
             }
         });
 
-        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play.png"))); // NOI18N
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play_off.png"))); // NOI18N
         playButton.setBorder(null);
         playButton.setBorderPainted(false);
         playButton.setContentAreaFilled(false);
         playButton.setEnabled(false);
         playButton.setFocusable(false);
+        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                playButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                playButtonMouseExited(evt);
+            }
+        });
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -470,7 +475,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void infinitiveTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infinitiveTextFieldActionPerformed
- 
+
     }//GEN-LAST:event_infinitiveTextFieldActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
@@ -483,7 +488,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_simplePastTextFieldActionPerformed
 
     private void pastPerfectTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastPerfectTextFieldActionPerformed
-  
+
     }//GEN-LAST:event_pastPerfectTextFieldActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
@@ -494,36 +499,36 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private void infinitiveTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_infinitiveTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             focusNext();
-        } 
-     
+        }
+
     }//GEN-LAST:event_infinitiveTextFieldKeyPressed
 
     private void checkButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             checkAnswer();
             focusNext();
         }
     }//GEN-LAST:event_checkButtonKeyPressed
 
     private void nextButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             next();
             focusNext();
-        }    
+        }
     }//GEN-LAST:event_nextButtonKeyPressed
 
     private void startButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startButtonKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             startGame();
             focusNext();
-        }     
+        }
     }//GEN-LAST:event_startButtonKeyPressed
 
     private void pastPerfectTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_pastPerfectTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             checkAnswer();
             focusNext();
-        }      
+        }
 
     }//GEN-LAST:event_pastPerfectTextFieldKeyPressed
 
@@ -536,11 +541,11 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_infinitiveTextFieldFocusGained
 
     private void infinitiveTextFieldFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_infinitiveTextFieldFocusLost
-   
+
     }//GEN-LAST:event_infinitiveTextFieldFocusLost
 
     private void definitonLabelPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_definitonLabelPropertyChange
- 
+
     }//GEN-LAST:event_definitonLabelPropertyChange
 
     private void definitonLabelInputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_definitonLabelInputMethodTextChanged
@@ -550,8 +555,8 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private void simplePastTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_simplePastTextFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             focusNext();
-        } 
-    
+        }
+
     }//GEN-LAST:event_simplePastTextFieldKeyPressed
 
     private void resetMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetMenuItemActionPerformed
@@ -559,38 +564,56 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }//GEN-LAST:event_resetMenuItemActionPerformed
 
     private void startButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_startButtonMouseClicked
-      
+
     }//GEN-LAST:event_startButtonMouseClicked
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
-        Settings.UserSettings.voice=!Settings.UserSettings.voice;
+        Settings.UserSettings.voice = !Settings.UserSettings.voice;
         setMuteIcon();
     }//GEN-LAST:event_muteButtonActionPerformed
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        readWord();
+        read();
     }//GEN-LAST:event_playButtonActionPerformed
 
-    
+    private void playButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseEntered
+        if (playButton.isEnabled()) {
+            try {
+                playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play.png"))));
+            } catch (IOException ex) {
+                Logger.getLogger(IrregularVerbs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_playButtonMouseEntered
+
+    private void playButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseExited
+        if (playButton.isEnabled()) {
+            try {
+                playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play_off.png"))));
+            } catch (IOException ex) {
+                Logger.getLogger(IrregularVerbs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_playButtonMouseExited
+
     public static void main(String args[]) throws IOException {
-    
+
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-      //  try {
+        //  try {
         //    for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-          //      if ("Nimbus".equals(info.getName())) {
-            //        javax.swing.UIManager.setLookAndFeel(info.getClassName());
-              //      break;
-                //}
-           // }
+        //      if ("Nimbus".equals(info.getName())) {
+        //        javax.swing.UIManager.setLookAndFeel(info.getClassName());
+        //      break;
+        //}
+        // }
         //} catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-         //   java.util.logging.Logger.getLogger(irregularVerbs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        //   java.util.logging.Logger.getLogger(irregularVerbs.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         //}
         //</editor-fold>
-        
         //</editor-fold>
 
         /* Create and display the form */
@@ -638,8 +661,7 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JMenu toolsMenu;
     private javax.swing.JLabel versionLabel;
     // End of variables declaration//GEN-END:variables
-    
-    
+
     private void setUI() {
         setWindowToCenter();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
@@ -647,42 +669,42 @@ public class IrregularVerbs extends javax.swing.JFrame {
         setMuteIcon();
         loadStats();
     }
-    
+
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-    } 
-    
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
+    }
+
     private void setMuteIcon() {
-       try {
-            muteButton.setIcon(Settings.UserSettings.voice ?
-                    new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png"))) 
-                  : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
+        try {
+            muteButton.setIcon(Settings.UserSettings.voice
+                    ? new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png")))
+                    : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
         } catch (IOException ex) {
         }
     }
-    
-    private void loadStats(){
-        alreadyLearnedWordsCounterLabel.setText(""+GameProgression.learnedWordNumbersInIrregularVerbs.size());
-        remainingWordsCounterLabel.setText(""+(GameProgression.IRREGULAR_VERBS_NUMBER-GameProgression.learnedWordNumbersInIrregularVerbs.size()));
-        correctAnswerCounterLabel.setText(""+GameProgression.correctAnswersInIrregularVerbs);
-        badAnswersCounterLabel.setText(""+GameProgression.badAnswersInIrregularVerbs);
+
+    private void loadStats() {
+        alreadyLearnedWordsCounterLabel.setText("" + GameProgression.learnedWordNumbersInIrregularVerbs.size());
+        remainingWordsCounterLabel.setText("" + (GameProgression.IRREGULAR_VERBS_NUMBER - GameProgression.learnedWordNumbersInIrregularVerbs.size()));
+        correctAnswerCounterLabel.setText("" + GameProgression.correctAnswersInIrregularVerbs);
+        badAnswersCounterLabel.setText("" + GameProgression.badAnswersInIrregularVerbs);
         GameProgression.updateAccuracy();
-        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInIrregularVerbs)+"%");
+        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInIrregularVerbs) + "%");
     }
 
-    private void backToMainMenu(){
+    private void backToMainMenu() {
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         this.dispose();
-}
-    
-    private void startGame(){
-        Tools.Check.filename="irregularverbs";
+    }
+
+    private void startGame() {
+        Tools.Check.filename = "irregularverbs";
         setGameFuntionsEnabled();
         nextWord();
     }
-    
+
     private void setGameFuntionsEnabled() {
         infinitiveTextField.setEnabled(true);
         simplePastTextField.setEnabled(true);
@@ -692,74 +714,81 @@ public class IrregularVerbs extends javax.swing.JFrame {
         playButton.setEnabled(true);
     }
 
-    private void nextWord(){
+    private void nextWord() {
         Tools.WordGenerate.generateRandomIrregularVerb();
-        Tools.Check.number=Tools.WordGenerate.generatedNumber;
-        try{
-        definitonLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
-        }catch(Exception ex){
+        Tools.Check.number = Tools.WordGenerate.generatedNumber;
+        try {
+            definitonLabel.setText((String) ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
+        } catch (Exception ex) {
             System.out.println(WordGenerate.generatedNumber);
         }
         readWord();
     }
-    
-    private void readWord(){
-        if(voiceIsEnabled()){
-            try {
-                useMP3File();
-            } catch (IOException ex) {
-                useTextToSpeech();
-                }
-            }
+
+    private void readWord() {
+        if (voiceIsEnabled()) {
+            read();
+        }
     }
-        
+
+    private void read() {
+
+        try {
+            useMP3File();
+        } catch (IOException ex) {
+            useTextToSpeech();
+        }
+
+    }
+
     private void useMP3File() throws IOException {
         String currentWord;
         currentWord = Tools.ExcelReader.getWordByNumber(
-                    Tools.Check.number, Tools.Check.filename).get(0).toString()+"_"
-                    +Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(1).toString()+"_"
-                    +Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2).toString();
+                Tools.Check.number, Tools.Check.filename).get(0).toString() + "_"
+                + Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(1).toString() + "_"
+                + Tools.ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2).toString();
 
-        String file="src//Resources/voices/"+currentWord+".mp3";
+        String file = "src//Resources/voices/" + currentWord + ".mp3";
         File f = new File(file);
-        
-        if(f.exists() && !f.isDirectory()){  
+
+        if (f.exists() && !f.isDirectory()) {
             new Tools.MP3Player(file).start();
 
-        }else
+        } else {
             throw new IOException("no file found");
+        }
     }
-    
+
     private void useTextToSpeech() {
-        new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(0)
-                            +" "+ (String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2)
-                            +" "+ (String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2))
-                            .start();
+        new Tools.TextToSpeech((String) ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(0)
+                + " " + (String) ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2)
+                + " " + (String) ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(2))
+                .start();
     }
-        
-    private void checkAnswer(){
+
+    private void checkAnswer() {
         readAnswer();
-            if(isGoodAnswer()){
-                updateStatsGoodAnswer();
-            }else {
-                updateStatsBadAnswer();
-                showGoodAnswer();
-            }
+        if (isGoodAnswer()) {
+            updateStatsGoodAnswer();
+        } else {
+            updateStatsBadAnswer();
+            showGoodAnswer();
+        }
         playSoundEffect(isGoodAnswer());
         saveProgessionToDatabase();
         loadStats();
         checkButton.setVisible(false);
         nextButton.setVisible(true);
     }
-    
+
     private void readAnswer() {
         Tools.Check._answer.clear();
         Tools.Check._answer.add(infinitiveTextField.getText().toLowerCase().trim());
         Tools.Check._answer.add(simplePastTextField.getText().toLowerCase().trim());
         Tools.Check._answer.add(pastPerfectTextField.getText().toLowerCase().trim());
-        Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
+        Tools.Check._answer.add((String) ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename).get(3));
     }
-    
+
     private void updateStatsGoodAnswer() {
         infinitiveTextField.setBackground(Color.green);
         simplePastTextField.setBackground(Color.green);
@@ -767,73 +796,80 @@ public class IrregularVerbs extends javax.swing.JFrame {
         GameProgression.learnedWordNumbersInIrregularVerbs.add(Tools.Check.number);
         GameProgression.correctAnswersInIrregularVerbs++;
         GameProgression.updateAccuracy();
-        GameProgression.alreadyLearnedWordsInIrregularVerbs=GameProgression.learnedWordNumbersInIrregularVerbs.size();
+        GameProgression.alreadyLearnedWordsInIrregularVerbs = GameProgression.learnedWordNumbersInIrregularVerbs.size();
     }
-    
+
     private void updateStatsBadAnswer() {
         showMistakes();
         GameProgression.badAnswersInIrregularVerbs++;
         GameProgression.updateAccuracy();
     }
-    
-    private void showMistakes() {     
-        if((boolean)Check.results.get(0)) 
+
+    private void showMistakes() {
+        if ((boolean) Check.results.get(0)) {
             infinitiveTextField.setBackground(Color.green);
-        else 
+        } else {
             infinitiveTextField.setBackground(Color.red);
+        }
 
-        if((boolean)Check.results.get(1)) 
+        if ((boolean) Check.results.get(1)) {
             simplePastTextField.setBackground(Color.green);
-        else 
+        } else {
             simplePastTextField.setBackground(Color.red);
+        }
 
-        if((boolean)Check.results.get(2)) 
+        if ((boolean) Check.results.get(2)) {
             pastPerfectTextField.setBackground(Color.green);
-        else 
+        } else {
             pastPerfectTextField.setBackground(Color.red);
-    }
-    
-    private void showGoodAnswer() {
-        ArrayList goodAnswers = 
-            ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename);
-
-        infinitiveCorrectAnswerLabel.setText((String)goodAnswers.get(0));
-        simplePerfectCorrectAnswerLabel.setText((String)goodAnswers.get(1));
-        pastPerfectCorrectAnswerLabel.setText((String)goodAnswers.get(2));
-    }
-    
-    private void playSoundEffect(boolean answer){
-        if(voiceIsEnabled()){
-            if(answer) new Tools.MP3Player("src//Resources/voices/succes.mp3").start();else new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
         }
     }
-    
+
+    private void showGoodAnswer() {
+        ArrayList goodAnswers
+                = ExcelReader.getWordByNumber(Tools.Check.number, Tools.Check.filename);
+
+        infinitiveCorrectAnswerLabel.setText((String) goodAnswers.get(0));
+        simplePerfectCorrectAnswerLabel.setText((String) goodAnswers.get(1));
+        pastPerfectCorrectAnswerLabel.setText((String) goodAnswers.get(2));
+    }
+
+    private void playSoundEffect(boolean answer) {
+        if (voiceIsEnabled()) {
+            if (answer) {
+                new Tools.MP3Player("src//Resources/voices/succes.mp3").start();
+            } else {
+                new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
+            }
+        }
+    }
+
     private boolean isGoodAnswer() {
-        try {    
+        try {
             return Tools.Check.checkAnswer();
         } catch (IOException ex) {
             Logger.getLogger(MostCommonWords.class.getName()).log(Level.SEVERE, null, ex);
             return false;
         }
-    } 
-    
+    }
+
     private boolean voiceIsEnabled() {
         return Settings.UserSettings.voice;
     }
-    
+
     private void saveProgessionToDatabase() {
-        if(Settings.UserSettings.isUserOnline){
-           new MySQL.saveGameProgressionToDatabase().start();
+        if (Settings.UserSettings.isUserOnline) {
+            new MySQL.saveGameProgressionToDatabase().start();
         }
     }
-    
+
     private void next() {
         clearAnswerField();
         startGame();
         checkButton.setVisible(true);
         nextButton.setVisible(false);
-        }
-    
+    }
+
     private void clearAnswerField() {
         infinitiveTextField.setBackground(Color.white);
         simplePastTextField.setBackground(Color.white);
@@ -843,12 +879,12 @@ public class IrregularVerbs extends javax.swing.JFrame {
         pastPerfectTextField.setText("");
         infinitiveCorrectAnswerLabel.setText("");
         simplePerfectCorrectAnswerLabel.setText("");
-        pastPerfectCorrectAnswerLabel.setText("");     
+        pastPerfectCorrectAnswerLabel.setText("");
     }
-    
+
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.focusNextComponent(); 
+        manager.focusNextComponent();
     }
 
     private void deleteProgessionInIrregularVerbs() {
@@ -856,6 +892,5 @@ public class IrregularVerbs extends javax.swing.JFrame {
         MySQL.model.GameProgression.resetClass();
         loadStats();
     }
- 
-}
 
+}

@@ -1,4 +1,3 @@
-
 package Forms;
 
 import MySQL.model.GameProgression;
@@ -14,18 +13,17 @@ import java.sql.SQLException;
 
 public class Login extends javax.swing.JFrame {
 
-   MySQL.serverStatusObserver status=new MySQL.serverStatusObserver();
-   UPDATE update = new UPDATE();
+    MySQL.serverStatusObserver status = new MySQL.serverStatusObserver();
+    UPDATE update = new UPDATE();
+
     public Login() {
         initComponents();
         setUI();
-        
+
         status.start();
         update.start();
     }
-    
 
-   
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -230,12 +228,14 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_registrationButtonActionPerformed
 
     private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
-     login();
+        login();
     }//GEN-LAST:event_loginButtonActionPerformed
 
     private void loginButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) login();
-       
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            login();
+        }
+
     }//GEN-LAST:event_loginButtonKeyPressed
 
     private void offlineModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offlineModeButtonActionPerformed
@@ -243,23 +243,27 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_offlineModeButtonActionPerformed
 
     private void offlineModeButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_offlineModeButtonKeyPressed
-     
+
     }//GEN-LAST:event_offlineModeButtonKeyPressed
 
     private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
-    if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void passwordTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextFieldKeyPressed
-    if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_passwordTextFieldKeyPressed
 
     private void forgotPasswordLabelMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseEntered
-        forgotPasswordLabel.setForeground(new Color(51,153,255));
+        forgotPasswordLabel.setForeground(new Color(51, 153, 255));
     }//GEN-LAST:event_forgotPasswordLabelMouseEntered
 
     private void forgotPasswordLabelMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forgotPasswordLabelMouseExited
-        forgotPasswordLabel.setForeground(new Color(0,51,255));
+        forgotPasswordLabel.setForeground(new Color(0, 51, 255));
     }//GEN-LAST:event_forgotPasswordLabelMouseExited
 
     private void rememberCheckBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rememberCheckBoxActionPerformed
@@ -270,8 +274,6 @@ public class Login extends javax.swing.JFrame {
         saveUsername();
     }//GEN-LAST:event_rememberCheckBoxStateChanged
 
-   
-   
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -288,7 +290,7 @@ public class Login extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-       
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -310,104 +312,110 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-    
+
     private void setUI() {
         setWindowToCenter();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
         AlertLabel.setVisible(false);
         loadUsername();
     }
-    
+
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
-    
-    private void loadUsername(){
+
+    private void loadUsername() {
         new LoadUsernameAndPassword();
         passwordTextField.setText(LoadUsernameAndPassword.password);
         usernameTextField.setText(LoadUsernameAndPassword.username);
     }
-    
+
     private void login() {
-        
-        if(checkPasswod()) {
-            Settings.UserSettings.username=usernameTextField.getText();
-            Settings.UserSettings.isUserOnline=true;
-            loadStatistic();
+
+        if (checkPasswod()) {
+            Settings.UserSettings.username = usernameTextField.getText();
+            Settings.UserSettings.isUserOnline = true;
             openMainMenu();
-            if(rememberCheckBox.isSelected()) saveUsername();
-        }else{
+            if (rememberCheckBox.isSelected()) {
+                saveUsername();
+            }
+        } else {
             AlertLabel.setText("Hibás felhasználónév, vagy jelszó!");
             AlertLabel.setVisible(true);
             AlertLabel.setForeground(java.awt.Color.red);
         }
     }
-    
+
     private boolean checkPasswod() {
-        if(validateLoginParameters()){
+        if (validateLoginParameters()) {
             try {
-                return  MySQL.Querries.Login.login(usernameTextField.getText().toLowerCase().trim(), getPassword());
+                return MySQL.Querries.Login.login(usernameTextField.getText().toLowerCase().trim(), getPassword());
             } catch (ClassNotFoundException | SQLException ex) {
                 return false;
             }
-        }else return false;
+        } else {
+            return false;
+        }
     }
-    
+
     private boolean validateLoginParameters() {
-        return MySQL.Tools.Validator.isPasswordValid(getPassword())&&MySQL.Tools.Validator.isUsernameValid(usernameTextField.getText());
+        return MySQL.Tools.Validator.isPasswordValid(getPassword()) && MySQL.Tools.Validator.isUsernameValid(usernameTextField.getText());
     }
-    
-    private String getPassword(){
-        String pass="";
-            for(char ch:passwordTextField.getPassword())
-            {
-                pass+=ch;
-            }
-            return pass;
+
+    private String getPassword() {
+        String pass = "";
+        for (char ch : passwordTextField.getPassword()) {
+            pass += ch;
+        }
+        return pass;
     }
-    
+
     private void loadStatistic() {
         GameProgression.resetClass();
+        if(Settings.UserSettings.isUserOnline){
         MySQL.Querries.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
         try {
-           unPackSaveIntoList(usernameTextField.getText());
-           
+            unPackSaveIntoList(usernameTextField.getText());
+
         } catch (ClassNotFoundException | SQLException ex) {
-            }
-       MySQL.model.GameProgression.updateAccuracy();
+        }
+        MySQL.model.GameProgression.updateAccuracy();
     }
-    
+    }
+
     private void openMainMenu() {
+        loadStatistic();
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         welcomeUser();
+
         update.closeUpdate();
         status.closeUpdate();
-        update=null;
-        status=null;
+        update = null;
+        status = null;
         this.dispose();
     }
-    
+
     private void welcomeUser() {
-        new Tools.TextToSpeech("Welcome "+Settings.UserSettings.username+" Let's Play! Have fun!").start();
+      //  new Tools.TextToSpeech("Welcome " + Settings.UserSettings.username + " Let's Play! Have fun!").start();
     }
-    
+
     private void openRegistration() {
         Registration registration = new Registration();
         registration.setVisible(true);
         update.closeUpdate();
         status.closeUpdate();
-        update=null;
-        status=null;
+        update = null;
+        status = null;
         this.dispose();
     }
 
     private void sendEmail() {
-        String text="We are sent reminder e-mail to your mailbox!";
+        String text = "We are sent reminder e-mail to your mailbox!";
         try {
-            if(!"".equals(usernameTextField.getText()) && (forgotPasswordLabel.getText() == null ? (text) != null : !forgotPasswordLabel.getText().equals(text))){ 
-                Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.Querries.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi "+usernameTextField.getText()+",\n \n"+"Your requested password cannot be retrieved!\n\n Your sincerely");
+            if (!"".equals(usernameTextField.getText()) && (forgotPasswordLabel.getText() == null ? (text) != null : !forgotPasswordLabel.getText().equals(text))) {
+                Tools.SendPasswordReminderEmail.sendEmailTo(MySQL.Querries.LoadFromDatabase.getEmail(usernameTextField.getText()), "password reminder", "Hi " + usernameTextField.getText() + ",\n \n" + "Your requested password cannot be retrieved!\n\n Your sincerely");
                 forgotPasswordLabel.setText(text);
                 forgotPasswordLabel.setForeground(Color.RED);
 
@@ -415,25 +423,26 @@ public class Login extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    
+
     private void saveUsername() {
-        new SaveUsernameAndPassword(usernameTextField.getText(),getPassword());
-    }
-    
-    private void focusNext() {
-        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.focusNextComponent(); 
+        new SaveUsernameAndPassword(usernameTextField.getText(), getPassword());
     }
 
-    public class UPDATE extends Tools.ThreadControll{
-        private boolean  running = true;
-        
+    private void focusNext() {
+        KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
+        manager.focusNextComponent();
+    }
+
+    public class UPDATE extends Tools.ThreadControll {
+
+        private boolean running = true;
+
         public void closeUpdate() {
-        running=false;
+            running = false;
         }
-        
+
         private void update() {
-            while(running){
+            while (running) {
                 serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
                 passwordTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
                 loginButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
@@ -446,9 +455,9 @@ public class Login extends javax.swing.JFrame {
                 }
             }
         }
-        
+
         @Override
-        public void run(){
+        public void run() {
             update();
         }
     }

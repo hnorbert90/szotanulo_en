@@ -10,6 +10,8 @@ import java.awt.KeyboardFocusManager;
 import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
@@ -242,12 +244,20 @@ public class MostCommonWords extends javax.swing.JFrame {
         goodAnswerLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         goodAnswerLabel.setText("  ");
 
-        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play.png"))); // NOI18N
+        playButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/images/play_off.png"))); // NOI18N
         playButton.setBorder(null);
         playButton.setBorderPainted(false);
         playButton.setContentAreaFilled(false);
         playButton.setEnabled(false);
         playButton.setFocusable(false);
+        playButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                playButtonMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                playButtonMouseExited(evt);
+            }
+        });
         playButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 playButtonActionPerformed(evt);
@@ -548,7 +558,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_answerTextFieldFocusGained
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
-        readWord();
+        read();
     }//GEN-LAST:event_playButtonActionPerformed
 
     private void volumeSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_volumeSliderStateChanged
@@ -558,6 +568,26 @@ public class MostCommonWords extends javax.swing.JFrame {
     private void voiceSpeedSliderStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_voiceSpeedSliderStateChanged
         setVoiceSpeed();
     }//GEN-LAST:event_voiceSpeedSliderStateChanged
+
+    private void playButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseEntered
+      if (playButton.isEnabled()) {
+            try {
+                playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play.png"))));
+            } catch (IOException ex) {
+                Logger.getLogger(IrregularVerbs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_playButtonMouseEntered
+
+    private void playButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseExited
+     if (playButton.isEnabled()) {
+            try {
+                playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play_off.png"))));
+            } catch (IOException ex) {
+                Logger.getLogger(IrregularVerbs.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_playButtonMouseExited
 
 
     public static void main(String args[]) {
@@ -699,10 +729,12 @@ public class MostCommonWords extends javax.swing.JFrame {
     
     private void readWord(){
         if(voiceIsEnabled()){
-            new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
+            read();
         }
     }
-    
+    private void read(){
+         new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
+    }
     private void checkAnswer(){
         readAnswer();
             if(isGoodAnswer()){

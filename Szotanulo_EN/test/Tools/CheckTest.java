@@ -52,7 +52,7 @@ public class CheckTest {
         Check._answer = _answer;
 
         assertTrue(Check.checkAnswer());
-
+       
     }
 
 }
