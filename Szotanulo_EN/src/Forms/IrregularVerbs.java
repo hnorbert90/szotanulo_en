@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  * Irregular verbs application.
@@ -82,7 +83,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
         toolsMenu = new javax.swing.JMenu();
         backMenuItem = new javax.swing.JMenuItem();
         resetMenuItem = new javax.swing.JMenuItem();
-        editMenu = new javax.swing.JMenu();
 
         jFrame1.setResizable(false);
 
@@ -318,9 +318,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
         toolsMenu.add(resetMenuItem);
 
         menu.add(toolsMenu);
-
-        editMenu.setText("Edit");
-        menu.add(editMenu);
 
         setJMenuBar(menu);
 
@@ -637,7 +634,6 @@ public class IrregularVerbs extends javax.swing.JFrame {
     private javax.swing.JLabel correctAnswerCounterLabel;
     private javax.swing.JLabel correctAnswersLabel;
     private javax.swing.JLabel definitonLabel;
-    private javax.swing.JMenu editMenu;
     private javax.swing.JLabel formNameLabel;
     private javax.swing.JLabel infinitiveCorrectAnswerLabel;
     private javax.swing.JLabel infinitiveLabel;
@@ -715,6 +711,10 @@ public class IrregularVerbs extends javax.swing.JFrame {
     }
 
     private void nextWord() {
+        if (MySQL.model.GameProgression.learnedWordNumbersInIrregularVerbs.size() == 127) {
+            JOptionPane.showMessageDialog(null, "Gratulálok az adott lista összes szavát megoldottad! Eredemények nullázása!");
+            deleteProgessionInIrregularVerbs();
+        }
         Tools.WordGenerate.generateRandomIrregularVerb();
         Tools.Check.number = Tools.WordGenerate.generatedNumber;
         try {
