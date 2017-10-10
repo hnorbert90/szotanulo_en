@@ -239,6 +239,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_loginButtonKeyPressed
 
     private void offlineModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_offlineModeButtonActionPerformed
+        Settings.UserSettings.username = usernameTextField.getText();
         openMainMenu();
     }//GEN-LAST:event_offlineModeButtonActionPerformed
 
@@ -271,7 +272,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_rememberCheckBoxActionPerformed
 
     private void rememberCheckBoxStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rememberCheckBoxStateChanged
-        saveUsername();
+
     }//GEN-LAST:event_rememberCheckBoxStateChanged
 
     public static void main(String args[]) {
@@ -326,7 +327,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void loadUsername() {
-        new LoadUsernameAndPassword();
+        new LoadUsernameAndPassword().load();
         passwordTextField.setText(LoadUsernameAndPassword.password);
         usernameTextField.setText(LoadUsernameAndPassword.username);
     }
@@ -373,15 +374,15 @@ public class Login extends javax.swing.JFrame {
 
     private void loadStatistic() {
         GameProgression.resetClass();
-        if(Settings.UserSettings.isUserOnline){
-        MySQL.Querries.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
-        try {
-            unPackSaveIntoList(usernameTextField.getText());
+        if (Settings.UserSettings.isUserOnline) {
+            MySQL.Querries.LoadFromDatabase.getStatisticFromDatabase(usernameTextField.getText());
+            try {
+                unPackSaveIntoList(usernameTextField.getText());
 
-        } catch (ClassNotFoundException | SQLException ex) {
+            } catch (ClassNotFoundException | SQLException ex) {
+            }
+            MySQL.model.GameProgression.updateAccuracy();
         }
-        MySQL.model.GameProgression.updateAccuracy();
-    }
     }
 
     private void openMainMenu() {
@@ -398,7 +399,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void welcomeUser() {
-      //  new Tools.TextToSpeech("Welcome " + Settings.UserSettings.username + " Let's Play! Have fun!").start();
+        //  new Tools.TextToSpeech("Welcome " + Settings.UserSettings.username + " Let's Play! Have fun!").start();
     }
 
     private void openRegistration() {
@@ -425,7 +426,7 @@ public class Login extends javax.swing.JFrame {
     }
 
     private void saveUsername() {
-        new SaveUsernameAndPassword(usernameTextField.getText(), getPassword());
+        new SaveUsernameAndPassword(usernameTextField.getText(), getPassword()).save();
     }
 
     private void focusNext() {
@@ -433,7 +434,7 @@ public class Login extends javax.swing.JFrame {
         manager.focusNextComponent();
     }
 
-    public class UPDATE extends Tools.ThreadControll {
+    private class UPDATE extends Tools.ThreadControll {
 
         private boolean running = true;
 
@@ -443,14 +444,14 @@ public class Login extends javax.swing.JFrame {
 
         private void update() {
             while (running) {
-                serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
-                passwordTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                loginButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                registrationButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                forgotPasswordLabel.setEnabled(MySQL.serverStatusObserver.isServerUp);
-
                 try {
-                    Thread.sleep(200);
+                    serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
+                    passwordTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    loginButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    registrationButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    forgotPasswordLabel.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    rememberCheckBox.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    Thread.sleep(1000);
                 } catch (InterruptedException ex) {
                 }
             }

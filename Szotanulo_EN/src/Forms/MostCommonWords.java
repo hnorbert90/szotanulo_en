@@ -1,4 +1,3 @@
-
 package Forms;
 
 import MySQL.model.GameProgression;
@@ -14,8 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-
-
+import javax.swing.JOptionPane;
 
 public class MostCommonWords extends javax.swing.JFrame {
 
@@ -79,7 +77,7 @@ public class MostCommonWords extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Leggyakoribb szavak");
+        setTitle("The most common words");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setPreferredSize(new java.awt.Dimension(550, 600));
         setResizable(false);
@@ -479,11 +477,9 @@ public class MostCommonWords extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
 
-     
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-        checkAnswer();    
+        checkAnswer();
         focusNext();
     }//GEN-LAST:event_checkButtonActionPerformed
 
@@ -502,7 +498,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void answerTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_answerTextFieldActionPerformed
-        
+
     }//GEN-LAST:event_answerTextFieldActionPerformed
 
     private void answerTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_answerTextFieldKeyPressed
@@ -513,22 +509,22 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_answerTextFieldKeyPressed
 
     private void checkButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_checkButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             checkAnswer();
             focusNext();
         }
-    
+
     }//GEN-LAST:event_checkButtonKeyPressed
 
     private void nextButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nextButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             next();
             focusNext();
         }
     }//GEN-LAST:event_nextButtonKeyPressed
 
     private void startButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_startButtonKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER){
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             startGame();
             focusNext();
         }
@@ -547,14 +543,14 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_answerTextFieldAncestorAdded
 
     private void muteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_muteButtonActionPerformed
-        Settings.UserSettings.voice=!Settings.UserSettings.voice;
+        Settings.UserSettings.voice = !Settings.UserSettings.voice;
         setMuteIcon();
         setSlidersDisabled();
-        
+
     }//GEN-LAST:event_muteButtonActionPerformed
 
     private void answerTextFieldFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_answerTextFieldFocusGained
-  
+
     }//GEN-LAST:event_answerTextFieldFocusGained
 
     private void playButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playButtonActionPerformed
@@ -570,7 +566,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_voiceSpeedSliderStateChanged
 
     private void playButtonMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseEntered
-      if (playButton.isEnabled()) {
+        if (playButton.isEnabled()) {
             try {
                 playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play.png"))));
             } catch (IOException ex) {
@@ -580,7 +576,7 @@ public class MostCommonWords extends javax.swing.JFrame {
     }//GEN-LAST:event_playButtonMouseEntered
 
     private void playButtonMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_playButtonMouseExited
-     if (playButton.isEnabled()) {
+        if (playButton.isEnabled()) {
             try {
                 playButton.setIcon(new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/play_off.png"))));
             } catch (IOException ex) {
@@ -588,7 +584,6 @@ public class MostCommonWords extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_playButtonMouseExited
-
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -606,8 +601,8 @@ public class MostCommonWords extends javax.swing.JFrame {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MostCommonWords.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
-          /* Create and display the form */
+
+        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             new MostCommonWords().setVisible(true);
         });
@@ -652,13 +647,13 @@ public class MostCommonWords extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> wordList;
     private javax.swing.JLabel wordsLabel;
     // End of variables declaration//GEN-END:variables
-      
-    private void backToMainMenu(){
+
+    private void backToMainMenu() {
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         this.dispose();
     }
-    
+
     private void setUI() {
         setWindowToCenter();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
@@ -670,51 +665,55 @@ public class MostCommonWords extends javax.swing.JFrame {
         setSlidersDisabled();
         setSliders();
     }
-    
+
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
-    } 
-    
-    private void loadStats(){
-        alreadyLearnedWordsCounterLabel.setText(""+GameProgression.learnedWordNumbersInTheMostCommonWords.size());
-        remainingWordsCounterLabel.setText(""+(GameProgression.THE_MOST_COMMON_WORDS_NUMBER-GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
-        correctAnswerCounterLabel.setText(""+GameProgression.correctAnswersWordsInTheMostCommonWords);
-        badAnswerCounterLabel.setText(""+GameProgression.badAnswersWordsInTheMostCommonWords);
-        GameProgression.updateAccuracy();
-        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords)+"%");
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
-    
+
+    private void loadStats() {
+        alreadyLearnedWordsCounterLabel.setText("" + GameProgression.learnedWordNumbersInTheMostCommonWords.size());
+        remainingWordsCounterLabel.setText("" + (GameProgression.THE_MOST_COMMON_WORDS_NUMBER - GameProgression.learnedWordNumbersInTheMostCommonWords.size()));
+        correctAnswerCounterLabel.setText("" + GameProgression.correctAnswersWordsInTheMostCommonWords);
+        badAnswerCounterLabel.setText("" + GameProgression.badAnswersWordsInTheMostCommonWords);
+        GameProgression.updateAccuracy();
+        accuracyPercentageLabel.setText(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords) + "%");
+    }
+
     private void setMuteIcon() {
-       try {
+        try {
             muteButton.setIcon(Settings.UserSettings.voice ? new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundON.png"))) : new ImageIcon(ImageIO.read(getClass().getResource("/Resources/images/soundOFF.png"))));
         } catch (IOException ex) {
-            }
+        }
     }
-    
+
     private void setSlidersDisabled() {
         voiceSpeedSlider.setEnabled(Settings.UserSettings.voice);
         volumeSlider.setEnabled(Settings.UserSettings.voice);
     }
 
     private void setSliders() {
-        volumeSlider.setValue((int)Settings.UserSettings.voiceVolume*100);
-        voiceSpeedSlider.setValue((int)Settings.UserSettings.voiceSpeed*100);
+        volumeSlider.setValue((int) Settings.UserSettings.voiceVolume * 100);
+        voiceSpeedSlider.setValue((int) Settings.UserSettings.voiceSpeed * 100);
     }
 
-    private void startGame(){
-        Tools.Check.filename=wordList.getSelectedItem().toString();
+    private void startGame() {
+        Tools.Check.filename = wordList.getSelectedItem().toString();
         nextWord();
         setGameFuntionsEnabled();
     }
-    
-    private void nextWord(){
+
+    private void nextWord() {
+        if (MySQL.model.GameProgression.learnedWordNumbersInTheMostCommonWords.size() == 150) {
+            JOptionPane.showMessageDialog(null, "Gratulálok az adott lista összes szavát megoldottad! Eredemények nullázása!");
+            deleteProgessionInTheMostCommonWords();
+        }
         Tools.WordGenerate.generateRandomTheMostCommonWord();
-        Tools.Check.number=Tools.WordGenerate.generatedNumber;
+        Tools.Check.number = Tools.WordGenerate.generatedNumber;
         setDefinitionBox();
         readWord();
     }
-    
+
     private void setGameFuntionsEnabled() {
         definitionBox.setEnabled(true);
         answerTextField.setEnabled(true);
@@ -722,52 +721,54 @@ public class MostCommonWords extends javax.swing.JFrame {
         nextButton.setEnabled(true);
         playButton.setEnabled(true);
     }
-    
-    private void setDefinitionBox() {      
-        definitionBox.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
+
+    private void setDefinitionBox() {
+        definitionBox.setText((String) ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
     }
-    
-    private void readWord(){
-        if(voiceIsEnabled()){
+
+    private void readWord() {
+        if (voiceIsEnabled()) {
             read();
         }
     }
-    private void read(){
-         new Tools.TextToSpeech((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
+
+    private void read() {
+        new Tools.TextToSpeech((String) ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0)).start();
     }
-    private void checkAnswer(){
+
+    private void checkAnswer() {
         readAnswer();
-            if(isGoodAnswer()){
-                updateStatsGoodAnswer();
-            }else {
-                updateStatsBadAnswer();
-                showGoodAnswer();
-            }
+        if (isGoodAnswer()) {
+            updateStatsGoodAnswer();
+        } else {
+            updateStatsBadAnswer();
+            showGoodAnswer();
+        }
         playSoundEffect(isGoodAnswer());
         saveProgessionToDatabase();
         loadStats();
         checkButton.setVisible(false);
-        nextButton.setVisible(true); 
+        nextButton.setVisible(true);
     }
-    
+
     private void readAnswer() {
         Tools.Check._answer.clear();
         Tools.Check._answer.add(answerTextField.getText().toLowerCase().trim());
-        Tools.Check._answer.add((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
+        Tools.Check._answer.add((String) ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(1));
     }
 
     private void saveProgessionToDatabase() {
-        if(Settings.UserSettings.isUserOnline){
-           new MySQL.saveGameProgressionToDatabase().start();
+        if (Settings.UserSettings.isUserOnline) {
+            new MySQL.saveGameProgressionToDatabase().start();
         }
     }
-    
+
     private void updateStatsGoodAnswer() {
         answerTextField.setBackground(Color.green);
         GameProgression.learnedWordNumbersInTheMostCommonWords.add(Tools.Check.number);
         GameProgression.correctAnswersWordsInTheMostCommonWords++;
         GameProgression.updateAccuracy();
-        GameProgression.alreadyLearnedWordsInTheMostCommonWords=GameProgression.learnedWordNumbersInTheMostCommonWords.size();
+        GameProgression.alreadyLearnedWordsInTheMostCommonWords = GameProgression.learnedWordNumbersInTheMostCommonWords.size();
     }
 
     private void updateStatsBadAnswer() {
@@ -775,30 +776,31 @@ public class MostCommonWords extends javax.swing.JFrame {
         GameProgression.badAnswersWordsInTheMostCommonWords++;
         GameProgression.updateAccuracy();
     }
-    
+
     private void showGoodAnswer() {
-        goodAnswerLabel.setText((String)ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
+        goodAnswerLabel.setText((String) ExcelReader.getWordByNumber(Tools.Check.number, wordList.getSelectedItem().toString()).get(0));
     }
-    
-    private void playSoundEffect(boolean answer){
-        if(voiceIsEnabled()){
-            if(answer)
+
+    private void playSoundEffect(boolean answer) {
+        if (voiceIsEnabled()) {
+            if (answer) {
                 new Tools.MP3Player("src//Resources/voices/succes.mp3").start();
-            else 
+            } else {
                 new Tools.MP3Player("src/Resources/voices/fail.mp3").start();
+            }
         }
     }
-    
+
     private boolean voiceIsEnabled() {
         return Settings.UserSettings.voice;
     }
-    
+
     private boolean isGoodAnswer() {
-        try {    
+        try {
             return Tools.Check.checkAnswer();
         } catch (IOException ex) {
             return false;
-            }
+        }
     }
 
     private void next() {
@@ -813,20 +815,20 @@ public class MostCommonWords extends javax.swing.JFrame {
         answerTextField.setBackground(Color.white);
         goodAnswerLabel.setText(" ");
     }
-    
+
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.focusNextComponent(); 
+        manager.focusNextComponent();
     }
 
     private void setVolume() {
-        Settings.UserSettings.voiceVolume=((float)volumeSlider.getValue()/100);
+        Settings.UserSettings.voiceVolume = ((float) volumeSlider.getValue() / 100);
     }
 
     private void setVoiceSpeed() {
-        Settings.UserSettings.voiceSpeed=((float)(voiceSpeedSlider.getMaximum()+voiceSpeedSlider.getMinimum()-voiceSpeedSlider.getValue())/100);
+        Settings.UserSettings.voiceSpeed = ((float) (voiceSpeedSlider.getMaximum() + voiceSpeedSlider.getMinimum() - voiceSpeedSlider.getValue()) / 100);
     }
-    
+
     private void deleteProgessionInTheMostCommonWords() {
         new MySQL.Querries.resetProgession("themostcommonwords");
         MySQL.model.GameProgression.resetClass();

@@ -38,11 +38,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="jMenu4">
         </Menu>
-        <Menu class="javax.swing.JMenu" name="editMenu">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Edit"/>
-          </Properties>
-        </Menu>
       </SubComponents>
     </Menu>
   </NonVisualComponents>

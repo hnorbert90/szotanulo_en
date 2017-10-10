@@ -1,4 +1,3 @@
-
 package Forms;
 
 import MySQL.Tools.Validator;
@@ -8,20 +7,18 @@ import java.awt.Toolkit;
 import java.awt.event.KeyEvent;
 import javax.swing.JPasswordField;
 
-
 public class Registration extends javax.swing.JFrame {
 
-
-    MySQL.serverStatusObserver status=new MySQL.serverStatusObserver();
+    MySQL.serverStatusObserver status = new MySQL.serverStatusObserver();
     UPDATE update = new UPDATE();
-    
+
     public Registration() {
         initComponents();
         setUI();
         status.start();
-        update.start();  
+        update.start();
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -252,48 +249,62 @@ public class Registration extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordTextField2MouseEntered
 
     private void passwordTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextField2ActionPerformed
- 
+
     }//GEN-LAST:event_passwordTextField2ActionPerformed
 
     private void passwordTextField2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTextField2MouseClicked
-  
+
     }//GEN-LAST:event_passwordTextField2MouseClicked
 
     private void sendButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendButtonActionPerformed
-    Registration();
+        Registration();
     }//GEN-LAST:event_sendButtonActionPerformed
 
     private void usernameTextFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameTextFieldKeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_usernameTextFieldKeyPressed
 
     private void passwordTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField1KeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_passwordTextField1KeyPressed
 
     private void passwordTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordTextField2KeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
- 
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
+
     }//GEN-LAST:event_passwordTextField2KeyPressed
 
     private void emailTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField1KeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_emailTextField1KeyPressed
 
     private void emailTextField2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_emailTextField2KeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) focusNext();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            focusNext();
+        }
     }//GEN-LAST:event_emailTextField2KeyPressed
 
     private void sendButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_sendButtonKeyPressed
-if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            Registration();
+        }
     }//GEN-LAST:event_sendButtonKeyPressed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
-    backToLogin();
+        backToLogin();
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void backButtonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_backButtonKeyPressed
-    if (evt.getKeyCode() == KeyEvent.VK_ENTER) backToLogin();
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            backToLogin();
+        }
     }//GEN-LAST:event_backButtonKeyPressed
 
     private void helpUsernameMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_helpUsernameMouseEntered
@@ -321,7 +332,7 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
         }
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -349,68 +360,73 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
     private javax.swing.JLabel usernameLabel;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
-   
+
     private void setUI() {
         setWindowToCenter();
-        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png"))); 
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
     }
 
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
-    
+
     private void backToLogin() {
         Login login = new Login();
         login.setVisible(true);
         update.closeUpdate();
         status.closeUpdate();
-        update=null;
-        status=null;
+        update = null;
+        status = null;
         this.dispose();
     }
 
     private void Registration() {
-        try{
+        try {
             MySQL.Querries.Registration.insertUser(usernameTextField.getText(), getPassword(passwordTextField1), emailTextField1.getText());
             backToLogin();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             alertLabel.setText("The email address or username you have entered is already registered!");
         }
     }
-    
+
     private void focusNext() {
         KeyboardFocusManager manager = KeyboardFocusManager.getCurrentKeyboardFocusManager();
-        manager.focusNextComponent(); 
+        manager.focusNextComponent();
     }
-    
-    public class UPDATE extends Tools.ThreadControll{
-        private boolean  running = true;
+
+    private class UPDATE extends Tools.ThreadControll {
+
+        private boolean running = true;
+        private boolean lastState = false;
 
         public void closeUpdate() {
-        running=false;
+            running = false;
         }
 
         private void update() {
 
-            while(running){
-                serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
-                usernameTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                passwordTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                passwordTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                emailTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                emailTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
-                sendButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+            while (running) {
+                if (lastState != MySQL.serverStatusObserver.isServerUp) {
+                    serverOfflineAlertLabel.setVisible(!MySQL.serverStatusObserver.isServerUp);
+                    usernameTextField.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    passwordTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    passwordTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    emailTextField1.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    emailTextField2.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    sendButton.setEnabled(MySQL.serverStatusObserver.isServerUp);
+                    lastState = MySQL.serverStatusObserver.isServerUp;
+                }
                 validateRegistrationFields();
                 try {
-                    Thread.sleep(200);
+                    Thread.sleep(500);
                 } catch (InterruptedException ex) {
-                    }
+                }
             }
         }
 
         @Override
-        public void run(){
+        public void run() {
             update();
         }
 
@@ -419,30 +435,21 @@ if (evt.getKeyCode() == KeyEvent.VK_ENTER) Registration();
         }
 
         private boolean isValidFields() {
-            return 
-            Validator.isEmail(emailTextField1.getText()) &&
-            Validator.isEmailsEquals(emailTextField1.getText(), emailTextField2.getText())&&
-            Validator.isPasswordValid(getPassword(passwordTextField1))&&
-            Validator.isPasswordsEquals(getPassword(passwordTextField1),getPassword(passwordTextField2))&&
-            Validator.isUsernameValid(usernameTextField.getText());
+            return Validator.isEmail(emailTextField1.getText())
+                    && Validator.isEmailsEquals(emailTextField1.getText(), emailTextField2.getText())
+                    && Validator.isPasswordValid(getPassword(passwordTextField1))
+                    && Validator.isPasswordsEquals(getPassword(passwordTextField1), getPassword(passwordTextField2))
+                    && Validator.isUsernameValid(usernameTextField.getText());
 
         }
 
-        }
+    }
 
-    private String getPassword(JPasswordField _passwordField){
-        String pass="";
-            for(char ch:_passwordField.getPassword())
-            {
-                pass+=ch;
-            }
-            return pass;
+    private String getPassword(JPasswordField _passwordField) {
+        String pass = "";
+        for (char ch : _passwordField.getPassword()) {
+            pass += ch;
+        }
+        return pass;
     }
 }
-
-
-
-   
-    
-
-

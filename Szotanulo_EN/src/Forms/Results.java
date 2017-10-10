@@ -1,12 +1,8 @@
-
 package Forms;
 
 import MySQL.model.GameProgression;
-import static MySQL.Querries.LoadFromDatabase.unPackSaveIntoList;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.sql.SQLException;
-
 
 public class Results extends javax.swing.JFrame {
 
@@ -18,7 +14,7 @@ public class Results extends javax.swing.JFrame {
         setUI();
     }
 
-   
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -147,7 +143,7 @@ public class Results extends javax.swing.JFrame {
     }//GEN-LAST:event_backButtonActionPerformed
 
     private void resetIrregularVerbsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetIrregularVerbsActionPerformed
-        deleteProgessionInIrregularVerbs();   
+        deleteProgessionInIrregularVerbs();
     }//GEN-LAST:event_resetIrregularVerbsActionPerformed
 
     private void resetTheMostCommonWordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetTheMostCommonWordsActionPerformed
@@ -159,7 +155,7 @@ public class Results extends javax.swing.JFrame {
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
-        
+
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -178,7 +174,7 @@ public class Results extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */
@@ -196,13 +192,13 @@ public class Results extends javax.swing.JFrame {
     private javax.swing.JButton resetTheMostCommonWords;
     public javax.swing.JTable resultsTable;
     // End of variables declaration//GEN-END:variables
-    
-    private void backToMainMenu(){
+
+    private void backToMainMenu() {
         MainMenu mainMenu = new MainMenu();
         mainMenu.setVisible(true);
         this.dispose();
     }
-    
+
     private void setUI() {
         setWindowToCenter();
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("/Resources/images/icon.png")));
@@ -212,13 +208,13 @@ public class Results extends javax.swing.JFrame {
 
     private void setWindowToCenter() {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
-        this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+        this.setLocation(dim.width / 2 - this.getSize().width / 2, dim.height / 2 - this.getSize().height / 2);
     }
-    
-    private void loadResultTable(){
+
+    private void loadResultTable() {
         resultsTable.setValueAt("Words left", 0, 0);
-        resultsTable.setValueAt(GameProgression.IRREGULAR_VERBS_NUMBER-GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
-        resultsTable.setValueAt(GameProgression.THE_MOST_COMMON_WORDS_NUMBER-GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
+        resultsTable.setValueAt(GameProgression.IRREGULAR_VERBS_NUMBER - GameProgression.learnedWordNumbersInIrregularVerbs.size(), 0, 1);
+        resultsTable.setValueAt(GameProgression.THE_MOST_COMMON_WORDS_NUMBER - GameProgression.learnedWordNumbersInTheMostCommonWords.size(), 0, 2);
         resultsTable.setValueAt("Correct answers", 1, 0);
         resultsTable.setValueAt(GameProgression.correctAnswersInIrregularVerbs, 1, 1);
         resultsTable.setValueAt(GameProgression.correctAnswersWordsInTheMostCommonWords, 1, 2);
@@ -226,28 +222,28 @@ public class Results extends javax.swing.JFrame {
         resultsTable.setValueAt(GameProgression.badAnswersInIrregularVerbs, 2, 1);
         resultsTable.setValueAt(GameProgression.badAnswersWordsInTheMostCommonWords, 2, 2);
         resultsTable.setValueAt("Accuracy", 3, 0);
-        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInIrregularVerbs)+"%", 3, 1);
-        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords)+"%", 3, 2);
-        
-        }
-    
-     private void deleteProgessionInTheMostCommonWords() {
-        new MySQL.Querries.resetProgession("themostcommonwords");
-        MySQL.model.GameProgression.resetClass();
-        MySQL.model.GameProgression.accuracyInTheMostCommonWords=0;
-        MySQL.model.GameProgression.badAnswersWordsInTheMostCommonWords=0;
-        MySQL.model.GameProgression.remainsWordsInTheMostCommonWords.clear();
-        MySQL.model.GameProgression.correctAnswersWordsInTheMostCommonWords=0;
-        loadResultTable();
-    }
-     private void deleteProgessionInIrregularVerbs() {
-        new MySQL.Querries.resetProgession("IrregularVerbs");
-        MySQL.model.GameProgression.accuracyInIrregularVerbs=0;
-        MySQL.model.GameProgression.badAnswersInIrregularVerbs=0;
-        MySQL.model.GameProgression.remainsWordsInTheIrregularVerbs.clear();
-        MySQL.model.GameProgression.correctAnswersInIrregularVerbs=0;
-        loadResultTable();
-    }
-        
+        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInIrregularVerbs) + "%", 3, 1);
+        resultsTable.setValueAt(String.format("%.2f", GameProgression.accuracyInTheMostCommonWords) + "%", 3, 2);
+
     }
 
+    private void deleteProgessionInTheMostCommonWords() {
+        new MySQL.Querries.resetProgession("themostcommonwords");
+        MySQL.model.GameProgression.resetClass();
+        MySQL.model.GameProgression.accuracyInTheMostCommonWords = 0;
+        MySQL.model.GameProgression.badAnswersWordsInTheMostCommonWords = 0;
+        MySQL.model.GameProgression.remainsWordsInTheMostCommonWords.clear();
+        MySQL.model.GameProgression.correctAnswersWordsInTheMostCommonWords = 0;
+        loadResultTable();
+    }
+
+    private void deleteProgessionInIrregularVerbs() {
+        new MySQL.Querries.resetProgession("IrregularVerbs");
+        MySQL.model.GameProgression.accuracyInIrregularVerbs = 0;
+        MySQL.model.GameProgression.badAnswersInIrregularVerbs = 0;
+        MySQL.model.GameProgression.remainsWordsInTheIrregularVerbs.clear();
+        MySQL.model.GameProgression.correctAnswersInIrregularVerbs = 0;
+        loadResultTable();
+    }
+
+}

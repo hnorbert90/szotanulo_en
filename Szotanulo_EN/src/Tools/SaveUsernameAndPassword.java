@@ -1,19 +1,28 @@
 package Tools;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
 public class SaveUsernameAndPassword {
 
-    public SaveUsernameAndPassword(String _username, String _password) {
+    private String username;
+    private String password;
 
+    public SaveUsernameAndPassword(String _username, String _password) {
+        username = _username;
+        password = _password;
+    }
+
+    public void save() {
         BufferedWriter output = null;
         try {
-            output = new BufferedWriter(new FileWriter("user.dat"));
-            output.write(_username);
+            String path = System.getProperty("user.home") + File.separator + "Documents";
+            output = new BufferedWriter(new FileWriter(path + "\\user.dat"));
+            output.write(username);
             output.newLine();
-            output.write(_password);
+            output.write(password);
         } catch (IOException ex) {
         } finally {
             try {

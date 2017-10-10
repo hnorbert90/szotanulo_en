@@ -30,7 +30,6 @@ public class MainMenu extends javax.swing.JFrame {
         logoutMenuItem = new javax.swing.JMenuItem();
         resultsMenuItem = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        editMenu = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -84,9 +83,6 @@ public class MainMenu extends javax.swing.JFrame {
 
         menuBar.add(toolsMenu);
         menuBar.add(jMenu4);
-
-        editMenu.setText("Edit");
-        menuBar.add(editMenu);
 
         setJMenuBar(menuBar);
 
@@ -177,7 +173,6 @@ public class MainMenu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu editMenu;
     private javax.swing.JButton irregularVerbsButton;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu4;
